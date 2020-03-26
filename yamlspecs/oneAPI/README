@@ -1,0 +1,12 @@
+This is the install notes of oneAPI from Intel.
+Download: https://dynamicinstaller.intel.com/oneapi/toolkits/base-kit/linux/
+
+History:
+03/25/2020
+ - Downloaded the offline installer 
+   2ff57787d99c0f2d72f8e2e230e9fd56  l_BaseKit_b_2021.1.5.720_offline.tar.gz
+ - installed with:
+     # tar xzvf l_BaseKit_b_2021.1.5.720_offline.tar.gz 
+     # cd l_BaseKit_b_2021.1.5.720_offline^M
+     # ./install.sh ../silent.cfg
+

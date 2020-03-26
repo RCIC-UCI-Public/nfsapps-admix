@@ -1,0 +1,6 @@
+system:
+bootstrap:
+build:
+  - intel-oneapi-module
+manifest:
+  - "{{build}}"
