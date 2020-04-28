@@ -2,5 +2,6 @@ system:
 bootstrap:
 build:
   - intel-oneapi-module
+  - intel-compiler-module
 manifest:
   - "{{build}}"
