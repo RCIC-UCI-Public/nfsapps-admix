@@ -3,5 +3,6 @@ bootstrap:
 build:
   - intel-oneapi-module
   - intel-compiler-module
+  - matlab-module
 manifest:
   - "{{build}}"

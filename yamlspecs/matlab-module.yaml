@@ -1,0 +1,30 @@
+# This is the oneAPI module
+#  
+# must be included in specific yaml file
+!include rcic-module.yaml
+---
+- package: MATLAB module 
+  category: LANGUAGES
+  name: MATLAB 
+  versions: !include versions.yaml
+  version: "{{versions.matlab.version}}"
+  matlab_arch: "{{versions.matlab.arch}}"
+  vendor_source: https://www.mathworks.com/academia/tah-portal/university-of-california-irvine-30980328.html 
+  description: |
+      MATLAB (R)({{version}}).  combines a desktop environment tuned for iterative analysis 
+      and design processes with a programming language that expresses matrix and 
+      array mathematics directly. It includes the Live Editor for creating scripts
+      that combine code, output, and formatted text in an executable notebook. This is
+      licensed software. 
+
+  root: "{{versions.nfspath}}/{{name}}/{{version}}"
+
+  module:
+    prepend_path:
+      - PATH {{root}}/bin
+      - LD_LIBRARY_PATH {{root}}/bin/{{matlab_arch}} 
+      - MANPATH {{root}}/man 
+    setenv: 
+      - MATLAB {{root}}
+  requires:
+    - rcic-module-support
