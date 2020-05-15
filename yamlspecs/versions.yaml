@@ -1,5 +1,7 @@
 nfspath: /data/opt/apps
-oneAPI: b_2021.1.5.720
+oneAPI: 
+  shortversion: 2021.1_beta05
+  longversion: b_2021.1.5.720
 matlab:
   version: R2020a
   arch: glnxa64

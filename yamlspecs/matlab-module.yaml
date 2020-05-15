@@ -1,6 +1,6 @@
-# This is the oneAPI module
-#  
+# This is the MATLAB module
 # must be included in specific yaml file
+!include rcic-package.yaml
 !include rcic-module.yaml
 ---
 - package: MATLAB module 
@@ -16,9 +16,7 @@
       array mathematics directly. It includes the Live Editor for creating scripts
       that combine code, output, and formatted text in an executable notebook. This is
       licensed software. 
-
   root: "{{versions.nfspath}}/{{name}}/{{version}}"
-
   module:
     prepend_path:
       - PATH {{root}}/bin
@@ -26,5 +24,5 @@
       - MANPATH {{root}}/man 
     setenv: 
       - MATLAB {{root}}
-  requires:
-    - rcic-module-support
+    requires:
+      - rcic-module-support

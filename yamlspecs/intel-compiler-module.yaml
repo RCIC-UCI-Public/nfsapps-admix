@@ -1,6 +1,6 @@
 # This is the intel compiler module
-#  
 # must be included in specific yaml file
+!include rcic-package.yaml
 !include rcic-module.yaml
 ---
 - package: intel compiler module 
@@ -10,9 +10,8 @@
   version: "{{versions.intel_compiler.shortversion}}"
   intelarch: "{{versions.intel_compiler.arch}}"
   description: |
-      Intel Studio XE Compilers(R) ({{version}}). Fortran, C++ compilers are available
-      through this module
-  pkgname: "{{name}}_{{version}}-module"
+      Intel Studio XE Compilers(R) version {{version}}. 
+      Provides Fortran, C, C++ compilers 
   root: "/data/opt/apps/intel/{{version}}"
   toolpath: "{{root}}/compilers_and_libraries/linux"
   toolpath_full: "{{root}}/compilers_and_libraries_{{versions.intel_compiler.longversion}}/linux"
@@ -28,7 +27,6 @@
       - FC  {{toolpath}}/bin/{{intelarch}}/ifort
       - F77 {{toolpath}}/bin/{{intelarch}}/ifort
       - F90 {{toolpath}}/bin/{{intelarch}}/ifort
-
     prepend_path:
       - PATH {{toolpath}}/bin
       - PATH {{toolpath}}/bin/{{intelarch}}
@@ -42,8 +40,8 @@
       - LD_RUN_PATH  {{toolpath_full}}/tbb/lib/intel64
       - LD_RUN_PATH  {{toolpath_full}}/mkl/lib/intel64
       - LD_RUN_PATH  {{toolpath}}/lib/intel64
-  requires:
-    - rcic-module-support
+    requires:
+      - rcic-module-support
 # NFS APP doesn't have an RPM for the compiler itself, for others that require
 # intel compiler by name, report that this RPM provides that compiler
 # and libraries. Add more libraries as needed
