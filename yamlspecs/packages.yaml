@@ -4,5 +4,8 @@ build:
   - intel-oneapi-module
   - intel-compiler-module
   - matlab-module
+  - stata-module.yaml
+  - cellranger-module.yaml    
+  - cellranger-prev-module.yaml  
 manifest:
   - "{{build}}"
