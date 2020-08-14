@@ -1,0 +1,29 @@
+# This is the Marc module
+# must be included in specific yaml file
+!include rcic-package.yaml
+!include rcic-module.yaml
+---
+- package: Marc module 
+  category: LANGUAGES
+  name: marc
+  versions: !include versions.yaml
+  version: "{{versions.marc.version}}"
+  matlab_arch: "{{versions.marc.arch}}"
+  vendor_source: Source provided by Aboozar Mapar
+  description: |
+      MSC Marc is a nonlinear finite elements analysis software used to simulate behavior of complex materials and interaction under large deformations and strains. It can also simulate multi-physics scenarios across structural, thermal, piezoelectric, electrostatic, magnetostatic, and electromagnetic behaviors.
+      It is licensed to Aboozar Mapar.
+  root: "{{versions.nfspath}}/{{name}}/marc2020"
+  module:
+    prepend_path:
+      - PATH {{root}}/bin
+      - LD_LIBRARY_PATH {{root}}/lib_shared/linux64
+      - LD_LIBRARY_PATH {{root}}/lib/linux64i8
+      - LD_LIBRARY_PATH {{root}}/lib/linux64i8/cuda
+      - LD_LIBRARY_PATH {{root}}/lib/linux64i8/cuda_dummy
+      - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib/release_mt
+      - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib/release
+      - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib
+
+    requires:
+      - rcic-module-support
