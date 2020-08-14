@@ -1,0 +1,4 @@
+!include cellranger-module.yaml
+---
+- version: "{{versions.cellranger.longversionPrev}}"
+  versionS: "{{versions.cellranger.shortversionPrev}}"

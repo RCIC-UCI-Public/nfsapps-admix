@@ -1,0 +1,25 @@
+# This is the schrodinger module
+# must be included in specific yaml file
+!include rcic-package.yaml
+!include rcic-module.yaml
+---
+- package: schrodinger module 
+  category: CHEMISTRY
+  name: schrodinger 
+  versions: !include versions.yaml
+  version: "{{versions.schrodinger}}"
+  vendor_source: https://www.deshawresearch.com/downloads/download_desmond.cgi
+  description: |
+    Schrodinger (Desmond) {{version}} is a software package developed at D. E. Shaw Research 
+    to perform high-speed molecular dynamics simulations of biological systems. The code
+    uses novel parallel algorithms and numerical techniques to achieve high performance
+    and accuracy on NVIDIA GPUs. Desmond is available without cost for non-commercial
+    use by universities and other not-for-profit research institutions
+  root: "{{versions.nfspath}}/{{name}}/{{version}}"
+  module:
+    prepend_path:
+      - PATH {{root}}
+    setenv: 
+      - SCHRODINGER {{root}}
+    requires:
+      - rcic-module-support

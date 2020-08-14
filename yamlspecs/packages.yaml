@@ -5,5 +5,8 @@ build:
   - intel-compiler-module
   - matlab-module
   - stata-module
+  - cellranger-module
+  - cellranger-prev-module
+  - schrodinger-module
 manifest:
   - "{{build}}"
