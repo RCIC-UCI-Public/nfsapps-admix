@@ -24,5 +24,8 @@
       - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib/release
       - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib
 
+    setenv:
+      - MSC_LICENSE_FILE "27500@license-svr.eng.uci.edu"
+
     requires:
       - rcic-module-support
