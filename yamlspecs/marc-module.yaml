@@ -14,7 +14,8 @@
       MSC {{version}} is a nonlinear finite elements analysis software used to simulate
       behavior of complex materials and interaction under large deformations and strains.
       It can also simulate multi-physics scenarios across structural, thermal, piezoelectric,
-      electrostatic, magnetostatic, and electromagnetic behaviors. It is licensed to Aboozar Mapar
+      electrostatic, magnetostatic, and electromagnetic behaviors. 
+      It is licensed to Aboozar Mapar
   root: "{{versions.nfspath}}/{{name}}/{{name}}{{version}}"
   module:
     setenv:
