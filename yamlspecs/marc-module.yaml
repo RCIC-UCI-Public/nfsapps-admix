@@ -4,14 +4,16 @@
 !include rcic-module.yaml
 ---
 - package: Marc module 
-  category: LANGUAGES
+  category: PHYSICS
   name: marc
   versions: !include versions.yaml
   version: "{{versions.marc}}"
   vendor_source: Source provided by Aboozar Mapar
   description: |
-      MSC Marc is a nonlinear finite elements analysis software used to simulate behavior of complex materials and interaction under large deformations and strains. It can also simulate multi-physics scenarios across structural, thermal, piezoelectric, electrostatic, magnetostatic, and electromagnetic behaviors.
-      It is licensed to Aboozar Mapar.
+      MSC {{version}} is a nonlinear finite elements analysis software used to simulate
+      behavior of complex materials and interaction under large deformations and strains.
+      It can also simulate multi-physics scenarios across structural, thermal, piezoelectric,
+      electrostatic, magnetostatic, and electromagnetic behaviors. It is licensed to Aboozar Mapar
   root: "{{versions.nfspath}}/{{name}}/{{name}}{{version}}"
   module:
     prepend_path:
@@ -23,6 +25,5 @@
       - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib/release_mt
       - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib/release
       - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib
-
     requires:
       - rcic-module-support
