@@ -8,5 +8,6 @@ build:
   - cellranger-module
   - cellranger-prev-module
   - schrodinger-module
+  - marc-module
 manifest:
   - "{{build}}"
