@@ -18,4 +18,6 @@ cellranger:
   shortversionPrev: "3.0"
   longversionPrev: "3.0.2"
 schrodinger: "2020.1"
-marc: "2020"
+marc: 
+  version: "2020"
+  arch: "linux64i8"
