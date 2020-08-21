@@ -9,6 +9,7 @@
   baserpm: "{{name}}"
   versions: !include versions.yaml
   version: "{{versions.oneAPI.shortversion}}"
+  release: "2"
   vendor_source: https://dynamicinstaller.intel.com/oneapi/toolkits/base-kit/linux/ 
   description: |
       Intel (R) oneAPI version {{versions.oneAPI.longversion}} (short version {{version}})

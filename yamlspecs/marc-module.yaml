@@ -6,6 +6,7 @@
 - package: Marc module 
   category: PHYSICS
   name: marc
+  release: "2"
   versions: !include versions.yaml
   version: "{{versions.marc.version}}"
   marcArch: "{{versions.marc.arch}}"

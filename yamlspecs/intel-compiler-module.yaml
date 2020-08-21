@@ -9,6 +9,7 @@
   versions: !include versions.yaml
   version: "{{versions.intel_compiler.shortversion}}"
   intelarch: "{{versions.intel_compiler.arch}}"
+  release: "2"
   description: |
       Intel Studio XE Compilers(R) version {{version}}. 
       Provides Fortran, C, C++ compilers 

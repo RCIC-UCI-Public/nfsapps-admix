@@ -10,6 +10,7 @@
   version: "{{versions.stata.version}}"
   matlab_arch: "{{versions.stata.arch}}"
   vendor_source: https://download.stata.com/download/
+  release: "2"
   description: |
       Stata {{version}} is a general-purpose statistical software package.
       It is licensed to Prof. Andrew Penner.

@@ -8,6 +8,7 @@
   name: schrodinger 
   versions: !include versions.yaml
   version: "{{versions.schrodinger}}"
+  release: "2"
   vendor_source: https://www.deshawresearch.com/downloads/download_desmond.cgi
   description: |
     Schrodinger (Desmond) {{version}} is a software package developed at D. E. Shaw Research 

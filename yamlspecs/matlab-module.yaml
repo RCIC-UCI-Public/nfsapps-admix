@@ -6,6 +6,7 @@
 - package: MATLAB module 
   category: LANGUAGES
   name: MATLAB 
+  release: "2"
   versions: !include versions.yaml
   version: "{{versions.matlab.version}}"
   matlab_arch: "{{versions.matlab.arch}}"
