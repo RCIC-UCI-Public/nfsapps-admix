@@ -10,7 +10,7 @@
   version: "{{versions.cellranger.longversion}}"
   versionS: "{{versions.cellranger.shortversion}}"
   vendor_source: https://support.10xgenomics.com/single-cell-gene-expression/software/downloads/{{versionS}}/
-  release:2
+  release: 2
   description: |
     Cell {{version}} Ranger is a set of analysis pipelines that process Chromium 
     single-cell RNA-seq output to align reads, generate feature-barcode matrices

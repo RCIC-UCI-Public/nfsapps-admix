@@ -47,6 +47,7 @@
 # intel compiler by name, report that this RPM provides that compiler
 # and libraries. Add more libraries as needed
   provides:
+    - "{{name}}/{{version}}"
     - "{{name}}_{{version}}"
     - libsvml.so()(64bit)
     - libirng.so()(64bit)
