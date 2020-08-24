@@ -9,5 +9,6 @@ build:
   - cellranger-prev-module
   - schrodinger-module
   - marc-module
+  - ansys-module
 manifest:
   - "{{build}}"
