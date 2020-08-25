@@ -11,7 +11,8 @@
   rel: "{{versions.ansys.rel}}"
   vendor_source: "Install from ISOs provided by Engeeneering Dept"
   description: |
-    The ANSYS suite version {{version}}. For help with ANSYS, please see http://www.ansys.com and
+    The ANSYS suite Release {{version}} revision {{rel}}.
+    For help with ANSYS, please see http://www.ansys.com and
     http://laptops.eng.uci.edu/software-installation/ansys-campus-software-for-uci-engineering
   root: "{{versions.nfspath}}/{{name}}/{{version}}"
   module:
