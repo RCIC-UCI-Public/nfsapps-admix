@@ -10,5 +10,6 @@ build:
   - schrodinger-module
   - marc-module
   - ansys-module
+  - ansys-prev-module
 manifest:
   - "{{build}}"
