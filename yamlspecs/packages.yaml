@@ -12,5 +12,6 @@ build:
   - mentat-module
   - ansys-module
   - ansys-prev-module
+  - freesurfer-module
 manifest:
   - "{{build}}"

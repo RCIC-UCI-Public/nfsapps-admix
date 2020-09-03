@@ -30,3 +30,4 @@ ansys:
 ansys_prev: 
   version: "2019R2"
   rel: "v194"
+freesurfer: "7.1.1"

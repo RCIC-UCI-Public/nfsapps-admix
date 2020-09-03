@@ -1,0 +1,29 @@
+# This is the freesurfer module 
+!include rcic-package.yaml
+!include rcic-module.yaml
+---
+- package: freesurfer module 
+  category: IMAGING
+  name: freesurfer 
+  versions: !include versions.yaml
+  version: "{{versions.freesurfer}}"
+  release: "1"
+  vendor_source: https://surfer.nmr.mgh.harvard.edu/pub/dist/{{name}}/{{version}}/{{name}}-linux-centos7_x86_64-{{version}}.{{extension}}
+  description: |
+    FreeSurfer is a software package for the analysis and visualization of structural 
+    and functional neuroimaging data from cross-sectional or longitudinal studies. 
+    It is developed by the Laboratory for Computational Neuroimaging at the 
+    Athinoula A. Martinos Center for Biomedical Imaging. 
+    FreeSurfer is the structural MRI analysis software of choice for the 
+    Human Connectome Project
+  root: "{{versions.nfspath}}/{{name}}/{{version}}"
+  module:
+    setenv:  
+      - *Setenv
+      - FREESURFER_HOME {{root}}
+      - SUBJECTS_DIR {{root}}/subjects
+      - FSFAST_HOME {{root}}/fsfast
+      - FSF_OUTPUT_FORMAT nii.gz
+      - MNI_DIR {{root}}/mni
+  requires:
+    - rcic-module-support
