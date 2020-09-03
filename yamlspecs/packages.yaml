@@ -9,6 +9,7 @@ build:
   - cellranger-prev-module
   - schrodinger-module
   - marc-module
+  - mentat-module
   - ansys-module
   - ansys-prev-module
 manifest:
