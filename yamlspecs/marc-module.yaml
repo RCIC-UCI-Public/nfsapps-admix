@@ -30,5 +30,6 @@
       - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib/release_mt
       - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib/release
       - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib
+      - LD_LIBRARY_PATH {{root}}/tools
     requires:
       - rcic-module-support

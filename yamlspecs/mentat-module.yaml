@@ -1,0 +1,25 @@
+# This is the Mentat module, GUI for Marc
+# must be included in specific yaml file
+!include rcic-package.yaml
+!include rcic-module.yaml
+---
+- package: Mentat module 
+  category: PHYSICS
+  name: mentat
+  versions: !include versions.yaml
+  version: "{{versions.mentat.version}}"
+  marcArch: "{{versions.mentat.arch}}"
+  vendor_source: Source provided by Aboozar Mapar
+  description: |
+      MSC {{version}} is the GUI for Marc, a nonlinear finite elements analysis software used to simulate
+      behavior of complex materials and interaction under large deformations and strains.
+      It is licensed to Aboozar Mapar
+  root: "{{versions.nfspath}}/{{name}}/{{name}}{{version}}"
+  module:
+    setenv:
+      - MSC_LICENSE_FILE "27500@license-svr.eng.uci.edu"
+    prepend_path:
+      - PATH {{root}}/bin
+      - LD_LIBRARY_PATH {{root}}/shlib/linux64
+    requires:
+      - rcic-module-support

@@ -21,3 +21,12 @@ schrodinger: "2020.1"
 marc: 
   version: "2020"
   arch: "linux64i8"
+mentat: 
+  version: "2020"
+  arch: "linux64i8"
+ansys: 
+  version: "2020R2"
+  rel: "v202"
+ansys_prev: 
+  version: "2019R2"
+  rel: "v194"

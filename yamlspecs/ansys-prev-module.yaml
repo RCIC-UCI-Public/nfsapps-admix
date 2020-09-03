@@ -1,0 +1,5 @@
+# This is the previous release of ansys module
+!include ansys-module.yaml
+---
+- version: "{{versions.ansys_prev.version}}"
+  rel: "{{versions.ansys_prev.rel}}"
