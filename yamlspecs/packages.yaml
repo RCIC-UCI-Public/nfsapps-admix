@@ -13,5 +13,6 @@ build:
   - ansys-module
   - ansys-prev-module
   - freesurfer-module
+  - freesurfer6-module
 manifest:
   - "{{build}}"

@@ -1,0 +1,4 @@
+!include freesurfer-module.yaml
+---
+- package: freesurfer 6 module
+  version: "{{versions.freesurfer6}}"
