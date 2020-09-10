@@ -9,7 +9,7 @@
   versions: !include versions.yaml
   version: "{{versions.turbomole}}"
   release: "2"
-  vendor_source: https://www.deshawresearch.com/downloads/download_desmond.cgi
+  vendor_source: https://www.turbomole.org
   description: |
     TURBOMOLE {{version}} is a collaborative, multi-national software development project
     aiming to provide highly efficient and stable computational tools for  quantum
