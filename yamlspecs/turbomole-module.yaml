@@ -1,0 +1,29 @@
+# This is the turbomole module
+# must be included in specific yaml file
+!include rcic-package.yaml
+!include rcic-module.yaml
+---
+- package: turbomole module 
+  category: CHEMISTRY
+  name: turbomole 
+  versions: !include versions.yaml
+  version: "{{versions.turbomole}}"
+  release: "2"
+  vendor_source: https://www.deshawresearch.com/downloads/download_desmond.cgi
+  description: |
+    TURBOMOLE {{version}} is a collaborative, multi-national software development project
+    aiming to provide highly efficient and stable computational tools for  quantum
+    chemical simulations of molecules, clusters, periodic systems, and solutions
+  root: "{{versions.nfspath}}/{{name}}/{{version}}/TURBOMOLE"
+  module:
+    prepend_path:
+      - PATH {{root}}/scripts
+      - PATH {{root}}/bin/em64t-unknown-linux-gnu
+      - LD_LIBRARY_PATH {{root}}/libso
+    setenv: 
+      - TURBODIR {{root}}
+      - TURBOMOLE_SYSNAME em64t-unknown-linux-gnu
+    requires:
+      - rcic-module-support
+
+#      - PARA_ARCH MPI

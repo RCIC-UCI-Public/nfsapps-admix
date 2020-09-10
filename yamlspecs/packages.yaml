@@ -14,5 +14,6 @@ build:
   - ansys-prev-module
   - freesurfer-module
   - freesurfer6-module
+  - turbomole-module
 manifest:
   - "{{build}}"

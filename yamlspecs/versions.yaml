@@ -32,3 +32,4 @@ ansys_prev:
   rel: "v194"
 freesurfer: "7.1.1"
 freesurfer6: "6.0.1"
+turbomole: "7.5"
