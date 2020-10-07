@@ -1,0 +1,25 @@
+# This is the spaceranger module
+# must be included in specific yaml file
+!include rcic-package.yaml
+!include rcic-module.yaml
+---
+- package: spaceranger module 
+  category: GENOMICS
+  name: spaceranger 
+  versions: !include versions.yaml
+  version: "{{versions.spaceranger}}"
+  vendor_source: https://support.10xgenomics.com/spatial-gene-expression/software/downloads/latest
+  description: |
+    Space Ranger {{version}} is a set of analysis pipelines that process Visium spatial 
+    RNA-seq output and brightfield and fluorescence microscope images in order to detect
+    tissue, align reads, generate feature-spot matrices, perform clustering and gene 
+    expression analysis, and place spots in spatial context on the slide image. Space 
+    Ranger includes pipelines relevant to spatial gene expression experiments. See 
+    https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/what-is-space-ranger
+  root: "{{versions.nfspath}}/{{name}}/{{version}}"
+  module:
+    prepend_path:
+      - PATH {{root}}
+    setenv: ""
+    requires:
+      - rcic-module-support
