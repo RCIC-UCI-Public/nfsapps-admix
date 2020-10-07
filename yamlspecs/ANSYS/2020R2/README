@@ -1,0 +1,85 @@
+------------------------------------
+Download ISOs from  L.Preble account
+------------------------------------
+ANSYS2020R2_LINX64_Disk1.iso  ANSYS_Inc._Installation_Guides.pdf 
+ANSYS2020R2_LINX64_Disk2.iso  ANSYSLOCALHELP_2020R2_LINX64.tar 
+ANSYS2020R2_LINX64_Disk3.iso  ansysproductpdfdocv202.zip     
+
+------------------------------------
+For silent installation, copy from 
+distro ISOs to local dirs.
+------------------------------------
+
+# make mount points and directories for copying
+mkdir -p /tmp/mnt/mount1
+mkdir -p /tmp/mnt/mount2
+mkdir -p /tmp/mnt/mount3
+mkdir mount1
+mkdir mount2
+mkdir mount3
+
+# copy 1st ISO, check size and file count
+mount -o loop ANSYS2020R2_LINX64_Disk1.iso /tmp/mnt/mount1
+cp -p -r /tmp/mnt/mount1/* mount1 &
+du -s -h /tmp/mnt/mount1
+du -s -h mount1
+find /tmp/mnt/mount1 | wc -l
+find mount1/ | wc -l
+
+# copy 2nd ISO, check size and file count
+mount -o loop ANSYS2020R2_LINX64_Disk2.iso /tmp/mnt/mount2
+cp -p -r /tmp/mnt/mount2/* mount2 &
+du -s -h /tmp/mnt/mount2
+du -s -h mount2
+find /tmp/mnt/mount2 | wc -l
+find mount2 | wc -l
+
+# copy 3rd ISO, check size and file count
+mount -o loop ANSYS2020R2_LINX64_Disk3.iso /tmp/mnt/mount3
+cp -p -r /tmp/mnt/mount3/* mount3 &
+du -s -h /tmp/mnt/mount3
+du -s -h mount3
+find /tmp/mnt/mount3 | wc -l
+find mount3 | wc -l
+
+# rm mount dirs
+umount /tmp/mnt/mount1
+umount /tmp/mnt/mount2
+umount /tmp/mnt/mount3
+rm -rf /tmp/mnt/
+
+------------------------------------
+Install 2020-09-21
+------------------------------------
+#create run-install.sh and run it. Takes about 2.5hrs
+nohup ./run-install.sh &
+
+# move resulting logs, check for errors
+mv /data/opt/apps/ansys/2020R2/install* /data/opt/sources/ANSYS/2020R2
+
+NOTE, license is handled via module
+
+# Set env environment variable (will be set by ansys module when running apps)
+# and run diagnostics on the license info
+# The script is interactive, use option (2) for client machine for the 1st question
+# and accept all defaults for latter onews. Make sure presented info corresponds to
+# what is set in ANSYSLMD_LICENSE_FILE
+export NSYSLMD_LICENSE_FIL=E1055@128.200.217.34
+cd /data/opt/apps/ansys/2020R2/shared_files/licensing/lic_admin/bin
+./licensing_diagnostics.sh /data/opt/apps/ansys/2020R2/
+
+Installation leaves many files/dirs open to the world for writing.
+
+cd /data/opt/apps/ansys/2020R2/
+chmod -R o-w *
+
+-----------------------------------------
+2020-10-01  
+-----------------------------------------
+per ticket #4255 copy ANSYS Electronics files from L.Preble account
+in /data/homezvol1/lpreble/ANSYS-Electronics-desktop-linux to ANSYS-Electronics/
+   AnsysEMInstallGuide-Linux.pdf  
+   ELECTRONICS_2020R2_LINX64.zip
+
+Do not install untill have legit user requests. 
+This install will require running GUI installer

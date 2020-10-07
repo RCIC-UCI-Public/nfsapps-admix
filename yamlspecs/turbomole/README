@@ -1,0 +1,34 @@
+Download and install on 2020-09-10
+
+Binary distro is from F. Furche group
+Tar file is copied from 
+/dfs3/pub/lmohanam/turbomole_7_5_official_bin/turbolinux75.tar
+
+Turbomole license covers usage for anyone at UCI 
+
+Install
+-------
+Do it on nas-1, as have access to /df3 and in /hpc3tools:
+
+# dir settings
+DISTRO=a/dfs3/pub/lmohanam/turbomole_7_5_official_bin/turbolinux75.tar
+SRCDIR=/hpc3tools/opt/sources/turbomole
+INSTDIR=/hpc3tools/opt/apps/turbomole/7.5/
+
+# copy distro from the group
+mkdir -p $SRCDIR
+cd $SRCDIR
+cp $DISTRO .
+chmod o-r turbolinux75.tar 
+
+# untar in NFS apps area
+mkdir -p $INSTDIR
+cd $INSTDIR
+tar xvf $SRCDIR/turbolinux75.tar
+cd TURBOMOLE
+
+# verify permissions
+chmod o+rx bin/em64t-unknown-linux-gnu/*
+chmod o+rx bin/em64t-unknown-linux-gnu_mpi/*mpi
+chmod o+rx bin/em64t-unknown-linux-gnu_smp/*mp
+chmod o+rx smprun_scripts/mpshift

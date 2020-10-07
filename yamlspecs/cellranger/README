@@ -1,0 +1,51 @@
+-------------------------------------------
+Download  2020-08-10
+-------------------------------------------
+For a latest version
+https://support.10xgenomics.com/single-cell-gene-expression/software/downloads/4.0/
+
+To get oolder versions hover over the red button in lower right corner, it will highlight
+older versions, pick needed. The links provided in the new window are time-limited.
+Copy-paste as below examnples (cut after Expires=...:
+
+wget -O cellranger-3.1.0.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-3.1.0.tar.gz?Expires=15971..."
+wget -O cellranger-3.0.2.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-3.0.2.tar.gz?Expires=15971..."
+
+From the same download page download all available reference files to references/
+
+-------------------------------------------
+Check md5sum per webpage
+-------------------------------------------
+73f3766579e800015f82daedb388fcd3  cellranger-3.0.2.tar.gz
+a362d62530e9d6a653e5bad5b9c19aba  cellranger-3.1.0.tar.gz
+
+in references/
+c6f7d60b867e3a6d8db30396bea40d93  refdata-cellranger-ercc92-1.2.0.tar.gz
+edb1dc39a0e379e0f226ed9ee004be3c  refdata-cellranger-GRCh38-3.0.0.tar.gz
+7a7c815b59d9ed965be58a91d1e36c20  refdata-cellranger-GRCh38-and-mm10-3.1.0.tar.gz
+4df1f3aa54ac3e8cba80054d52f5eb3e  refdata-cellranger-hg19-3.0.0.tar.gz
+d926e2925d056e6dd5eefd3170537570  refdata-cellranger-hg19-and-mm10-3.0.0.tar.gz
+8ce6bc561e2554701fc43871301042e6  refdata-cellranger-mm10-3.0.0.tar.gz
+
+-------------------------------------------
+Installation  2020-08-10
+-------------------------------------------
+mkdir /data/opt/apps/cellranger
+cd /data/opt/apps/cellranger
+
+tar xzvf /data/opt/sources/cellranger/cellranger-3.0.2.tar.gz
+mv /data/opt/apps/cellranger/cellranger-3.0.2 /data/opt/apps/cellranger/3.0.2
+
+tar xzvf /data/opt/sources/cellranger/cellranger-3.1.0.tar.gz
+mv /data/opt/apps/cellranger/cellranger-3.1.0 /data/opt/apps/cellranger/3.1.0
+
+-------------------------------------------
+Verification 2020-08-10
+-------------------------------------------
+Afer installing module (RPMs), load the module and run:
+nohup cellranger testrun --id=tiny 2>&1 > out &
+
+The output should contain
+"Pipestance completed successfully!"
+
+The diagnostics are saved in  the dir where it was run in tiny/tiny.mri.tgz

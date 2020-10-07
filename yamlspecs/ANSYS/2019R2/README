@@ -1,0 +1,66 @@
+--------------------------------
+Download
+--------------------------------
+Initial 2 ISOs are provided by L.Preble, and were copied 
+from her account on HPC.
+
+--------------------------------
+For silent installation, copy 
+distro ISOs to local dirs.
+--------------------------------
+
+# make mount points and directories for copying
+mkdir -p /tmp/mnt/mount1
+mkdir -p /tmp/mnt/mount2
+mkdir mount1
+mkdir mount2
+
+# copy 1st ISO
+mount -o loop ANSYS2019R2_LINX64_Disk1.iso /tmp/mnt/mount1
+cp -p -r /tmp/mnt/mount1/* mount1 &
+
+# verify size and files count
+du -s -h /tmp/mnt/mount1
+du -s -h mount1
+find /tmp/mnt/mount1 | wc -l
+find mount1/ | wc -l
+
+# copy 2nd ISO
+mount -o loop ANSYS2019R2_LINX64_Disk2.iso /tmp/mnt/mount2
+cp -p -r /tmp/mnt/mount2/* mount2 &
+
+# verify size and files count
+du -s -h /tmp/mnt/mount2
+du -s -h mount2
+find /tmp/mnt/mount2 | wc -l
+find mount2 | wc -l
+
+# rm mount dirs
+umount /tmp/mnt/mount1
+umount /tmp/mnt/mount2
+rm -rf /tmp/mnt
+
+--------------------------------
+Install  2020-08-24
+--------------------------------
+# create run-install.sh and run it.
+nohup ./run-install.sh &
+
+# move resulting logs, check for errors
+mv /data/opt/apps/ansys/2019R2/install* /data/opt/sources/ANSYS/2019R2
+
+NOTE, license info is set in the module.
+
+# Set env environment variable (will be set by ansys module when running apps)
+# and run diagnostics on the license info
+# The script is interactive, use option (2) for client machine for the 1st question
+# and accept all defaults for latter onews. Make sure presented info corresponds to
+# what is set in ANSYSLMD_LICENSE_FILE
+export ANSYSLMD_LICENSE_FIL=E1055@128.200.217.34
+cd /data/opt/apps/ansys/2019R2/shared_files/licensing/lic_admin/bin
+./licensing_diagnostics.sh /data/opt/apps/ansys/2019R2/
+
+Installation leaves many files/dirs open to the world for writing.
+
+cd /data/opt/apps/ansys/2019R2/
+chmod -R o-w *
