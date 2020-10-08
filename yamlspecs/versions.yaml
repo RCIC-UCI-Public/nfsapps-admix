@@ -34,3 +34,7 @@ freesurfer: "7.1.1"
 freesurfer6: "6.0.1"
 turbomole: "7.5"
 spaceranger: "1.1.0"
+fsl:
+  version: "6.0.4"
+  openblas: "0.3.6"
+  cuda: "10.1.243"
