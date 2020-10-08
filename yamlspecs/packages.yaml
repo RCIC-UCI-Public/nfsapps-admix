@@ -15,5 +15,7 @@ build:
   - freesurfer-module
   - freesurfer6-module
   - turbomole-module
+  - spaceranger-module
+  - fsl-module
 manifest:
   - "{{build}}"
