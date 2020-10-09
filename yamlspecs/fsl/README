@@ -1,0 +1,27 @@
+-----------------------------------------
+Dowload 2020-10-08
+-----------------------------------------
+wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.4-sources.tar.gz
+wget https://www.vtk.org/files/release/7.1/VTK-7.1.1.tar.gz
+
+md5sums:
+959fc96d6952a76c664c2766c7e01bfa  fsl-6.0.4-sources.tar.gz
+daee43460f4e95547f0635240ffbc9cb  VTK-7.1.1.tar.gz
+
+-----------------------------------------
+Install 2020-10-09
+-----------------------------------------
+
+# untar on NAS
+mkdir -p /hpc3tools/opt/apps/fsl/
+cd /hpc3tools/opt/apps/fsl/
+tar xzvf /hpc3tools/opt/sources/fsl/6.0.4/fsl-6.0.4-sources.tar.gz
+mv fsl 6.0.4
+cd 6.0.4/
+tar xzvf /hpc3tools/opt/sources/fsl/6.0.4/VTK-7.1.1.tar.gz 
+
+# reserve a compute node for install and execute run-install.sh
+cd /data/opt/sources/fsl/6.0.4
+nohup ./run-install.sh &> out &
+# log file is generated in install dir, bring it over
+mv /data/opt/apps/fsl/6.0.4/build.log  .

@@ -1,0 +1,130 @@
+--- config/buildSettings.mk.orig	2020-09-22 13:18:26.000000000 -0700
++++ config/buildSettings.mk	2020-10-07 17:20:59.898607744 -0700
+@@ -144,7 +144,7 @@
+ # CUDA development environment
+ CUDAVER := $(or $(CUDAVER),9.1)
+ #$(info $$CUDAVER is [${CUDAVER}])
+-CUDA_INSTALLATION = /opt/cuda-${CUDAVER}
++CUDA_INSTALLATION = ${CUDA_HOME}
+ ifdef SINGULARITY_NAME
+ CUDA_INSTALLATION = /usr/local/cuda-${CUDAVER}
+ endif
+@@ -165,11 +165,11 @@
+ LIB_QT = ${QTDIR}/lib
+ INC_QT = ${QTDIR}/include
+ # VTK library
+-VTKDIR_INC = /home/fs0/cowboy/var/caper_linux_64-gcc4.4/VTK7/include/vtk-7.0
+-VTKDIR_LIB = /home/fs0/cowboy/var/caper_linux_64-gcc4.4/VTK7/lib
+-VTKSUFFIX = -7.0
++VTKDIR_INC = ${FSLDIR}/include/vtk-${VTKVER}
++VTKDIR_LIB = ${FSLDIR}/lib
++VTKSUFFIX = -${VTKVER}
+ # openblas
+-LIB_NEWMAT = ${FSLEXTLIB} -lopenblas
++LIB_NEWMAT = ${OPENBLAS_HOME}/lib -lopenblas
+ # get and then parse gcc version to run context specific builds
+ #GCCVER := $(shell gcc -dumpversion)
+ #GCCARR = $(subst ., ,$(GCCVER))
+@@ -181,7 +181,7 @@
+ #$(info GCC MIN VER $(GCCMIN))
+ #$(info GCC PAT VER $(GCCPAT))
+ #Project specific variables
+-EDDYBUILDPARAMETERS = "cuda=1 CUDAVER=8.0" "cuda=1 CUDAVER=9.1" "cpu=1"
++EDDYBUILDPARAMETERS = "cuda=1 CUDAVER=${CUDAVER}" "cpu=1"
+ fdt_MASTERBUILD     = COMPILE_GPU = 1
+ ptx2_MASTERBUILD    = COMPILE_GPU = 1
+ define newline
+--- src/eddy/Makefile.orig	2020-10-02 18:36:08.446607744 -0700
++++ src/eddy/Makefile	2020-10-02 18:38:08.145607744 -0700
+@@ -71,7 +71,7 @@
+ TESTMIBINSOBJS=test_MI_bins.o PostEddyAlignShellsFunctions.o EddyCommandLineOptions.o ECModels.o KMatrix.o HyParEstimator.o ECScanClasses.o EddyUtils.o EddyHelperClasses.o DiffusionGP.o b0Predictor.o 
+ MASSAGEOBJS=massage_fieldmap.o
+ TOPUPOBJS=topup_matrices.o topup_file_io.o displacement_vector.o 
+-LIBS=-lwarpfns -lmeshclass -lbasisfield -lnewimage -lmiscmaths -lprob -lNewNifti -lznz -lutils -lnewmat -lm -lz
++LIBS=-L${FSLEXTLIB} -lwarpfns -lmeshclass -lbasisfield -lnewimage -lmiscmaths -lprob -lNewNifti -lznz -lutils -lnewmat -lm -lz
+ ifdef NVCC11
+ 	NVCC=${NVCC11}
+ endif
+--- src/fdt/Makefile.orig	2020-10-02 16:11:03.193607744 -0700
++++ src/fdt/Makefile	2020-10-02 16:46:09.502607744 -0700
+@@ -171,7 +171,7 @@
+ 		   ${CXX} ${CXXFLAGS} ${LDFLAGS} -o $@ ${EDDYCOMBINEOBJS} ${DLIBS}
+ 
+ ${LIBBEDPOSTX_CUDA}:
+-		${NVCC} --shared --compiler-options '-fPIC' -o CUDA/libbedpostx_cuda.so CUDA/init_gpu.cu CUDA/samples.cu CUDA/diffmodels.cu CUDA/runmcmc.cu  CUDA/xfibres_gpu.cu -O3 ${GENCODE_FLAGS} -lcudart -lcuda -lcurand -I. -L${LIB_CUDA} -L${LIB_CUDA}/stubs -ICUDA/options -I${INC_NEWMAT} -I${FSLDIR}/include -I${INC_BOOST} -I${INC_CUDA} -I${INC_CUDA}/thrust -maxrregcount=64
++		${NVCC} --shared --compiler-options -fPIC -o CUDA/libbedpostx_cuda.so CUDA/init_gpu.cu CUDA/samples.cu CUDA/diffmodels.cu CUDA/runmcmc.cu  CUDA/xfibres_gpu.cu -O3 ${GENCODE_FLAGS} -lcudart -lcuda -lcurand -I. -L${LIB_CUDA} -L${LIB_CUDA}/stubs -ICUDA/options -I${INC_NEWMAT} -I${FSLDIR}/include -I${INC_BOOST} -I${INC_CUDA} -maxrregcount=64
+ 		@if [ ! -d ${FSLDEVDIR}/lib/ ] ; then ${MKDIR} ${FSLDEVDIR}/lib ; fi
+ 		${CP} -rf CUDA/libbedpostx_cuda.so ${FSLDEVDIR}/lib
+ 
+--- src/fdt/CUDA.orig/diffmodels.cuh	2020-10-02 16:39:29.234607744 -0700
++++ src/fdt/CUDA/diffmodels.cuh	2020-10-02 16:43:19.952607744 -0700
+@@ -66,7 +66,7 @@
+     University, to negotiate a licence. Contact details are:
+     fsl@innovation.ox.ac.uk quoting Reference Project 9564, FSL.*/
+ 
+-#include <device_vector.h>
++#include <thrust/device_vector.h>
+ 
+ void fit_PVM_single(	//INPUT
+ 			const vector<ColumnVector> 	datam_vec, 
+--- src/fdt/CUDA.orig/runmcmc.cu	2020-10-02 16:39:29.235607744 -0700
++++ src/fdt/CUDA/runmcmc.cu	2020-10-02 16:43:46.291607744 -0700
+@@ -71,8 +71,8 @@
+ #include "runmcmc_kernels.cu"
+ #include "sync_check.h"
+ 
+-#include <host_vector.h>
+-#include <device_vector.h> 
++#include <thrust/host_vector.h>
++#include <thrust/device_vector.h> 
+ 
+ #include <time.h>
+ #include <sys/time.h>
+--- src/fdt/CUDA.orig/xfibres_gpu.cu	2020-10-02 16:39:29.235607744 -0700
++++ src/fdt/CUDA/xfibres_gpu.cu	2020-10-02 16:44:12.243607744 -0700
+@@ -76,8 +76,8 @@
+ #include "samples.h"
+ #include "options.h"
+ 
+-#include <host_vector.h>
+-#include <device_vector.h> 
++#include <thrust/host_vector.h>
++#include <thrust/device_vector.h> 
+ 
+ #include <time.h>
+ #include <sys/time.h>
+--- src/fdt/CUDA.orig/xfibres_gpu.cuh	2020-10-02 16:39:29.235607744 -0700
++++ src/fdt/CUDA/xfibres_gpu.cuh	2020-10-02 16:44:33.773607744 -0700
+@@ -67,8 +67,8 @@
+     fsl@innovation.ox.ac.uk quoting Reference Project 9564, FSL.*/
+ 
+ #include "newimage/newimageall.h"
+-#include <host_vector.h>
+-#include <device_vector.h> 
++#include <thrust/host_vector.h>
++#include <thrust/device_vector.h> 
+ 
+ #include "fibre_gpu.h"
+ #include <curand_kernel.h>
+--- src/gps/Makefile.orig	2020-09-22 17:59:40.000000000 -0700
++++ src/gps/Makefile	2020-09-22 18:00:15.000000000 -0700
+@@ -6,7 +6,7 @@
+ USRLDFLAGS=-L${LIB_NEWMAT} 
+ 
+ OBJS=gps.o
+-LIBS=-lmiscmaths -lNewNifti -lznz -lutils -lnewmat -lm -lz
++LIBS=-L${FSLEXTLIB} -lmiscmaths -lNewNifti -lznz -lutils -lnewmat -lm -lz
+ 
+ XFILES=gps
+ 
+--- src/fnirt/Makefile.orig	2020-09-22 17:56:07.000000000 -0700
++++ src/fnirt/Makefile	2020-09-22 17:57:01.000000000 -0700
+@@ -8,7 +8,7 @@
+ FNIRT_OBJS=fnirt_costfunctions.o intensity_mappers.o matching_points.o fnirtfns.o fnirt.o
+ INTMAP_OBJS=fnirt_costfunctions.o fnirtfns.o intensity_mappers.o matching_points.o mapintensities.o
+ INVWARP_OBJS=new_invwarp.o
+-LIBS=-lwarpfns -lmeshclass -lbasisfield -lnewimage -lmiscmaths -lNewNifti -lznz -lutils -lnewmat -lm -lz
++LIBS=-L${FSLEXTLIB} -lwarpfns -lmeshclass -lbasisfield -lnewimage -lmiscmaths -lNewNifti -lznz -lutils -lnewmat -lm -lz
+ 
+ XFILES=fnirt new_invwarp
+ 
