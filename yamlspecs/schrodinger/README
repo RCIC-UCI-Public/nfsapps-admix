@@ -1,0 +1,26 @@
+-------------------------------
+Download 2020-08-12
+-------------------------------
+
+# Download 
+Register at https://www.deshawresearch.com/downloads/download_desmond.cgi/
+Download from provided link.
+
+-------------------------------
+Install 2020-08-12
+-------------------------------
+# untar distro
+cd /data/opt/sources/Desmond/
+tar xvf Desmond_Maestro_2020.1.tar 
+cd Desmond_Maestro_2020.1/
+more README.FIRST.txt 
+
+# run installation, takes long time. 
+./INSTALL 
+# When prompted use /data/opt/apps/schrodinger/2020.1 for install dir
+# and /var/tmp for temp 
+
+# mv created license under install dir
+mv /opt/schrodinger/licenses/ /data/opt/apps/schrodinger/2020.1
+rmdir /opt/schrodinger/
+
