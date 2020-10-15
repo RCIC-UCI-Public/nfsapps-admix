@@ -25,3 +25,22 @@ cd /data/opt/sources/fsl/6.0.4
 nohup ./run-install.sh &> out &
 # log file is generated in install dir, bring it over
 mv /data/opt/apps/fsl/6.0.4/build.log  .
+
+-------------------------------------------
+NOTES on patch
+-------------------------------------------
+
+Google for erros and found this post 
+https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=FSL;2b74023.2006
+
+that i used as a basis for creating the patch for 6.0.4 version.
+
+Looks like FSL developrs ignored the original author bug report and suggestion. 
+
+
+------------------------------------------
+Links
+------------------------------------------
+
+compile from source https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation/SourceCode
+download https://fsl.fmrib.ox.ac.uk/fsldownloads_registration/download/fsl=10,o_s=None,d_type=source/
