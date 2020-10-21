@@ -1,0 +1,81 @@
+------------------------------------
+Download 2020-10-20
+------------------------------------
+Copy tar files and simuliainstallationguide2020 from 
+/share/amg/mengtinh/Abaqus_2019_Installation_files
+
+2019.AM_SIM_Abaqus_Extend.AllOS.1-5.tar
+2019.AM_SIM_Abaqus_Extend.AllOS.2-5.tar
+2019.AM_SIM_Abaqus_Extend.AllOS.3-5.tar
+2019.AM_SIM_Abaqus_Extend.AllOS.4-5.tar
+2019.AM_SIM_Abaqus_Extend.AllOS.5-5.tar
+
+## untar distro
+
+tar xvf 2019.AM_SIM_Abaqus_Extend.AllOS.1-5.tar
+tar xvf 2019.AM_SIM_Abaqus_Extend.AllOS.2-5.tar
+tar xvf 2019.AM_SIM_Abaqus_Extend.AllOS.3-5.tar
+tar xvf 2019.AM_SIM_Abaqus_Extend.AllOS.4-5.tar
+tar xvf 2019.AM_SIM_Abaqus_Extend.AllOS.5-5.tar
+
+## run command line interactive installation on hpc3-gpu-16-00
+
+AM_SIM_Abaqus_Extend.AllOS/1/StartTUI.sh
+
+1. For all the questions regarding defaut install path change it
+to start with /data/opt/apps/abaqus/2019, for example:
+Default [/usr/DassaultSystemes/SimulationServices/V6R2019x]: /data/opt/apps/abaqus/2019/DassaultSystemes/SimulationServices/V6R2019x
+Default [/usr/SIMULIA/Tosca/2019]: /data/opt/apps/abaqus/2019/SIMULIA/Tosca/2019
+Default [/usr/SIMULIA/Isight/2019]: /data/opt/apps/abaqus/2019/SIMULIA/Isight/2019
+etc.
+
+2. For license server configuration select option 3 (X) Skip licensing configuration
+3. For documentation  questions use (X) Skip documentation configuration for now
+4. For all other questions that already have choices in [x] leave as is
+5. For Simulia Tosca and Isight 2019
+     - accept all default values including  epty as in [] 
+     - working directory location Default [/usr/temp]: /usr/tmp
+
+The installation ends with the message:
+	The following media have been installed on your computer:
+
+	Just press Enter to exit installation.
+
+	Successful installation:
+	  Abaqus Simulation Services
+	  Abaqus Simulation Services CAA API
+	  Abaqus/CAE
+	  fe-safe
+	  Tosca
+	  Isight
+
+##  set permissions for abaqus group
+
+cd /data/opt/apps/abaqus
+chown -R root:abaqus 2019
+chmod o-rx 2019
+
+## set license
+
+cd /data/opt/apps/abaqus/2019/DassaultSystemes/SimulationServices/V6R2019x/linux_a64/SMA/site
+cp -p custom_v6.env custom_v6.env-orig
+vi custom_v6.env  # comment out dsls entries, add license server info:
+	#license_server_type=DSLS
+	#dsls_license_config="/var/DassaultSystemes/Licenses/DSLicSrv.txt"
+	license_server_type=FLEXNET
+	abaquslm_license_file="27000@mcma.eng.uci.edu"
+
+## copy install info from install host 
+
+mv /tmp/DSY_20201020T170030-0700 /data/opt/sources/abaqus
+mv /tmp/UserIntentions_AM_SIM_Abaqus_Extend.media-20201020T170136-0700.xml /data/opt/sources/abaqus 
+
+The install guide claims one can reuse User*xml file for future silent install.
+The DSY_20201020T170030-0700/ contains some install logs after interactive install ends.
+
+Additional directoires contain log files from install (per stdout from install) :
+/data/opt/apps/abaqus/2019/DassaultSystemes/SimulationServices/V6R2019x/InstallData/log/20201020T170136-*media
+/data/opt/apps/abaqus/2019/SIMULIA/CAE/2019/InstallData/log/20201020T172533-*media
+/data/opt/apps/abaqus/2019/SIMULIA/Isight/2019/InstallData/log/20201020T180836-*media
+/data/opt/apps/abaqus/2019/SIMULIA/Tosca/2019/InstallData/log/20201020T175257-*media
+/data/opt/apps/abaqus/2019/SIMULIA/fe-safe/2019/InstallData/log/20201020T174712-*media

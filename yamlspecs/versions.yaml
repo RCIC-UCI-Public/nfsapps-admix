@@ -38,3 +38,4 @@ fsl:
   version: "6.0.4"
   openblas: "0.3.6"
   cuda: "10.1.243"
+abaqus: "2019"

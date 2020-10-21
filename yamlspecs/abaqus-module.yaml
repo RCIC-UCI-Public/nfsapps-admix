@@ -1,0 +1,24 @@
+# This is the abaqus module
+# must be included in specific yaml file
+!include rcic-package.yaml
+!include rcic-module.yaml
+---
+- package: abaqus module 
+  category: ENGINEERING
+  name: abaqus 
+  versions: !include versions.yaml
+  version: "{{versions.abaqus}}"
+  vendor_source: "Install from tar files provided by L. Valdevit lab"
+  description: |
+    This is a commercial private software available only to the abaqus group users.
+    The Abaqus product suite {{version}} offers powerful and complete solutions for both
+    routine and sophisticated engineering problems covering a vast spectrum of
+    industrial applications. See the company website at
+    https://www.3ds.com/products-services/simulia/products/abaqus
+  root: "{{versions.nfspath}}/{{name}}/{{version}}"
+  module:
+    prepend_path:
+      - PATH {{root}}/DassaultSystemes/SIMULIA/Commands
+    setenv: ""
+    requires:
+      - rcic-module-support
