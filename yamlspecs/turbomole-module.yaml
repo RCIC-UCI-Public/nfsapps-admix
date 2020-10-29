@@ -25,5 +25,3 @@
       - TURBOMOLE_SYSNAME em64t-unknown-linux-gnu
     requires:
       - rcic-module-support
-
-#      - PARA_ARCH MPI

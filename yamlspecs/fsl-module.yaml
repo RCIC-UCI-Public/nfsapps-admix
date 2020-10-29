@@ -27,4 +27,3 @@
     requires:
       - rcic-module-support
       - "{{module.prereq}}"
-#    - OpenBLAS/{{versions.fsl.openblas}}
