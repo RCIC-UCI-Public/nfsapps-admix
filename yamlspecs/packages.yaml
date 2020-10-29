@@ -17,5 +17,6 @@ build:
   - turbomole-module
   - spaceranger-module
   - fsl-module
+  - abaqus-module
 manifest:
   - "{{build}}"
