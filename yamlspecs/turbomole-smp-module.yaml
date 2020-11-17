@@ -1,0 +1,13 @@
+# This is the turbomole-smp module
+# must be included in specific yaml file
+!include turbomole-module.yaml
+---
+- package: turbomole-smp module 
+  name: turbomole-smp
+  type_info: "SMP" 
+  para_ext: "_smp"
+  lib_ext: "/{{sysname}}"
+  module:
+    setenv:     
+      - PARA_ARCH {{type_info}}
+      - "{{module.base_setenv}}"

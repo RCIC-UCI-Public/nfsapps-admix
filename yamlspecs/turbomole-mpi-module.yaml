@@ -1,0 +1,13 @@
+# This is the turbomole-mpi module
+# must be included in specific yaml file
+!include turbomole-module.yaml
+---
+- package: turbomole-mpi module 
+  name: turbomole-mpi
+  type_info: "MPI" 
+  para_ext: "_mpi"
+  lib_ext: "/{{sysname}}"
+  module:
+    setenv:     
+      - PARA_ARCH {{type_info}}
+      - "{{module.base_setenv}}"

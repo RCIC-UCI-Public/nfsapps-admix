@@ -15,6 +15,7 @@ build:
   - freesurfer-module
   - freesurfer6-module
   - turbomole-module
+  - turbomole-smp-module
   - spaceranger-module
   - fsl-module
   - abaqus-module
