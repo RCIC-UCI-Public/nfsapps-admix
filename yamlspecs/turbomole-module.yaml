@@ -9,7 +9,7 @@
   name: turbomole 
   versions: !include versions.yaml
   version: "{{versions.turbomole}}"
-  release: "2"
+  release: "3"
   vendor_source: https://www.turbomole.org
   type_info: "SERIAL"
   description: |
