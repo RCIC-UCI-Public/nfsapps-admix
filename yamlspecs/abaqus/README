@@ -103,3 +103,11 @@ vi custom_v6.env # add lines 8-10
 < if 'SLURM_PROCID' in os.environ:
 <    del os.environ['SLURM_PROCID']
 <
+
+## 2020-11-06
+Per L.Valdevit group request 
+Edit ./DassaultSystemes/SimulationServices/V6R2018x/linux_a64/SMA/site/custom_v6.env
+change
+	abaquslm_license_file="27000@mcma.eng.uci.edu"
+to
+	abaquslm_license_file="27000@abaqus.eng.uci.edu"
