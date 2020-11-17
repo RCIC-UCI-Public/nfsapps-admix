@@ -1,4 +1,5 @@
-Download and install on 2020-09-10
+Download 2020-09-10
+===================================
 
 Binary distro is from F. Furche group
 Tar file is copied from 
@@ -6,8 +7,8 @@ Tar file is copied from
 
 Turbomole license covers usage for anyone at UCI 
 
-Install
--------
+Install 2020-09-10
+===================================
 Do it on nas-1, as have access to /df3 and in /hpc3tools:
 
 # dir settings
@@ -32,3 +33,8 @@ chmod o+rx bin/em64t-unknown-linux-gnu/*
 chmod o+rx bin/em64t-unknown-linux-gnu_mpi/*mpi
 chmod o+rx bin/em64t-unknown-linux-gnu_smp/*mp
 chmod o+rx smprun_scripts/mpshift
+
+Download manual PDF 2020-11-06
+===================================
+
+wget https://www.turbomole.org/downloads/doc/Turbomole_Manual_7-5.pdf
