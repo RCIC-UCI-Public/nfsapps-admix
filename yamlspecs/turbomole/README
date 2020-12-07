@@ -38,3 +38,11 @@ Download manual PDF 2020-11-06
 ===================================
 
 wget https://www.turbomole.org/downloads/doc/Turbomole_Manual_7-5.pdf
+
+2020-12-07
+===================================
+Per F.Furche group request add files
+LICENSE
+USAGE
+turbomole7.5.slurm.template
+turbomole7.5_mpi.slurm.template
