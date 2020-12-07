@@ -1,0 +1,96 @@
+This file provides useful links, a description of
+the template slurm submit scripts, and a statement
+about using scratch disks for TURBOMOLE calculations.
+
+# Links
+
+The license for TURBOMOLE 7.5 on HPC3 is found at:
+/data/opt/apps/turbomole/7.5/TURBOMOLE/LICENCE
+
+The manual for TURBOMOLE 7.5 is found at:
+https://www.turbomole.org/downloads/doc/Turbomole_Manual_7-5.pdf
+
+A template slurm script for SMP or SERIAL TURBOMOLE calculation is found at
+/data/opt/apps/turbomole/7.5/TURBOMOLE/turbomole7.5.slurm.template
+
+A template slurm script for MPI-enabled TURBOMOLE calculation is found at
+/data/opt/apps/turbomole/7.5/TURBOMOLE/turbomole7.5_mpi.slurm.template
+
+# Template Slurm Script turbomole7.5.slurm.template
+
+To prepare a customized slurm script, copy the template into
+a separate file, and edit the file to set queue variables and
+calls to relevant TURBOMOLE programs.  Please refer to the 
+manual for program capabilities and input file requirements.
+
+The submit script is submitted with the `sbatch` command to the
+SLURM scheduler. The submit script automatically loads the right
+TURBOMOLE module, depending on the chosen number of tasks: 
+(a) it selects the SMP version if a user requests more than 1 task
+(b) it selects serial version if the number of tasks is 1. 
+
+In the submit script, the lines that start with `#SBATCH` define queue
+and job parameters. The TURBOMOLE specific commands must go inside the
+`slurm_startjob()` function, where indicated by the comment line.
+
+In the template script example, the main command is a geometry 
+optimization calculation via TURBOMOLE’s jobex script assuming
+all input files are present in the submit directory.
+  
+IMPORTANT: Do not call `Config_turbo_env` directly in any of the submit
+scripts on HPC3.  Its functionality is replaced by the loading the right
+version of TURBOMOLE module in the slurm script.
+
+This template slurm script is designed to exit with error code 1 if
+more than one node is requested.  MPI-enabled TURBOMOLE binaries are
+not designed to be used with these modules and script.
+
+
+# MPI template slurm script turbomole7.5_mpi.slurm.template
+
+There is no guarantee that MPI or hybrid OpenMP/MPI will be faster
+or more efficient than the equivalent serial or SMP/OpenMP binary.
+Also, note that there has been effectively no testing of the 
+TURBOMOLE 7.5 MPI-enabled commands on HPC3. 
+
+To prepare a customized slurm script, copy the template 
+into a separate file, and edit the file to set the parallelization
+level, set queue variables and calls to relevant TURBOMOLE programs.
+Please refer to the manual for program parallelization, capabilities 
+and input file requirements, and contact the group of Filipp Furche 
+(http://ffgroup.chem.uci.edu/) before using MPI.
+
+Some MPI-enabled TURBOMOLE binaries automatically take advantage of
+multiple threads per node with hybrid OpenMP/MPI, while others will
+not do so - based on which TURBOMOLE programs are going to be called,
+setting the environment variable `$TTYPE` will set other environment
+variables suitable for either parallelization. $TTYPE in the script
+is set to "OMP-MPI", the other option is "MPI". The script will exit
+with error code 1 if $TTYPE is not recognized.
+
+In the submit script, the lines that start with `#SBATCH` define queue
+and job parameters. The TURBOMOLE specific commands must go inside the
+`slurm_startjob()` function, where indicated by the comment line.
+
+In the template script example, the main command is a linear response
+calculation in the framework of TDDFT via TURBOMOLE’s escf program
+(assuming all input files are present in the submit directory).
+  
+IMPORTANT: Do not call `Config_turbo_env` directly in any of the submit
+scripts on HPC3.  Its functionality is replaced by the loading the right
+version of TURBOMOLE module in the slurm script.
+
+# Scratch Disk Usage
+
+The TURBOMOLE manual makes reference to calculations becoming I/O bound
+with large file writes and reads. However, most written files are useful
+and it is encouraged to submit slurm jobs from the fast network disks 
+that are accessible from the login node (eg. /dfs6/pub/<UCInetID>).
+ 
+The exceptions are scratch files on scratch disks which TURBOMOLE
+programs and scripts use and that can be set with on of the:
+  (1) the keyword `$scratch files` in the `control` file 
+  (2) command line options for TURBOMOLE scripts
+  (3) exporting the environment variable $TURBOTMPDIR.
+Please contact HPC3 at hpc3.support@uci.edu before attempting to use
+these options. Do not use `/tmp` for that purpose.

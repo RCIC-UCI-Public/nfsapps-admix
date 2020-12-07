@@ -1,0 +1,37 @@
+By using TURBOMOLE binaries installed on HPC3, HPC3 users
+understand and agree with the following terms and conditions:
+
+1. Access to TURBOMOLE for all HPC3 users is provided by courtesy
+   of the Furche group’s primary license. Turbomole is proprietary
+   software.  Users  will not make copies  of existing  TURBOMOLE 
+   binaries, distribute them in any form, or give any unauthorized
+   person or institution access to them. 
+
+2. Users  will acknowledge  the use of  TURBOMOLE appropriately, 
+   citing the version and appropriate publication(s) as detailed
+   in the TURBOMOLE manuals 
+   (https://www.turbomole.org/turbomole/turbomole-documentation/) 
+   and the program output.
+
+3. The Furche group is not responsible for user consultations and
+   support  regarding  TURBOMOLE  use or applications.  Users are
+   strongly  encouraged to  consult the manual,  the TURBOMOLE user
+   forum (https://forum.turbomole.org), and the relevant literature.
+
+4. Extensive use of TURBOMOLE that exceeds occasional calculations
+   on a single node and/or requires user support are not covered by
+   this license.  Extensive TURBOMOLE users are asked to support the
+   TURBOMOLE project by purchasing an appropriate license, see 
+   https://www.turbomole.org/ for further information.
+
+THIS SOFTWARE IS PROVIDED BY TURBOMOLE "AS IS" AND ANY EXPRESS
+OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL TURBOMOLE BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES 
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) 
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING 
+IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
