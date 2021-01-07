@@ -1,0 +1,34 @@
+-------------------------------------------
+Download  2021-01-07
+-------------------------------------------
+From main downloads page https://www.cgl.ucsf.edu/chimera/download.html
+follow link for binary distro. It leads to the page
+where needed to accept license then the download starts via redirect.
+
+-------------------------------------------
+Installation  2021-01-07
+-------------------------------------------
+# Create answer-1.15 file where the contents are answers to
+# questions found during interactive install session:
+# 1) install directory
+# 2) create an icon 
+# 3) create symbolic links
+
+chmod +x chimera-1.15-linux_x86_64.bin 
+./chimera-1.15-linux_x86_64.bin < answer-1.15
+
+# The installs ends with the message:
+#    result code from installer: 0
+#    Install succeeded.
+#    Cleaning up extract dir, 'chimera_install_InYB6Z'
+#    Installation is done; press return.
+
+# NOTE: each user will need to execute the following command in order
+#       to install desktop menu and icon:
+#       /data/opt/apps/chimera/1.15/bin/xdg-setup install
+
+# Fix the include file link:
+# does not exist /data/opt/apps/chimera/1.15/include/ft2build.h -> /usr/include/ft2build.h
+
+rm -f /data/opt/apps/chimera/1.15/include/ft2build.h
+ln -s /usr/include/freetype2/ft2build.h /data/opt/apps/chimera/1.15/include/ft2build.h

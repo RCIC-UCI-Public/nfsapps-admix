@@ -39,3 +39,4 @@ fsl:
   openblas: "0.3.6"
   cuda: "10.1.243"
 abaqus: "2019"
+chimera: "1.15"
