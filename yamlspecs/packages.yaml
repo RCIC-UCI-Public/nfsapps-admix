@@ -20,5 +20,6 @@ build:
   - spaceranger-module
   - fsl-module
   - abaqus-module
+  - chimera-module
 manifest:
   - "{{build}}"
