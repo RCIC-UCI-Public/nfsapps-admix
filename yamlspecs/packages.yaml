@@ -21,5 +21,6 @@ build:
   - fsl-module
   - abaqus-module
   - chimera-module
+  - vasp-module
 manifest:
   - "{{build}}"

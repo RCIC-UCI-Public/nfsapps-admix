@@ -40,3 +40,4 @@ fsl:
   cuda: "10.1.243"
 abaqus: "2019"
 chimera: "1.15"
+vasp: "5.4.4"
