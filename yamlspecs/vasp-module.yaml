@@ -25,3 +25,4 @@
       - VASP_POT {{pots}}
     requires:
       - rcic-module-support
+      - ucx
