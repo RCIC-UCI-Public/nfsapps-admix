@@ -41,3 +41,8 @@ fsl:
 abaqus: "2019"
 chimera: "1.15"
 vasp: "5.4.4"
+fftw: "3.3.8"
+mpi:
+  version: "1.10.7"
+  compiler: "gcc"
+  compiler_version: "4.8.5"

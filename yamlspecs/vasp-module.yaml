@@ -6,6 +6,7 @@
 - package: vasp module 
   category: ENGINEERING
   name: vasp 
+  release: 2
   versions: !include versions.yaml
   version: "{{versions.vasp}}"
   vendor_source: "distro provided by Amirhossein Saeidi (saeidis) Engeeneering Dept"
@@ -23,6 +24,9 @@
       - PATH {{root}}/bin
     setenv: 
       - VASP_POT {{pots}}
+    prereq:
+      - openmpi/{{versions.mpi.version}}/{{versions.mpi.compiler}}.{{versions.mpi.compiler_version}}
+      - fftw/{{versions.fftw}}
     requires:
       - rcic-module-support
       - ucx
