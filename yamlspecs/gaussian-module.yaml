@@ -1,0 +1,63 @@
+# This is the gaussian module
+# must be included in specific yaml file
+!include rcic-package.yaml
+!include rcic-module.yaml
+---
+- package: gaussian module 
+  category: ENGINEERING
+  name: gaussian 
+  versions: !include versions.yaml
+  version: "{{versions.gaussian.ver}}"
+  gaussrel: "{{versions.gaussian.rel}}"
+  gaussview: "{{versions.gaussian.view}}"
+  vendor_source: "distro provided by Nathan Crawford, Engeeneering Dept"
+  description: |
+    Gaussian {{version}} Revision A.03 software access is restrictred to
+    the users in 'gaussian' group. The license has been bought by the
+    school of physical sciences. The license manager in the school of
+    physical sciences is Dr. Nathan Crawford. The license handler in
+    the school of engineering is Dr. Mohammad Javad Abdolhosseini Qomi.
+    For authorization please email one of them (based on your department
+    affiliation) and ask to be added to the group. 
+  root: "{{versions.nfspath}}/{{name}}/{{version}}/{{gaussrel}}"
+  rootgv: "{{versions.nfspath}}/{{name}}/{{version}}/{{gaussview}}"
+  module:
+    prepend_path:
+      - PATH {{root}}/g16
+      - PATH {{root}}/g16/bsd
+      - LD_LIBRARY_PATH {{root}}/g16
+      - LD_LIBRARY_PATH {{root}}/g16/bsd
+      - LD_LIBRARY_PATH {{rootgv}}/lib
+    setenv: 
+      - g16root {{root}}
+      - GAUSS_SCRDIR /tmp 
+      - GAUSS_EXEDIR "{{root}}/g16/bsd:{{root}}/g16"
+      - GAUSS_BSDDIR "{{root}}/g16/bsd"
+      - G16BASIS "{{root}}/g16/basis"
+      - _DSM_BARRIER SHM
+      - PGI_TERM "trace,abort"
+      - ALLOWINDIRECT 1
+      - QT_PLUGIN_PATH "{{rootgv}}/plugins"
+    alias:
+      - sl "{{root}}/g16/tests/searchlog.csh"
+      - gv "{{rootgv}}/gview.exe"
+    requires:
+      - rcic-module-support
+#  --GaussView
+# gvdir="/sopt/Gaussview/6/0.16"
+# setenv("GV_DIR",gvdir)
+# set_alias("gv",gvdir.."/gview.exe")
+# append_path("LD_LIBRARY_PATH",gvdir.."/lib")
+# setenv("ALLOWINDIRECT","1")
+# setenv("QT_PLUGIN_PATH",gvdir.."/plugins")
+#  gr="/sopt/Gaussian/16/A.03_avx2"
+#  gauss_exedir=gr.."/g16/bsd:"..gr.."/g16/local:"..gr.."/g16/extras:"..gr.."/g16"
+#  setenv("g16root",gr)
+#  setenv("GAUSS_EXEDIR",gauss_exedir)
+#  setenv("GAUSS_BSDDIR",gr.."/g16/bsd")
+#  setenv("G16BASIS",gr.."/g16/basis")
+#  setenv("PGI_TERM","trace,abort")
+#  setenv("_DSM_BARRIER","SHM")
+#  append_path("PATH",gauss_exedir)
+#  prepend_path("LD_LIBRARY_PATH",gauss_exedir)
+#  set_alias("sl",gr.."/g16/tests/searchlog.csh")

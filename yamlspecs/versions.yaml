@@ -46,3 +46,7 @@ mpi:
   version: "1.10.7"
   compiler: "gcc"
   compiler_version: "4.8.5"
+gaussian:
+  ver: "16"
+  rel: "A.03_avx2"
+  view: "6.0.16"

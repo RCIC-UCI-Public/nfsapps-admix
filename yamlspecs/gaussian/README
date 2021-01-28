@@ -1,0 +1,43 @@
+-----------------------------
+Download 2021-01-27
+-----------------------------
+1. get the binary distro from Nathan Crawford 
+   - g16_avx2.tb2  
+   - GV6.tb2
+
+
+-----------------------------
+Licensing info  2021-01-27 
+-----------------------------
+Per communicatino with N. Crawford and MJ Qomi:
+
+Software access is restrictred to the users in 'gaussian' group. 
+The license has been bought by the school of physical sciences. 
+
+The license has been bought by the school of physical sciences and the
+license manager in the school of physical sciences is Nathan Crawford,
+The license handler in the school of engineering is Mohammad Javad Abdolhosseini Qomi.
+For authorization please email one of them (based on user's department
+affiliation) to ask to be added to the group. 
+
+One of the Gaussian licensing restrictions is to have a nondisclosure agreement
+signed. Any user who asks to be added to gaussian group must sign a form, provide it
+to Nathan Crawford, who then mails the physical copies to Gaussian. The agreement is basically
+to prevent sharing Gaussian results and timings with the Furche group (Turbomole developers)
+
+Form will be added  to the licenses repo.
+
+-----------------------------
+Install 2021-01-27
+-----------------------------
+
+# set root install dir
+mkdir -p /data/opt/apps/gaussian/16
+
+# extract distro
+tar xjvf g16_avx2.tb2 -C /data/opt/apps/gaussian/16
+tar xjvf GV6.tb2 -C /data/opt/apps/gaussian/16
+
+# set permissions
+chown -R root:gaussian /data/opt/apps/gaussian/16/
+chmod o-rx -R /data/opt/apps/gaussian/16

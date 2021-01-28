@@ -22,5 +22,6 @@ build:
   - abaqus-module
   - chimera-module
   - vasp-module
+  - gaussian-module
 manifest:
   - "{{build}}"
