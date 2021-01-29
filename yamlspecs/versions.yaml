@@ -40,13 +40,20 @@ fsl:
   cuda: "10.1.243"
 abaqus: "2019"
 chimera: "1.15"
-vasp: "5.4.4"
 fftw: "3.3.8"
-mpi:
-  version: "1.10.7"
-  compiler: "gcc"
-  compiler_version: "4.8.5"
 gaussian:
   ver: "16"
   rel: "A.03_avx2"
   view: "6.0.16"
+vasp: 
+  version: "5.4.4"
+  mpi: "openmpi"
+  mpi_version: "1.10.7"
+  compiler: "gcc"
+  compiler_version: "4.8.5"
+vasp6: 
+  version: "6.1.2"
+  mpi: "openmpi"
+  mpi_version: "4.0.3"
+  compiler: "gcc"
+  compiler_version: "6.5.0"

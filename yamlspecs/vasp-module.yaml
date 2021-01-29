@@ -8,7 +8,11 @@
   name: vasp 
   release: 2
   versions: !include versions.yaml
-  version: "{{versions.vasp}}"
+  version: "{{versions.vasp.version}}"
+  mpi: "{{versions.vasp.mpi}}"
+  mpi_version: "{{versions.vasp.mpi_version}}"
+  compiler: "{{versions.vasp.compiler}}"
+  compiler_version: "{{versions.vasp.compiler_version}}"
   vendor_source: "distro provided by Amirhossein Saeidi (saeidis) Engeeneering Dept"
   description: |
     The Vienna Ab initio Simulation Package (VASP) {{version}} is for
@@ -25,7 +29,7 @@
     setenv: 
       - VASP_POT {{pots}}
     prereq:
-      - openmpi/{{versions.mpi.version}}/{{versions.mpi.compiler}}.{{versions.mpi.compiler_version}}
+      - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
       - fftw/{{versions.fftw}}
     requires:
       - rcic-module-support
