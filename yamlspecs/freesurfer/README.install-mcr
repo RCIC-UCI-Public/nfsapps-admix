@@ -1,0 +1,88 @@
+=============================================
+2020-11-10  Install MCR for Freesurfer 7.1.1 
+============================================
+
+Freesurfer 7.1.1 requires matlab (R2014b ??!! really ??) runtime 
+This link https://surfer.nmr.mgh.harvard.edu/fswiki/MatlabRuntime
+gives an outdated instrucitons how to install mcr for older matlab. 
+In place of using fs_install_mcr do the following equivalent steps
+from fs_install_mcr.
+
+============================================
+### download 
+============================================
+export Ver=R2014b
+wget https://ssd.mathworks.com/supportfiles/downloads/$Ver/deployment_files/$Ver/installers/glnxa64/MCR_$Ver_glnxa64_installer.zip
+
+============================================
+### create temp install
+============================================
+mkdir temp_install_R2014b
+cd temp_install_R2014b
+unzip ../MCR_R2014b_glnxa64_installer.zip 
+mkdir install-target
+./install -mode silent -agreeToLicense yes -destinationFolder `pwd`/install-target
+
+Installation ends with success messages and:
+   On the target computer, append the following to your LD_LIBRARY_PATH environment variable:
+   /data/opt/sources/freesurfer/temp_install_R2014b/install-target/v84/runtime/glnxa64 
+   /data/opt/sources/freesurfer/temp_install_R2014b/install-target/v84/bin/glnxa64 
+   /data/opt/sources/freesurfer/temp_install_R2014b/install-target/v84/sys/os/glnxa64
+
+   Next, set the XAPPLRESDIR environment variable to the following value:
+   /data/opt/sources/freesurfer/temp_install_R2014b/install-target/v84/X11/app-defaults
+
+============================================
+### mv created installation to freesurfer root
+============================================
+mv install-target/v84  /data/opt/apps/freesurfer/7.1.1/MCRv84
+
+Update freesurfer module LD_LIBRARY_PATH variable with above setrtings.
+Ignore non-existing X11.
+
+=============================================
+2021-02-05 install MCR for freesurfer 6.0.1
+=============================================
+
+Freesurfer 6.0.1 requires matlab R2012b runtime 
+
+============================================
+### download 
+============================================
+export Ver=R2012b
+curl https://ssd.mathworks.com/supportfiles/MCR_Runtime/$Ver/MCR_$Ver_glnxa64_installer.zip -o MCR_$Ver_glnxa64_installer.zip
+
+============================================
+### create temp install
+============================================
+mkdir temp_install_R2012b
+cd temp_install_R2012b
+unzip ../MCR_R2012b_glnxa64_installer.zip 
+mkdir install-target
+./install -mode silent -agreeToLicense yes -destinationFolder `pwd`/install-target
+
+installation ends with
+...
+(Feb 05, 2021 10:48:13) Exiting with status 0
+(Feb 05, 2021 10:48:13) End - Successful.
+
+and the message what variables to add to the environment:
+  On the target computer, append the following to your LD_LIBRARY_PATH environment variable:
+  /data/opt/sources/freesurfer/temp_install_R2012b/install-target/v80/runtime/glnxa64
+  /data/opt/sources/freesurfer/temp_install_R2012b/install-target/v80/bin/glnxa64
+  /data/opt/sources/freesurfer/temp_install_R2012b/install-target/v80/sys/os/glnxa64
+  /data/opt/sources/freesurfer/temp_install_R2012b/install-target/v80/sys/java/jre/glnxa64/jre/lib/amd64/native_threads
+  /data/opt/sources/freesurfer/temp_install_R2012b/install-target/v80/sys/java/jre/glnxa64/jre/lib/amd64/server
+  /data/opt/sources/freesurfer/temp_install_R2012b/install-target/v80/sys/java/jre/glnxa64/jre/lib/amd64
+  
+  Next, set the XAPPLRESDIR environment variable to the following value:
+  /data/opt/sources/freesurfer/temp_install_R2012b/install-target/v80/X11/app-defaults
+
+============================================
+### mv created installation to freesurfer root
+============================================
+mv install-target/v80  /data/opt/apps/freesurfer/6.0.1/MCRv80
+
+Update freesurfer module LD_LIBRARY_PATH variable with above setrtings.
+Add XAPPLRESDIR variable
+
