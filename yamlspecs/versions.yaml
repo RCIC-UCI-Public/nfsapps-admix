@@ -57,3 +57,4 @@ vasp6:
   mpi_version: "4.0.3"
   compiler: "gcc"
   compiler_version: "6.5.0"
+cudasdk: "20.7"
