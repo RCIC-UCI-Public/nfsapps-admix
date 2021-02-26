@@ -1,0 +1,65 @@
+
+======================================
+Download 2021-01-22
+======================================
+
+Patched distro 6.1.2 is provided via google drive link by MJ Qomi.
+
+Can't compie lwith gcc 4*, too old.
+Can't compile with gcc 8*, too new. 
+Recompile openmpi with gcc 6.5.0 and then use it as
+a prereq for compiling vasp.
+
+See test suit https://hpc-uit.readthedocs.io/en/latest/applications/chemistry/VASP/firsttime_vasp.html
+
+-----------------------------
+Install 2021-01-14
+-----------------------------
+Per general instructions on https://www.vasp.at/wiki/index.php/Installing_VASP.6.X.X
+
+1. untar 
+tar xzvf vasp.6.1.2_patched.tgz
+
+2. prepare makefile.include
+cd vasp.6.1.2_patched
+cp arch/makefile.include.linux_gnu makefile.include
+vim makefile.include
+
+Edits in makefile.include
+- add this line for use of newer lapack
+  CPP_OPTIONS += -DLAPACK36
+- update the wollowing per current modukes and their variables
+  BLAS       = -L$(LAPACK_DIR)/lib -lrefblas
+  LAPACK     = -L$(LAPACK_DIR)/lib -ltmglib -llapack
+  SCALAPACK  = -L$(SCALAPACK_DIR)/lib -lscalapack
+  FFTW3      = -L$(FFTW_LIB) -lfftw3
+  LLIBS      = $(SCALAPACK) $(LAPACK) $(BLAS)  $(FFTW3)
+  INCS       = -I$(FFTW_INC)
+- set for cuda (not workign yet)
+  CUDA_ROOT  = $(CUDA_HOME)
+- set for system's openmpi
+  MPI_INC    =  $(MPI_INCLUDE)
+
+3. Disable macros for GNU version in src/symbol.inc via
+   commenting out last 5 lines:
+! #ifdef __GNUC__
+! #if __GNUC__ > 7
+! #pragma GCC error "Compilation of VASP with gfortran is currently supported only up to gfortran version 7 ... sorry"
+! #endif
+! #endif
+
+4. load modules (no cuda) and compile
+module load scalapack/2.1.0
+module load lapack/3.9.0
+module load fftw/3.3.8
+module load openmpi/4.0.3/gcc.6.5.0
+make all
+
+The compilation was done on developemnt machine admixdev-3
+Copy resulting binaries vasp_gam,vasp_ncl,vasp_std from bin/ to HPC3
+
+5. install binaries in the final location
+mkdir -p /data/opt/apps/vasp/6.1.2/bin
+cp -p vasp_gam vasp_ncl vasp_std /data/opt/apps/vasp/6.1.2/bin
+chmod o-rx /data/opt/apps/vasp/6.1.2/
+chown -R root:vasp5 /data/opt/apps/vasp/6.1.2
