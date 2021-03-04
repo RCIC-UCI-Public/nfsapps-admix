@@ -45,5 +45,7 @@
     setenv:  
       - *BaseEnv
       - FREESURFER {{root}}
+    prereq:
+      - gcc/{{versions.freesurfer_gcc}}
   requires:
     - rcic-module-support
