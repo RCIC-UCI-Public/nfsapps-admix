@@ -4,6 +4,7 @@ oneAPI:
   longversion: b_2021.1.5.720
 matlab:
   version: R2020a
+  version_latest: R2020b
   arch: glnxa64
 stata:
   version: "16"
