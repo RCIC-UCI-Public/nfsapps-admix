@@ -2,7 +2,7 @@
 # must be included in specific yaml file
 !include vasp-module.yaml
 ---
-- release: 1
+- release: 2
   version: "{{versions.vasp6.version}}"
   mpi: "{{versions.vasp6.mpi}}"
   mpi_version: "{{versions.vasp6.mpi_version}}"

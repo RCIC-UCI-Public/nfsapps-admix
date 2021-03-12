@@ -6,7 +6,7 @@
 - package: vasp module 
   category: ENGINEERING
   name: vasp 
-  release: 2
+  release: 3
   versions: !include versions.yaml
   version: "{{versions.vasp.version}}"
   mpi: "{{versions.vasp.mpi}}"
@@ -30,7 +30,7 @@
       - VASP_POT {{pots}}
     prereq:
       - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
-      - fftw/{{versions.fftw}}
+      - fftw/{{versions.fftw}}/{{compiler}}.{{versions.fftw_compiler}}
     requires:
       - rcic-module-support
       - ucx
