@@ -2,7 +2,6 @@ system:
 bootstrap:
 build:
   - intel-oneapi-module
-  - intel-compiler-module
   - matlab-module
   - matlab-module-latest
   - stata-module

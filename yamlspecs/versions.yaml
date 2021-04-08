@@ -9,10 +9,6 @@ matlab:
 stata:
   version: "16"
   arch: linux64
-intel_compiler: 
-  shortversion: "2020u1"
-  longversion: "2020.1.217"
-  arch: "intel64"
 cellranger: 
   shortversion: "3.1"
   longversion: "3.1.0"
