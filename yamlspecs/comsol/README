@@ -1,0 +1,91 @@
+------------------------------------
+Download 2021-04-14
+------------------------------------
+# URL link to download ISO (from google drive) provided by 
+# Georgii Bogdanov from A.Gorodeta group who purchased the COMSOL license
+# Request a copy of license file as need it to verify what products
+# need to be installed, and the license server, and port. 
+
+rsync COMSOL_5.6.0.341_DVD.iso  /data/opt/sources/comsol/ 
+
+### extract form ISO
+cd /data/opt/sources/comsol/
+mkdir /mnt/comsol
+mount -o loop COMSOL_5.6.0.341_DVD.iso  /mnt/comsol
+rsync -r /mnt/comsol /data/opt/sources/comsol/ &
+umount /mnt/comsol
+
+###  prep answerfile for command line install
+cd /data/opt/sources/comsol/
+mv comsol/ comsol-5.6.0
+cp comsol-5.6.0/setupconfig.ini answerfile
+dos2unix answerfile
+chmod +r answerfile
+vi answerfile
+   for the install options:
+       installdir = /data/opt/apps/comsol/5.6.0
+       nogui install
+   for the license: 
+       agree = 1
+       license = 1718@128.195.158.66
+       lictype = mph
+       licmanager = 0
+   matlabdir = /data/opt/apps/MATLAB/R2020b
+   powerpointinterface = allusers
+   set most comsol.* app to 0 as the license only has 2 main products
+   and must have cluster and compiler:
+       comsol = 1
+       comsol.woptics = 1
+       comsol.cad = 1
+       comsol.design = 1
+       comsol.optlab = 1
+       comsol.cluster = 1
+       comsol.compiler = 1
+    no windows menus shortcuts
+        startmenushortcuts = 0
+        desktopshortcuts = 0
+    no:
+        symlinks = 0
+        fileassoc = 0
+        firewall = 0
+    security.comsol.allowexternalmatlab = 1
+    no server:
+        server.service = 0
+        server.createadmin = 0
+
+### install
+cd /data/opt/sources/comsol/comsol-5.6.0/
+/data/opt/sources/comsol/comsol-5.6.0/setup -s /data/opt/sources/comsol/answerfile &> out
+
+# Contents of 'out' after installation is done:
+    Extracting temporary COMSOL installer components in /tmp...
+
+    Installing to: /data/opt/apps/comsol/5.6.0:
+
+    Installing  COMSOL Cluster Components...
+    Installing  COMSOL Multiphysics...
+    Installing  Common COMSOL Components...
+    Installing  License Manager Documentation...
+    Installing  Ray Optics Module...
+    Installing  Wave Optics Module...
+    Installing  Wave Optics Module Application Previews...
+    Installing  COMSOL Multiphysics Applications...
+    Installing  COMSOL Multiphysics Documentation...
+    Installing  Wave Optics Module Applications...
+    Installing  Wave Optics Module Documentation...
+
+    Installation complete
+    ---------------------
+
+    0 WARNINGS
+    0 ERRORS
+    0 FATAL ERRORS
+
+    The installation log can be found at /data/opt/apps/comsol/5.6.0/comsolsetup.log
+
+    Removing temporary COMSOL installer components...
+
+### set group permissions. Only members of A gorodeta group are allowed to use COMSOL
+chmod o-rx /data/opt/apps/comsol/5.6.0/
+chown -R root:comsol /data/opt/apps/comsol/5.6.0/
+

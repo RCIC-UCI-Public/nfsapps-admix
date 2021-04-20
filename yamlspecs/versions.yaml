@@ -57,3 +57,4 @@ vasp6:
   compiler_version: "6.5.0"
 cudasdk: "20.7"
 freesurfer_gcc: "8.4.0"
+comsol: "5.6.0"

@@ -25,5 +25,6 @@ build:
   - vasp6-module
   - gaussian-module
   - cudasdk-module
+  - comsol-module
 manifest:
   - "{{build}}"
