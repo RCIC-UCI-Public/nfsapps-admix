@@ -114,7 +114,7 @@ to
 
 ## 2020-11-06 License server change
 cd /data/opt/apps/abaqus/2019/DassaultSystemes/SimulationServices/V6R2019x/linux_a64/SMA/site
-vi custom_v6.env< add lines:
+vi custom_v6.env, add lines:
 # NPW 2020-11-06 change server
 #abaquslm_license_file="27000@mcma.eng.uci.edu"
 abaquslm_license_file="27000@abaqus.eng.uci.edu"
