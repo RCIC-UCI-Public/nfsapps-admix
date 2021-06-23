@@ -27,7 +27,7 @@
       - LD_LIBRARY_PATH {{root}}/lib
       - LD_LIBRARY_PATH {{root}}/{{mcr}}/runtime/glnxa64
       - LD_LIBRARY_PATH {{root}}/{{mcr}}/bin/glnxa64
-      - LD_LIBRARY_PATH {{root}}/{{mcr}}/sys/os/glnxa64
+#      - LD_LIBRARY_PATH {{root}}/{{mcr}}/sys/os/glnxa64
       - PERL5LIB {{root}}/mni/share/perl5
     prepend_path:
       - *BasePath
@@ -45,7 +45,7 @@
     setenv:  
       - *BaseEnv
       - FREESURFER {{root}}
-    prereq:
-      - gcc/{{versions.freesurfer_gcc}}
+#    prereq:
+#      - gcc/{{versions.freesurfer_gcc}}
   requires:
     - rcic-module-support
