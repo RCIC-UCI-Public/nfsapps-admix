@@ -2,12 +2,14 @@ nfspath: /data/opt/apps
 oneAPI: 
   shortversion: 2021.1_beta05
   longversion: b_2021.1.5.720
+mathematica:
+  version: "12.3"
 matlab:
   version: R2020a
   arch: glnxa64
 stata:
   version: "16"
-  arch: linux64
+  arch: "linux64"
 intel_compiler: 
   shortversion: "2020u1"
   longversion: "2020.1.217"
