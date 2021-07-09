@@ -20,7 +20,7 @@
       To get started with the oneAPI compilers, libraries, and tools, visit
       https://software.intel.com/en-us/get-started-with-intel-oneapi-linux.
       To access oneAPI tools, you MUST execute \$ONEAPI_HOME/setvars.sh.
-  root: "/data/opt/apps/intel/inteloneapi"
+  root: "{{versions.nfspath}}/intel/inteloneapi"
   module:
     setenv: 
       - ONEAPI_HOME {{root}}
