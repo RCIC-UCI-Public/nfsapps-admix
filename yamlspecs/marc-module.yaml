@@ -1,13 +1,10 @@
 # This is the Marc module
-# must be included in specific yaml file
-!include rcic-package.yaml
-!include rcic-module.yaml
+!include common.yaml
 ---
 - package: Marc module 
   category: PHYSICS
   name: marc
   release: "2"
-  versions: !include versions.yaml
   version: "{{versions.marc.version}}"
   marcArch: "{{versions.marc.arch}}"
   vendor_source: Source provided by Aboozar Mapar
@@ -31,5 +28,3 @@
       - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib/release
       - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib
       - LD_LIBRARY_PATH {{root}}/tools
-    requires:
-      - rcic-module-support

@@ -1,17 +1,14 @@
 # This is the fsl module 
-!include rcic-package.yaml
-!include rcic-module.yaml
+!include common.yaml
 ---
 - package: fsl module 
   category: IMAGING
   name: fsl 
-  versions: !include versions.yaml
   version: "{{versions.fsl.version}}"
   vendor_source: https://fsl.fmrib.ox.ac.uk/fsldownloads/{{name}}-{{version}}-sources.tar.gz
   description: |
     FSL {{version}} is a comprehensive library of analysis tools for FMRI, 
     MRI and DTI brain imaging data. See https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
-  root: "{{versions.nfspath}}/{{name}}/{{version}}"
   module:
     prepend_path:
       - PATH {{root}}/bin

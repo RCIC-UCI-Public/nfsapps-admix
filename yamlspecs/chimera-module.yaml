@@ -1,22 +1,16 @@
 # This is the chimera module
-!include rcic-package.yaml
-!include rcic-module.yaml
+!include common.yaml
 ---
 - package: chimera module 
   category: CHEMISTRY
   name: chimera
-  versions: !include versions.yaml
   version: "{{versions.chimera}}"
-  vendor_source: 
   description: |
       UCSF CHIMERA {{version}} is an Extensible Molecular Modeling System
       See documentation https://www.cgl.ucsf.edu/chimera/data/downloads/1.15/docs/
-  root: "{{versions.nfspath}}/{{name}}/{{version}}"
   module:
     setenv:
       - CHIMERA_HOME {{root}}
     prepend_path:
       - PATH {{root}}/bin
       - LD_LIBRARY_PATH {{root}}/lib
-    requires:
-      - rcic-module-support

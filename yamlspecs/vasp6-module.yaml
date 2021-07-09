@@ -1,5 +1,4 @@
-# This is the version 6.*.* vasp module
-# must be included in specific yaml file
+# This is the version 6 vasp module
 !include vasp-module.yaml
 ---
 - release: 2
@@ -10,7 +9,5 @@
   compiler_version: "{{versions.vasp6.compiler_version}}"
   module:
     setenv: ""
-    prepend_path:
-      - PATH {{root}}/bin
     requires:
       - rcic-module-support

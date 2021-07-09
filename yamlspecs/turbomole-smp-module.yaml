@@ -1,5 +1,4 @@
 # This is the turbomole-smp module
-# must be included in specific yaml file
 !include turbomole-module.yaml
 ---
 - package: turbomole-smp module 

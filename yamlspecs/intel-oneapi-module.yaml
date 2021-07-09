@@ -1,13 +1,10 @@
 # This is the oneAPI module
-# must be included in specific yaml file
-!include rcic-package.yaml
-!include rcic-module.yaml
+!include common.yaml
 ---
 - package: intel-oneapi module 
   category: COMPILERS
   name: oneAPI 
   baserpm: "{{name}}"
-  versions: !include versions.yaml
   version: "{{versions.oneAPI.shortversion}}"
   release: "2"
   vendor_source: https://dynamicinstaller.intel.com/oneapi/toolkits/base-kit/linux/ 
@@ -24,5 +21,3 @@
   module:
     setenv: 
       - ONEAPI_HOME {{root}}
-    requires:
-      - rcic-module-support

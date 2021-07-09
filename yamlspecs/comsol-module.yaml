@@ -1,12 +1,9 @@
 # This is the comsol module
-# must be included in specific yaml file
-!include rcic-package.yaml
-!include rcic-module.yaml
+!include common.yaml
 ---
 - package: comsol module 
   category: ENGINEERING
   name: comsol 
-  versions: !include versions.yaml
   version: "{{versions.comsol}}"
   vendor_source: "distro provided by A. Gorodeta group, Engeeneering Dept"
   description: |
@@ -16,8 +13,3 @@
       Supports simulation of real-world designs, devices, 
       and processes. See https://www.comsol.com. Access to
       COMSOL is restricted to licensed users in group comsol
-  root: "{{versions.nfspath}}/{{name}}/{{version}}"
-  module:
-    prepend_path:
-      - PATH {{root}}/bin
-    setenv: ""

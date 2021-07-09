@@ -1,12 +1,9 @@
 # This is the ansys module
-# must be included in specific yaml file
-!include rcic-package.yaml
-!include rcic-module.yaml
+!include common.yaml
 ---
 - package: ansys module 
   category: ENGINEERING
   name: ansys 
-  versions: !include versions.yaml
   version: "{{versions.ansys.version}}"
   rel: "{{versions.ansys.rel}}"
   vendor_source: "Install from ISOs provided by Engeeneering Dept"
@@ -14,7 +11,6 @@
     The ANSYS suite Release {{version}} revision {{rel}}.
     For help with ANSYS, please see http://www.ansys.com and
     http://laptops.eng.uci.edu/software-installation/ansys-campus-software-for-uci-engineering
-  root: "{{versions.nfspath}}/{{name}}/{{version}}"
   module:
     prepend_path:
       - PATH {{root}}/shared_files/licensing/lic_admin
@@ -25,8 +21,6 @@
       - ANSYS202_DIR {{root}}/{{rel}}/ansys
       - ANSYSLIC_DIR {{root}}/shared_files/licensing
       - ANSYSLMD_LICENSE_FILE 1055@128.200.217.34
-    requires:
-      - rcic-module-support
 
 # not sure if needed. can add later
 #      - PATH {{root}}/{{rel}}/icemcfd/linux64_amd/bin

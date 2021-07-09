@@ -1,12 +1,9 @@
 # This is the cellranger module
-# must be included in specific yaml file
-!include rcic-package.yaml
-!include rcic-module.yaml
+!include common.yaml
 ---
 - package: cellranger module 
   category: GENOMICS
   name: cellranger 
-  versions: !include versions.yaml
   version: "{{versions.cellranger.longversion}}"
   versionS: "{{versions.cellranger.shortversion}}"
   vendor_source: https://support.10xgenomics.com/single-cell-gene-expression/software/downloads/{{versionS}}/
@@ -17,10 +14,6 @@
     and perform clustering and gene expression analysis. Cell Ranger includes four
     pipelines relevant to single-cell gene expression experiments. See 
     https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/{{versionS}}/what-is-cell-ranger
-  root: "{{versions.nfspath}}/{{name}}/{{version}}"
   module:
     prepend_path:
       - PATH {{root}}
-    setenv: ""
-    requires:
-      - rcic-module-support

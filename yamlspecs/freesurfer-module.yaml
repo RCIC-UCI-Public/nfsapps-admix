@@ -1,11 +1,9 @@
 # This is the freesurfer module 
-!include rcic-package.yaml
-!include rcic-module.yaml
+!include common.yaml
 ---
 - package: freesurfer module 
   category: IMAGING
   name: freesurfer 
-  versions: !include versions.yaml
   version: "{{versions.freesurfer}}"
   release: 4
   vendor_source: https://surfer.nmr.mgh.harvard.edu/pub/dist/{{name}}/{{version}}/{{name}}-linux-centos7_x86_64-{{version}}.{{extension}}
@@ -16,7 +14,6 @@
     Athinoula A. Martinos Center for Biomedical Imaging. 
     FreeSurfer is the structural MRI analysis software of choice for the 
     Human Connectome Project
-  root: "{{versions.nfspath}}/{{name}}/{{version}}"
   mcr: "MCRv84"
   module:
     basepath: &BasePath
@@ -27,7 +24,6 @@
       - LD_LIBRARY_PATH {{root}}/lib
       - LD_LIBRARY_PATH {{root}}/{{mcr}}/runtime/glnxa64
       - LD_LIBRARY_PATH {{root}}/{{mcr}}/bin/glnxa64
-#      - LD_LIBRARY_PATH {{root}}/{{mcr}}/sys/os/glnxa64
       - PERL5LIB {{root}}/mni/share/perl5
     prepend_path:
       - *BasePath
@@ -45,7 +41,3 @@
     setenv:  
       - *BaseEnv
       - FREESURFER {{root}}
-#    prereq:
-#      - gcc/{{versions.freesurfer_gcc}}
-  requires:
-    - rcic-module-support
