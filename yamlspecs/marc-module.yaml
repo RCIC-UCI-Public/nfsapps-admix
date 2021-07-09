@@ -24,9 +24,9 @@
     prepend_path:
       - PATH {{root}}/bin/{{marcArch}}
       - LD_LIBRARY_PATH {{root}}/lib_shared/linux64
-      - LD_LIBRARY_PATH {{root}}/lib/linux64i8
-      - LD_LIBRARY_PATH {{root}}/lib/linux64i8/cuda
-      - LD_LIBRARY_PATH {{root}}/lib/linux64i8/cuda_dummy
+      - LD_LIBRARY_PATH {{root}}/lib/{{marcArch}}
+      - LD_LIBRARY_PATH {{root}}/lib/{{marcArch}}/cuda
+      - LD_LIBRARY_PATH {{root}}/lib/{{marcArch}}/cuda_dummy
       - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib/release_mt
       - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib/release
       - LD_LIBRARY_PATH {{root}}/intelmpi/linux64/lib

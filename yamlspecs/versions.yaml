@@ -20,7 +20,7 @@ marc:
   arch: "linux64i8"
 mentat: 
   version: "2020"
-  arch: "linux64i8"
+  arch: "linux64"
 ansys: 
   version: "2020R2"
   rel: "v202"
