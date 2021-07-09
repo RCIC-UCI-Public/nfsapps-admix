@@ -8,7 +8,6 @@
   name: stata
   versions: !include versions.yaml
   version: "{{versions.stata.version}}"
-  matlab_arch: "{{versions.stata.arch}}"
   vendor_source: https://download.stata.com/download/
   release: "2"
   description: |

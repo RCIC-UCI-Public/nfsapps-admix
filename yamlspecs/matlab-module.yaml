@@ -9,7 +9,6 @@
   release: "3"
   versions: !include versions.yaml
   version: "{{versions.matlab.version}}"
-  matlab_arch: "{{versions.matlab.arch}}"
   vendor_source: https://www.mathworks.com/academia/tah-portal/university-of-california-irvine-30980328.html 
   description: |
       MATLAB (R)({{version}}).  combines a desktop environment tuned for iterative analysis 
