@@ -8,7 +8,6 @@
   name: Mathematica
   versions: !include versions.yaml
   version: "{{versions.Mathematica.version}}"
-  matlab_arch: "{{versions.Mathematica.arch}}"
   vendor_source: https://mathematica.com
   description: |
       Mathematica {{version}} is a general-purpose statistical/math software package.
