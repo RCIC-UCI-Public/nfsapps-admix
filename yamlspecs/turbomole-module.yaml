@@ -16,8 +16,8 @@
     Access is given to all HPC3 users through the group of Filipp Furche.
     Provides {{type_info}} version of TURBOMOLE.
   root: "{{versions.nfspath}}/{{basename}}/{{version}}/TURBOMOLE"
-  para_ext: ""
-  lib_ext: ""
+  para_ext:
+  lib_ext:
   sysname: em64t-unknown-linux-gnu{{para_ext}}
   module:
     prepend_path:

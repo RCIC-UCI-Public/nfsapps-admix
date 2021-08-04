@@ -9,6 +9,6 @@
   module:
     prepend_path:
       - PATH {{root}}/bin
-    setenv: ""
+    setenv:
     requires:
       - rcic-module-support

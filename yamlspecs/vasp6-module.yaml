@@ -8,6 +8,6 @@
   compiler: "{{versions.vasp6.compiler}}"
   compiler_version: "{{versions.vasp6.compiler_version}}"
   module:
-    setenv: ""
+    setenv:
     requires:
       - rcic-module-support
