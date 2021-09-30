@@ -1,3 +1,5 @@
+!include site.yaml
+---
 nfspath: /data/opt/apps
 oneAPI: 
   shortversion: 2021.1_beta05
@@ -31,7 +33,6 @@ fsl:
   cuda: "10.1.243"
 abaqus: "2019"
 chimera: "1.15"
-fftw: "3.3.8"
 gaussian:
   ver: "16"
   rel: "A.03_avx2"
