@@ -4,16 +4,13 @@ oneAPI:
   longversion: b_2021.1.5.720
 matlab:
   version: R2020a
-  version_latest: R2020b
   arch: glnxa64
 stata:
   version: "16"
   arch: linux64
 cellranger: 
-  shortversion: "3.1"
-  longversion: "3.1.0"
-  shortversionPrev: "3.0"
-  longversionPrev: "3.0.2"
+  shortversion: "3.0"
+  longversion: "3.0.2"
 schrodinger: "2020.1"
 marc: 
   version: "2020"
@@ -22,13 +19,10 @@ mentat:
   version: "2020"
   arch: "linux64"
 ansys: 
-  version: "2020R2"
-  rel: "v202"
-ansys_prev: 
   version: "2019R2"
   rel: "v194"
-freesurfer: "7.1.1"
-freesurfer6: "6.0.1"
+freesurfer: "6.0.1"
+freesurfer_mcr: "MCRv80"
 turbomole: "7.5"
 spaceranger: "1.1.0"
 fsl:
@@ -38,23 +32,19 @@ fsl:
 abaqus: "2019"
 chimera: "1.15"
 fftw: "3.3.8"
-fftw_compiler: "4.8.5"
 gaussian:
   ver: "16"
   rel: "A.03_avx2"
   view: "6.0.16"
 vasp: 
   version: "5.4.4"
+  release: 2
   mpi: "openmpi"
   mpi_version: "1.10.7"
   compiler: "gcc"
   compiler_version: "4.8.5"
-vasp6: 
-  version: "6.1.2"
-  mpi: "openmpi"
-  mpi_version: "4.0.3"
-  compiler: "gcc"
-  compiler_version: "6.5.0"
+  fftw_compiler: "4.8.5"
+  addreqs: ucx
+  addenv: VASP_POT /data/opt/apps/vasp/potentials
 cudasdk: "20.7"
-freesurfer_gcc: "8.4.0"
 comsol: "5.6.0"

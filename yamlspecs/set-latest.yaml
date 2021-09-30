@@ -1,0 +1,9 @@
+!include packages.yaml
+---
+versions: versions-latest.yaml
+build:
+  - ansys-module
+  - cellranger-module
+  - matlab-module
+  - freesurfer-module
+  - vasp-module

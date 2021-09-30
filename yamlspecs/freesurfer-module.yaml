@@ -14,7 +14,7 @@
     Athinoula A. Martinos Center for Biomedical Imaging. 
     FreeSurfer is the structural MRI analysis software of choice for the 
     Human Connectome Project
-  mcr: "MCRv84"
+  mcr: "{{versions.freesurfer_mcr}}"
   module:
     basepath: &BasePath
       - PATH {{root}}/mni/bin

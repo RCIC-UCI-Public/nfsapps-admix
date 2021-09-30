@@ -3,17 +3,13 @@ bootstrap:
 build:
   - intel-oneapi-module
   - matlab-module
-  - matlab-module-latest
   - stata-module
   - cellranger-module
-  - cellranger-prev-module
   - schrodinger-module
   - marc-module
   - mentat-module
   - ansys-module
-  - ansys-prev-module
   - freesurfer-module
-  - freesurfer6-module
   - turbomole-module
   - turbomole-smp-module
   - turbomole-mpi-module
@@ -22,9 +18,10 @@ build:
   - abaqus-module
   - chimera-module
   - vasp-module
-  - vasp6-module
   - gaussian-module
   - cudasdk-module
   - comsol-module
 manifest:
   - "{{build}}"
+sets:
+  - latest
