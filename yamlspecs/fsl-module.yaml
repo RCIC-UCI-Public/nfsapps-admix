@@ -4,7 +4,7 @@
 - package: fsl module 
   category: IMAGING
   name: fsl 
-  version: "{{versions.fsl.version}}"
+  version: "{{versions.fsl}}"
   vendor_source: https://fsl.fmrib.ox.ac.uk/fsldownloads/{{name}}-{{version}}-sources.tar.gz
   description: |
     FSL {{version}} is a comprehensive library of analysis tools for FMRI, 
@@ -20,7 +20,7 @@
       - FSLTCLSH {{root}}/bin/fsltclsh
       - FSLWISH  {{root}}/bin/fslwish
     prereq:  
-      - OpenBLAS/{{versions.fsl.openblas}}
+      - OpenBLAS/{{versions.OpenBLAS}}
     requires:
       - rcic-module-support
       - "{{module.prereq}}"
