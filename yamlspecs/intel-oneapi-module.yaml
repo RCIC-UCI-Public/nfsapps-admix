@@ -3,7 +3,7 @@
 ---
 - package: intel-oneapi module 
   category: COMPILERS
-  name: oneAPI 
+  name: intel-oneAPI 
   baserpm: "{{name}}"
   version: "{{versions.oneAPI.shortversion}}"
   release: "2"
