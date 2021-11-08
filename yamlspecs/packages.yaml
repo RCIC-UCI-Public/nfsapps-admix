@@ -25,3 +25,4 @@ manifest:
   - "{{build}}"
 sets:
   - latest
+  - cellranger

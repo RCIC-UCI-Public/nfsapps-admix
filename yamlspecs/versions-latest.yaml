@@ -6,6 +6,7 @@ ansys:
 cellranger: 
   shortversion: "3.1"
   longversion: "3.1.0"
+  release: 2
 matlab:
   version: R2020b
   arch: glnxa64

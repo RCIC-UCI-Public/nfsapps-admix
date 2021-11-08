@@ -13,6 +13,7 @@ stata:
 cellranger: 
   shortversion: "3.0"
   longversion: "3.0.2"
+  release: 2
 schrodinger: "2020.1"
 marc: 
   version: "2020"
