@@ -47,3 +47,6 @@ vasp:
   addenv: VASP_POT /data/opt/apps/vasp/potentials
 cudasdk: "20.7"
 comsol: "5.6.0"
+sas:
+  version: "94M7"
+  rel: "9.4"

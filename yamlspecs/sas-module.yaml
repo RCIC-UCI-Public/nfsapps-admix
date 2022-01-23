@@ -1,0 +1,19 @@
+# This is the SAS module
+!include common.yaml
+---
+- package: SAS module 
+  category: ENGINEERING
+  name: sas 
+  version: "{{versions.sas.version}}"
+  rel: "{{versions.sas.rel}}"
+  vendor_source: "distro via license"
+  description: |
+    SAS version {{version}} is a softare for statistical analysis, data mining
+    and forecasting. SAS is restricted to licensed users in group sas
+  sasroot: "{{root}}/SASFoundation/{{rel}}"
+  module:
+    prepend_path:
+      - PATH {{sasroot}}
+    setenv: 
+      - SASHOME {{root}}
+      - SASROOT {{sasroot}}
