@@ -1,0 +1,5 @@
+!include packages.yaml
+---
+versions: versions-extra.yaml
+build:
+  - matlab-module

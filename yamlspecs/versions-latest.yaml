@@ -10,7 +10,7 @@ cellranger:
 matlab:
   version: R2020b
   arch: glnxa64
-freesurfer: "7.1.1"
+freesurfer: "7.2.0"
 freesurfer_mcr: "MCRv84"
 vasp: 
   version: "6.1.2"
