@@ -7,3 +7,7 @@ build:
   - matlab-module
   - freesurfer-module
   - vasp-module
+  - stata-module
+  - turbomole-module
+  - turbomole-mpi-module
+  - turbomole-smp-module

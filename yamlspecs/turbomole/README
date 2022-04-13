@@ -1,3 +1,6 @@
+#############  Version 7.5
+
+===================================
 Download 2020-09-10
 ===================================
 
@@ -7,6 +10,7 @@ Tar file is copied from
 
 Turbomole license covers usage for anyone at UCI 
 
+===================================
 Install 2020-09-10
 ===================================
 Do it on nas-1, as have access to /df3 and in /hpc3tools:
@@ -34,11 +38,12 @@ chmod o+rx bin/em64t-unknown-linux-gnu_mpi/*mpi
 chmod o+rx bin/em64t-unknown-linux-gnu_smp/*mp
 chmod o+rx smprun_scripts/mpshift
 
+===================================
 Download manual PDF 2020-11-06
 ===================================
-
 wget https://www.turbomole.org/downloads/doc/Turbomole_Manual_7-5.pdf
 
+===================================
 2020-12-07
 ===================================
 Per F.Furche group request add files
@@ -46,3 +51,34 @@ LICENSE
 USAGE
 turbomole7.5.slurm.template
 turbomole7.5_mpi.slurm.template
+
+#############  Version 7.6
+
+===================================
+Download and install 2022-04-11
+===================================
+Binrary distro turbolinux76-TMG.tar.gz provided by P. Furche group
+Tar.gz file is copied from /dfs6/pub/rappopor/TURBOMOLE-7.6/turbolinux76-TMG.tar.gz
+
+export SRC=/data/opt/sources/turbomole
+cd $SRC
+cp /dfs6/pub/rappopor/TURBOMOLE-7.6/turbolinux76-TMG.tar.gz . 
+mkdir /data/opt/apps/turbomole/7.6
+pushd /data/opt/apps/turbomole/7.6
+tar xzvf $SRC/turbolinux76-TMG.tar.gz 
+
+# verify permissions
+chown -R root:root TURBOMOLE
+cd TURBOMOLE
+chmod o+rx bin/em64t-unknown-linux-gnu/*
+chmod o+rx bin/em64t-unknown-linux-gnu_mpi/*mpi
+chmod o+rx bin/em64t-unknown-linux-gnu_smp/*mp
+chmod o+rx smprun_scripts/mpshift
+
+# Add files in TURBOMOLE
+provided via ticket #6647
+turbomole7.6_mpi.slurm.template 
+turbomole7.6.slurm.template
+USAGE
+
+Copy LICENSE from 7.5 distro

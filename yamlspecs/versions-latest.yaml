@@ -22,3 +22,6 @@ vasp:
   fftw_compiler: "4.8.5"
   addreqs:
   addenv:
+stata:
+  version: "17"
+turbomole: "7.6"
