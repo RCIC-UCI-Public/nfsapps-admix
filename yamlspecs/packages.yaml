@@ -19,7 +19,7 @@ build:
   - chimera-module
   - vasp-module
   - gaussian-module
-  - cudasdk-module
+# - cudasdk-module
   - comsol-module
 manifest:
   - "{{build}}"
