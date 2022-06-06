@@ -21,3 +21,6 @@
     prepend_path:
       - PATH {{root}}/bin
     setenv: ""
+    requires:
+      - rcic-module-support
+
