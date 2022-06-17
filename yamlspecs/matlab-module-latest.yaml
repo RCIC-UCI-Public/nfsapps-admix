@@ -1,3 +1,0 @@
-!include matlab-module.yaml
----
-- version: "{{versions.matlab.version_latest}}"

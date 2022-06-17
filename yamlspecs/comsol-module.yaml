@@ -1,12 +1,9 @@
 # This is the comsol module
-# must be included in specific yaml file
-!include rcic-package.yaml
-!include rcic-module.yaml
+!include common.yaml
 ---
 - package: comsol module 
   category: ENGINEERING
   name: comsol 
-  versions: !include versions.yaml
   version: "{{versions.comsol}}"
   vendor_source: "distro provided by A. Gorodeta group, Engeeneering Dept"
   description: |
@@ -23,4 +20,3 @@
     setenv: ""
     requires:
       - rcic-module-support
-

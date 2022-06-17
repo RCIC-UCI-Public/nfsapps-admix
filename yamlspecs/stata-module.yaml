@@ -1,21 +1,15 @@
 # This is the Stata module
-# must be included in specific yaml file
-!include rcic-package.yaml
-!include rcic-module.yaml
+!include common.yaml
 ---
 - package: Stata module 
   category: LANGUAGES
   name: stata
-  versions: !include versions.yaml
   version: "{{versions.stata.version}}"
   vendor_source: https://download.stata.com/download/
   release: "2"
   description: |
       Stata {{version}} is a general-purpose statistical software package.
       It is licensed to Prof. Andrew Penner.
-  root: "{{versions.nfspath}}/{{name}}/{{version}}"
   module:
     prepend_path:
       - PATH {{root}}
-    requires:
-      - rcic-module-support

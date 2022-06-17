@@ -5,7 +5,7 @@ For a latest version
 https://support.10xgenomics.com/single-cell-gene-expression/software/downloads/4.0/
 
 To get oolder versions hover over the red button in lower right corner, it will highlight
-older versions, pick needed. The links provided in the new window are time-limited.
+older versions, pick needed. The links provided in the new window are time-limited. 
 Copy-paste as below examnples (cut after Expires=...:
 
 wget -O cellranger-3.1.0.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-3.1.0.tar.gz?Expires=15971..."
@@ -49,3 +49,68 @@ The output should contain
 "Pipestance completed successfully!"
 
 The diagnostics are saved in  the dir where it was run in tiny/tiny.mri.tgz
+
+############ cellranger 6.1.2
+
+-------------------------------------------
+Download 2021-11-08
+-------------------------------------------
+1. download latest cellranger from https://support.10xgenomics.com/single-cell-gene-expression/software/downloads/latest
+2. download references 
+   cd references/
+   curl -O https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz
+   curl -O https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-mm10-2020-A.tar.gz
+   curl -O https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-and-mm10-2020-A.tar.gz
+3. from https://support.10xgenomics.com/single-cell-vdj/software/downloads/latest? download references for cellranger VDJ:
+   curl -O https://cf.10xgenomics.com/supp/cell-vdj/refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0.tar.gz
+   curl -O https://cf.10xgenomics.com/supp/cell-vdj/refdata-cellranger-vdj-GRCm38-alts-ensembl-5.0.0.tar.gz
+
+4. check all md5sums, listed on both URL above
+
+-------------------------------------------
+Install 2021-11-08
+-------------------------------------------
+cd /data/opt/apps/cellranger/
+tar xzvf /data/opt/sources/cellranger/cellranger-6.1.2.tar.gz 
+
+Permission after install are open to the world, change to normal:
+
+chmod go-w cellranger-6.1.2/
+cd cellranger-6.1.2/
+chmod -R o-w bin builtwith.json  external/ lib LICENSE  mro/ sou*
+chmod -R g-w bin builtwith.json  external/ lib LICENSE  mro/ sou*
+cd ..
+mv cellranger-6.1.2 6.1.2
+
+-------------------------------------------
+Install reference databases  2021-11-08
+-------------------------------------------
+Untar all 5 downloaded databases in /dfs6/commondata/cellranger
+	refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0.tar.gz  
+	refdata-cellranger-vdj-GRCm38-alts-ensembl-5.0.0.tar.gz  
+	refdata-gex-GRCh38-2020-A.tar.gz           
+	refdata-gex-GRCh38-and-mm10-2020-A.tar.gz
+	refdata-gex-mm10-2020-A.tar.gz
+
+Change ownership (all db files had user:group 5027:5000)
+chown -R root:root refdata-gex-* refdata-cellranger-vdj*
+
+-------------------------------------------
+Run verification on a compute node as a regular user
+-------------------------------------------
+export PATH=/data/opt/apps/cellranger/6.1.2:$PATH
+1.  run site check 
+cellranger sitecheck > sitecheck.txt
+2. run testrun
+cellranger testrun --id=tiny
+
+Stdout ends with:
+	...
+	Waiting 6 seconds for UI to do final refresh.
+	Pipestance completed successfully!
+	
+	2021-11-08 15:24:18 Shutting down.
+
+Can upload verification results to 10X with:
+cellranger upload your@email.edu sitecheck.txt
+cellranger upload your@email.edu tiny/tiny.mri.tgz

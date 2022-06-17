@@ -1,13 +1,10 @@
 # This is the turbomole module
-# must be included in specific yaml file
-!include rcic-package.yaml
-!include rcic-module.yaml
+!include common.yaml
 ---
 - package: turbomole module 
   category: CHEMISTRY
   basename: turbomole 
   name: turbomole 
-  versions: !include versions.yaml
   version: "{{versions.turbomole}}"
   release: "3"
   vendor_source: https://www.turbomole.org
@@ -19,8 +16,8 @@
     Access is given to all HPC3 users through the group of Filipp Furche.
     Provides {{type_info}} version of TURBOMOLE.
   root: "{{versions.nfspath}}/{{basename}}/{{version}}/TURBOMOLE"
-  para_ext: ""
-  lib_ext: ""
+  para_ext:
+  lib_ext:
   sysname: em64t-unknown-linux-gnu{{para_ext}}
   module:
     prepend_path:
@@ -32,5 +29,3 @@
       - TURBOMOLE_SYSNAME {{sysname}}
     setenv: 
       - "{{module.base_setenv}}"
-    requires:
-      - rcic-module-support

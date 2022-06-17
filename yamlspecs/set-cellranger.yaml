@@ -1,0 +1,5 @@
+!include packages.yaml
+---
+versions: versions-cellranger.yaml
+build:
+  - cellranger-module

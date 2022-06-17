@@ -1,12 +1,10 @@
 # This is the vasp module
-# must be included in specific yaml file
-!include rcic-package.yaml
-!include rcic-module.yaml
+!include common.yaml
 ---
 - package: vasp module 
   category: ENGINEERING
   name: vasp 
-  release: 3
+  release: "{{versions.vasp.release}}"
   versions: !include versions.yaml
   version: "{{versions.vasp.version}}"
   mpi: "{{versions.vasp.mpi}}"
@@ -20,17 +18,16 @@
     calculations and quantum-mechanical molecular dynamics, from
     first principles. See https://www.vasp.at. Access to this
     software is restricted to licensed users in vasp5 group.
-    Pseudo-potential are installed in {{pots}}
-  root: "{{versions.nfspath}}/{{name}}/{{version}}"
-  pots: "{{versions.nfspath}}/{{name}}/potentials"
+    If  environment variable $VASP_POTS is set it specifies the
+    installation directory of pseudo-potentials, otherwise there
+    are no pseudo-potentials installd for this VASP version.
   module:
-    prepend_path:
-      - PATH {{root}}/bin
     setenv: 
-      - VASP_POT {{pots}}
+      - "{{versions.vasp.addenv}}"
     prereq:
       - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
-      - fftw/{{versions.fftw}}/{{compiler}}.{{versions.fftw_compiler}}
+      - fftw/{{versions.fftw}}/{{compiler}}.{{versions.vasp.fftw_compiler}}
     requires:
       - rcic-module-support
-      - ucx
+      - "{{module.prereq}}"
+      - "{{versions.vasp.addreqs}}"

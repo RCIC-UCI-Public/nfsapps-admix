@@ -1,0 +1,6 @@
+!include versions.yaml
+---
+cellranger: 
+  shortversion: "6.1"
+  longversion: "6.1.2"
+  release: 1

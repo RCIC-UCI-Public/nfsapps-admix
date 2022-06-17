@@ -1,12 +1,9 @@
 # This is the CUDA SDK  module
-# must be included in specific yaml file
-!include rcic-package.yaml
-!include rcic-module.yaml
+!include common.yaml
 ---
 - package: cudasdk module 
   category: COMPILERS
   name: cudasdk 
-  versions: !include versions.yaml
   version: "{{versions.cudasdk}}"
   vendor_source: "https://developer.nvidia.com/nvidia-hpc-sdk-releases"
   description: |
@@ -45,5 +42,3 @@
       - F90 {{root}}/compilers/bin/nvfortran
       - F77 {{root}}/compilers/bin/nvfortran
       - CPP cpp
-    requires:
-      - rcic-module-support
