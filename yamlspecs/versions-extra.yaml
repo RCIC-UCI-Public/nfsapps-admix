@@ -3,3 +3,9 @@
 matlab:
   version: R2021b
   arch: glnxa64
+cellranger: 
+  shortversion: "6.1"
+  longversion: "6.1.2"
+  release: "1"
+freesurfer: "7.1.1"
+freesurfer_mcr: "MCRv84"

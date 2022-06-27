@@ -17,7 +17,6 @@ manifest:
   - "{{build}}"
 sets:
   - latest
-  - cellranger
   - extra
 # unused
 # - intel-oneapi-module

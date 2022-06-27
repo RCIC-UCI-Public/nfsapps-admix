@@ -3,3 +3,5 @@
 versions: versions-extra.yaml
 build:
   - matlab-module
+  - cellranger-module
+  - freesurfer-module
