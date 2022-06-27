@@ -6,7 +6,7 @@ ansys:
 cellranger: 
   shortversion: "3.1"
   longversion: "3.1.0"
-  release: 2
+  release: "2"
 matlab:
   version: R2020b
   arch: glnxa64
@@ -14,12 +14,9 @@ freesurfer: "7.2.0"
 freesurfer_mcr: "MCRv84"
 vasp: 
   version: "6.1.2"
-  release: 2
-  mpi: "openmpi"
-  mpi_version: "4.0.3"
-  compiler: "gcc"
+  release: "2"
+  mpi_version: "mpi"
   compiler_version: "6.5.0"
-  fftw_compiler: "4.8.5"
   addreqs:
   addenv:
 stata:

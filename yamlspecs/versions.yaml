@@ -16,7 +16,7 @@ intel_compiler:
 cellranger: 
   shortversion: "3.0"
   longversion: "3.0.2"
-  release: 2
+  release: "2"
 marc: 
   version: "2020"
   arch: "linux64i8"
@@ -36,12 +36,9 @@ gaussian:
   view: "6.0.16"
 vasp: 
   version: "5.4.4"
-  release: 2
-  mpi: "openmpi"
-  mpi_version: "1.10.7"
-  compiler: "gcc"
-  compiler_version: "4.8.5"
-  fftw_compiler: "4.8.5"
+  release: "2"
+  compiler_version: "system"
+  mpi_version: "system"
   addreqs: ucx
   addenv: VASP_POT /data/opt/apps/vasp/potentials
 sas:

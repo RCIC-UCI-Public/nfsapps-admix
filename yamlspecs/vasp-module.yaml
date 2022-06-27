@@ -7,10 +7,10 @@
   release: "{{versions.vasp.release}}"
   versions: !include versions.yaml
   version: "{{versions.vasp.version}}"
-  mpi: "{{versions.vasp.mpi}}"
-  mpi_version: "{{versions.vasp.mpi_version}}"
-  compiler: "{{versions.vasp.compiler}}"
-  compiler_version: "{{versions.vasp.compiler_version}}"
+  mpi: "{{versions.mpi_sys.name}}"
+  mpi_version: !ifeq "{{versions.vasp.mpi_version}},system,{{versions.mpi_sys.version}},{{versions.mpi.version}}"
+  compiler: "{{versions.compiler.name}}"
+  compiler_version: !ifeq "{{versions.vasp.compiler_version}},system,{{versions.compiler_sys.version}},{{versions.vasp.compiler_version}}"
   vendor_source: "distro provided by Amirhossein Saeidi (saeidis) Engeeneering Dept"
   description: |
     The Vienna Ab initio Simulation Package (VASP) {{version}} is for
@@ -18,7 +18,7 @@
     calculations and quantum-mechanical molecular dynamics, from
     first principles. See https://www.vasp.at. Access to this
     software is restricted to licensed users in vasp5 group.
-    If  environment variable $VASP_POTS is set it specifies the
+    If  environment variable VASP_POT is set it specifies the
     installation directory of pseudo-potentials, otherwise there
     are no pseudo-potentials installd for this VASP version.
   module:
@@ -26,7 +26,7 @@
       - "{{versions.vasp.addenv}}"
     prereq:
       - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
-      - fftw/{{versions.fftw}}/{{compiler}}.{{versions.vasp.fftw_compiler}}
+      - fftw/{{versions.fftw}}/{{compiler}}.{{versions.compiler_sys.version}}
     requires:
       - rcic-module-support
       - "{{module.prereq}}"
