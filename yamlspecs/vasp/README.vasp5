@@ -37,6 +37,8 @@ Edits in makefile.include
 - set for system's openmpi
   MPI_INC    =  $(MPI_INCLUDE)
 
+Edited file is saved as makefile.include.vasp5
+
 3. append  the following 4 lines to src/symbol.inc. This works together
    with the CPP_OPTIONS in makefile.include
 ! routines replaced in LAPACK >=3.6
