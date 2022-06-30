@@ -40,6 +40,8 @@ Edits in makefile.include
 - set for system's openmpi
   MPI_INC    =  $(MPI_INCLUDE)
 
+Edited file is saved as makefile.include.vasp6 in nfsapps-admix repo
+
 3. Disable macros for GNU version in src/symbol.inc via
    commenting out last 5 lines:
 ! #ifdef __GNUC__
@@ -62,4 +64,49 @@ Copy resulting binaries vasp_gam,vasp_ncl,vasp_std from bin/ to HPC3
 mkdir -p /data/opt/apps/vasp/6.1.2/bin
 cp -p vasp_gam vasp_ncl vasp_std /data/opt/apps/vasp/6.1.2/bin
 chmod o-rx /data/opt/apps/vasp/6.1.2/
-chown -R root:vasp5 /data/opt/apps/vasp/6.1.2
+chown -R root:vasp6 /data/opt/apps/vasp/6.1.2
+
+----------------------------------
+	CHANGES for Rocky Linux 8
+----------------------------------
+
+Fail with openmpi/4.1.1/gcc.system
+The following combination of modules works
+
+-----------------------------
+Build 2022-06-30 on admixdev-6
+-----------------------------
+
+Steps 1-3 are the same.
+
+4 load modules (no cuda) and compile.
+module load scalapack/2.1.0
+module load lapack/3.9.0
+module load fftw/3.3.8/gcc.system
+module load openmpi/4.0.3/gcc.6.5.0
+
+nohup make all &> out &
+
+5. verification of built binaries.
+
+wget https://hpc-uit.readthedocs.io/en/latest/_downloads/6582cc18a57df629960fb5cffe63af9c/CeO2.tar.gz -O CeO2.tar
+tar xf CeO2.tar 
+cd CeO2job/
+ 
+module load fftw/3.3.8/gcc.8.4.0
+module load openmpi/4.0.3/gcc.6.5.0
+ 
+mpirun --allow-run-as-root ../vasp.6.1.2/bin/vasp_std &> output-vasp5
+
+Check output against previous build.
+OK, minor diffs in high position after the decimal point.
+
+-------------------------------------------
+Install - finalize after the OS upgrade
+-------------------------------------------
+6. save binaries till upgrade in /data/opt/apps/vasp/rocky8/6.1.2/bin
+mkdir -p /data/opt/apps/vasp/rocky8/6.1.2/bin
+cp -p bin/vasp_* /data/opt/apps/vasp/rocky8/6.1.2/bin
+chmod o-rx /data/opt/apps/vasp/rocky8/6.1.2/
+chown -R root:vasp6 /data/opt/apps/vasp/rocky8/6.1.2
+

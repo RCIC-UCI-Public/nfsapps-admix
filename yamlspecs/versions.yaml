@@ -37,10 +37,14 @@ gaussian:
 vasp: 
   version: "5.4.4"
   release: "2"
-  compiler_version: "system"
-  mpi_version: "system"
+  mpi_name: openmpi
+  mpi_version: "4.0.3"
+  compiler_name: "gcc"
+  compiler_version: "6.5.0"
+  fftw_compiler_version: "system"
   addreqs: ucx
   addenv: VASP_POT /data/opt/apps/vasp/potentials
+# NOTE: vasp compiles with these specific versions
 sas:
   version: "94M7"
   rel: "9.4"
