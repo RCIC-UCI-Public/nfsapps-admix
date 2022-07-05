@@ -1,4 +1,19 @@
 =====================================
+Installation of FreeSurfer7 01/26/2022
+=====================================
+Versio 7.2.0
+
+See download page https://surfer.nmr.mgh.harvard.edu/fswiki/rel7downloads
+
+wget https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.2.0/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz
+mkdir -p /data/opt/apps/freesurfer/7.2.0
+zcat freesurfer-linux-centos7_x86_64-7.2.0.tar.gz | (cd /data/opt/apps/freesurfer/7.2.0; tar xf - --strip-components=1)
+
+# Add license file, otherwise freesurfer errors out
+cp /data/opt/apps/freesurfer/7.1.1/license.txt /data/opt/apps/freesurfer/7.2.0/license.txt
+
+
+=====================================
 Installation of FreeSurfer7 9/3/2020
 =====================================
 Version 7.1.1
@@ -17,6 +32,14 @@ ppapadop@uci.edu
  *CY/c/IAeK0HQ
  FSltCkb2tS1yk
 EOF
+
+1. Update 2020-06-15 for 7.1.1
+   Per ticket #5590 updated $FREESURFER_HOME/bin/quantifyThalamicNuclei.sh
+   Original saved as $FREESURFER_HOME/bin/quantifyThalamicNuclei.sh.bck
+
+2. Update 2020-06-16
+   Set execute permissions on the shell script
+   chmod +x $FREESURFER_HOME/bin/quantifyThalamicNuclei.sh
 
 =====================================
 Installation of FreeSurfer6 9/4/2020
