@@ -93,10 +93,10 @@ wget https://hpc-uit.readthedocs.io/en/latest/_downloads/6582cc18a57df629960fb5c
 tar xf CeO2.tar 
 cd CeO2job/
  
-module load fftw/3.3.8/gcc.8.4.0
+module load fftw/3.3.8/gcc.system
 module load openmpi/4.0.3/gcc.6.5.0
  
-mpirun --allow-run-as-root ../vasp.6.1.2/bin/vasp_std &> output-vasp5
+mpirun --allow-run-as-root ../vasp.6.1.2_patched/bin/vasp_std &> output-vasp6
 
 Check output against previous build.
 OK, minor diffs in high position after the decimal point.
