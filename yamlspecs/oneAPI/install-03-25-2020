@@ -1,3 +1,0 @@
-# tar xzvf l_BaseKit_b_2021.1.5.720_offline.tar.gz 
-# cd l_BaseKit_b_2021.1.5.720_offline
-# ./install.sh ../silent.cfg

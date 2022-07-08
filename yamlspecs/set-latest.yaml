@@ -10,3 +10,4 @@ build:
   - stata-module
   - turbomole-module
   - turbomole-smp-module
+  - intel-oneapi-module

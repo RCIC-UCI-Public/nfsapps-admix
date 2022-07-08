@@ -20,3 +20,7 @@ vasp:
 stata:
   version: "17"
 turbomole: "7.6"
+oneAPI:
+  version: "2022.2"
+  toolversion: "2022.1.0"
+  hpcversion: "2021.6.0"
