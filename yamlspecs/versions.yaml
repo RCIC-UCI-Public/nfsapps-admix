@@ -1,18 +1,12 @@
 !include site.yaml
 ---
 nfspath: /data/opt/apps
-Mathematica:
-  version: "12.3"
 matlab:
   version: R2020a
   arch: glnxa64
 stata:
   version: "16"
   arch: "linux64"
-intel_compiler: 
-  shortversion: "2020u1"
-  longversion: "2020.1.217"
-  arch: "intel64"
 cellranger: 
   shortversion: "3.0"
   longversion: "3.0.2"
@@ -58,3 +52,5 @@ sas:
 #spaceranger: "1.1.0"
 #comsol: "5.6.0"
 #abaqus: "2019"
+#Mathematica:
+#  version: "12.3"
