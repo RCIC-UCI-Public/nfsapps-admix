@@ -1,5 +1,5 @@
 =============================
-2020-03-25
+2020-03-25  oneAPI 2021.1
 =============================
 
 This is the install notes of oneAPI from Intel.
@@ -12,3 +12,90 @@ Download: https://dynamicinstaller.intel.com/oneapi/toolkits/base-kit/linux/
    tar xzvf l_BaseKit_b_2021.1.5.720_offline.tar.gz
    cd l_BaseKit_b_2021.1.5.720_offline
    ./install.sh ../silent.cfg
+
+=============================
+2022-07-27  oneAPI 2022.2
+=============================
+Download
+https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html?operatingsystem=linux&distributions=webdownload&options=offline
+Command line install guide:
+https://www.intel.com/content/www/us/en/develop/documentation/installation-guide-for-intel-oneapi-toolkits-linux/top/installation/install-with-command-line.html
+
+Build was done on admixdev-6 and the resulting install dir rsync'ed to hpc3-xcat-1
+
+1 download BsseKit and HPCKit
+  wget https://registrationcenter-download.intel.com/akdlm/irc_nas/18673/l_BaseKit_p_2022.2.0.262_offline.sh
+  wget https://registrationcenter-download.intel.com/akdlm/irc_nas/18679/l_HPCKit_p_2022.2.0.191_offline.sh
+
+2 check sha384 signature 
+  sha384sum l_BaseKit_p_2022.2.0.262_offline.sh
+  e508b0a64f048d9518cc3706e1fa3f400dbb0a07fdc0f91e02b371b18a35715fa0fad7a960dbb7fc04595f77ae65a333  l_BaseKit_p_2022.2.0.262_offline.sh
+  sha384sum l_HPCKit_p_2022.2.0.191_offline.sh
+  fe1cab733994e7f9ae4471fff586401f76becf439bea82d80e8c821dd36f48aa1c0328daffc061bb1c204cfdde365607  l_HPCKit_p_2022.2.0.191_offline.sh
+
+  To check the contents of distro:
+	sh l*sh -a --list-components
+  Note, extracted arcive removed after the command is done.
+
+3 install base kit 
+  sh l_Base*sh -a --silent --config silent-2022.2.cfg
+
+ The silent-2022.2.cfg lists install location, eula and components to install.
+ If components are not specified, all by default are installed. Among them vtune
+ (VTune Profiler) is problematic as it adds script to systemctl, changes /etc/group file.
+
+  Install starts with the extraction of the archive and a few messages:
+
+     Extract l_BaseKit_p_2022.2.0.262_offline to /export/repositories/nfsapps-admix/yamlspecs/oneAPI/l_BaseKit_p_2022.2.0.262_offline...
+     [#####################################################################################################################]
+     Extract l_BaseKit_p_2022.2.0.262_offline completed!
+     Checking system requirements...
+     Done.
+     Wait while the installer is preparing...
+     Done.
+     Launching the installer...
+     This machine uses operating system "Rocky Linux version 8.4". Compatibility issues may occur.
+     Installation can continue; however, product functionality may not meet expectations because 
+     this product is untested on this operating system. Suggestion: Check the Release Notes for 
+     a list of supported operating systems and install this product on a compliant system.
+     Intel® Graphics Compute Runtime for OpenCL™ not found.
+     You have no relevant GPU driver. If you are going to develop and run GPU-accelerated applications on this system,
+     please check the installation guide for instructions on the GPU drivers here: 
+     https://www.intel.com/content/www/us/en/develop/documentation/installation-guide-for-intel-oneapi-toolkits-linux/top/prerequisites/install-intel-gpu-drivers.html
+     Otherwise, you can ignore the warning and continue the installation as is: the product can still be used with CPU.
+     ...
+     Start installation flow...
+     Installed Location: /tmp/oneAPI/2022.2
+     Installation has successfully completed
+     Log file: /tmp/oneAPI/2022.2/logs/installer.install.intel.oneapi.lin.basekit.product,v=2022.2.0-262.2022.07.06...
+     Remove extracted files: /export/repositories/nfsapps-admix/yamlspecs/oneAPI/l_BaseKit_p_2022.2.0.262_offline...
+
+  NOTE: Per Intel Release Notes, Intel® oneAPI DPC++/C++ Compiler is not supported on Rocks linux 8
+  https://www.intel.com/content/www/us/en/developer/articles/release-notes/intel-oneapi-toolkit-release-notes.html
+  https://www.intel.com/content/www/us/en/developer/articles/system-requirements/intel-oneapi-base-toolkit-system-requirements.html
+  
+4 install HPC toolkit in the same location, this is an addon to the base toolkit
+  sh l_HPC*sh -a --silent --eula accept --install-dir /tmp/oneAPI/2022.2
+
+  Similar output and log messages.
+ 
+5 move <install_dir>/logs to /data/opt/sources/intel/oneAPI/2022.2 on hpc3-xcat-1
+
+6 in top most install directory create intel-type modules
+  ./modulefiles-setup.sh --ignore-latest
+
+  This results in  directory modulefiles/ with symlinks to actual intel module files for each package (total mess)
+  Examine and pull all needed variables into intel-oneapi mdoule. Remove from modulesfiles/ any *32* links
+  leave the rest for a reference.
+
+7 Use rsync to copy oneAPI/2022.2 to /data/opt/app/intel on hpc3-xcat-1 
+  Do not copy (or remove) modulesfiles/ as the links are wrong per initial install.
+
+  Rsync missed one file, scp by hand and verify permissions and sha1sum vith the original
+  cd 2022.2/inspector/2022.1.0/lib64/gtpin/
+  cp ~npw/bin/gentrace.so.sig .
+  ls -l gentrace.so.sig 
+  sha1sum gentrace.so.sig 
+  f9549a42f249176768b5a90f64ae0166e9698e3a  gentrace.so.sig
+
+8  Rerun  step (6) above on xcat-1  in the final location.
