@@ -16,9 +16,12 @@ Download: https://dynamicinstaller.intel.com/oneapi/toolkits/base-kit/linux/
 =============================
 2022-07-27  oneAPI 2022.2
 =============================
+
 Download
-https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html?operatingsystem=linux&distributions=webdownload&options=offline
-Command line install guide:
+https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit.html
+https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit.html
+
+Command line install guide
 https://www.intel.com/content/www/us/en/develop/documentation/installation-guide-for-intel-oneapi-toolkits-linux/top/installation/install-with-command-line.html
 
 Build was done on admixdev-6 and the resulting install dir rsync'ed to hpc3-xcat-1
