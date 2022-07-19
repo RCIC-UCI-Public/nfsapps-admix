@@ -13,6 +13,7 @@ build:
   - fsl-module
   - vasp-module
   - gaussian-module
+  - sas-module
 manifest:
   - "{{build}}"
 sets:
