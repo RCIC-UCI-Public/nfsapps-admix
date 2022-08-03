@@ -1,19 +1,11 @@
 # This is the Mathematica module
 # must be included in specific yaml file
-!include rcic-package.yaml
-!include rcic-module.yaml
+!include common.yaml
 ---
 - package: Mathematica module 
   category: LANGUAGES
   name: Mathematica
-  versions: !include versions.yaml
   version: "{{versions.Mathematica.version}}"
   vendor_source: https://mathematica.com
   description: |
       Mathematica {{version}} is a general-purpose statistical/math software package.
-  root: "{{versions.nfspath}}/{{name}}/{{version}}"
-  module:
-    prepend_path:
-      - PATH {{root}}/bin
-    requires:
-      - rcic-module-support
