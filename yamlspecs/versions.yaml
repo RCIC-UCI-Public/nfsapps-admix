@@ -7,10 +7,6 @@ matlab:
 stata:
   version: "16"
   arch: "linux64"
-cellranger: 
-  shortversion: "3.0"
-  longversion: "3.0.2"
-  release: "2"
 marc: 
   version: "2020"
   arch: "linux64i8"
@@ -54,3 +50,7 @@ sas:
 #abaqus: "2019"
 #Mathematica:
 #  version: "12.3"
+#cellranger: 
+#  shortversion: "3.0"
+#  longversion: "3.0.2"
+#  release: "2"

@@ -3,7 +3,6 @@ bootstrap:
 build:
   - matlab-module
   - stata-module
-  - cellranger-module
   - marc-module
   - mentat-module
   - ansys-module
@@ -19,6 +18,7 @@ manifest:
 sets:
   - latest
   - extra
+  - cellranger
 # unused
 # - intel-oneapi-module
 # - chimera-module
@@ -28,3 +28,5 @@ sets:
 # - spaceranger-module
 # - comsol-module
 # - abaqus-module
+# barely used. add new versio via cellranger 
+# - cellranger-module
