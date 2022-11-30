@@ -3,3 +3,4 @@
 versions: versions-cellranger.yaml
 build:
   - cellranger-module
+  - cellranger-arc-module

@@ -4,3 +4,7 @@ cellranger:
   shortversion: "7.0"
   longversion: "7.0.1"
   release: 1
+cellranger_arc:
+  version: "2.0.2"
+  human: "GRCh38-2020-A-2.0.0"
+  mouse: "mm10-2020-A-2.0.0"

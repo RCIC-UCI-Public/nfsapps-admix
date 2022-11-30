@@ -1,0 +1,76 @@
+-------------------------------------------
+Download 2022-11-30
+-------------------------------------------
+See instructions on 
+https://support.10xgenomics.com/single-cell-multiome-atac-gex/software/downloads/latest
+
+1. download celranger-arc distro 
+   curl -o cellranger-arc-2.0.2.tar.gz "https://cf.10xgenomics.com/releases/cell-arc/cellranger-arc-2.0.2.tar.gz?Expires=1669876394&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1hcmMvY2VsbHJhbmdlci1hcmMtMi4wLjIudGFyLmd6IiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNjY5ODc2Mzk0fX19XX0_&Signature=B7zXAKJ0biN5Cdh6tvPIA4swpMGbcJpMjhl4VTqJAXht6R4bhR0jLy3Gya1hlwq8edn6xtZ0xIh4AmSEabIwmdqZ6JnZymEec3xjdcpjkgHNemuBTZOEDqlGd5yy9wabdGlukDO~Be5tHYOKaJCWPBPgzpJDp5QYHOR~pfQ0o15UQnRYEVM2DZIAQuKScDkq99QKxc1d6XCYLysQ~4AhNPoBGaFSErATIgj5TV8sY-nAMo4plBmorWBNqAt6tHCJ0tfcq3iMUfnqa0EZ1ggwYs0JH18JLWhUSbdgE4Nvb9JKISi37OhVpA9RYiCfXCj0r7xzhErk8np7ZeruiYbHkQ__&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA"
+   md5sum cellranger-arc-2.0.2.tar.gz 
+   7303f8ceee7b60113c9a0087268830cd  cellranger-arc-2.0.2.tar.gz
+
+
+2. download human reference dataset: GRCh38 Reference - 2020-A-2.0.0 (May 3, 2021)
+   mkdir references
+   cd references
+   curl -O https://cf.10xgenomics.com/supp/cell-arc/refdata-cellranger-arc-GRCh38-2020-A-2.0.0.tar.gz
+   md5sum refdata-cellranger-arc-GRCh38-2020-A-2.0.0.tar.gz 
+          2f12f6016197869e21e5559827002716  refdata-cellranger-arc-GRCh38-2020-A-2.0.0.tar.gz
+
+3. download mouse reference dataset:  mm10 Reference - 2020-A-2.0.0 (May 3, 2021)
+   curl -O https://cf.10xgenomics.com/supp/cell-arc/refdata-cellranger-arc-mm10-2020-A-2.0.0.tar.gz
+   md5sum refdata-cellranger-arc-mm10-2020-A-2.0.0.tar.gz 
+          a2c1cc9b8dff2a2ef36971d7c31c8304  refdata-cellranger-arc-mm10-2020-A-2.0.0.tar.gz
+
+-------------------------------------------
+Install 2022-11-30
+-------------------------------------------
+
+1. untar downloaded distro
+   mkdir /data/opt/apps/cellranger-arc
+   cd /data/opt/apps/cellranger-arc
+   tar xzvf /data/opt/sources/cellranger/cellranger-arc/cellranger-arc-2.0.2.tar.gz 
+   mv cellranger-arc-2.0.2/ 2.0.2
+
+2. fix world-writeable permissions
+   chmod go-w 2.0.2/
+   cd 2.0.2/
+   chmod -R go-w bin external/ lib/ mro/ builtwith.json  LICENSE sourceme.*  &
+
+-------------------------------------------
+Install reference databases  2022-11-30
+-------------------------------------------
+cd /dfs6/commondata
+mkdir cellranger-arc
+cd cellranger-arc
+tar xzf /data/opt/sources/cellranger/cellranger-arc/references/refdata-cellranger-arc-GRCh38-2020-A-2.0.0.tar.gz &
+
+Change ownership (all db files had user:group 5027:5000)
+chown -R root:root refdata-cellranger-arc-GRCh38-2020-A-2.0.0/
+chown -R root:root refdata-cellranger-arc-mm10-2020-A-2.0.0/
+
+-------------------------------------------
+Run verification on a compute node as a regular user
+-------------------------------------------
+1. srun -c 4 -N 1 -p free  --pty /bin/bash -i
+2. export PATH=/data/opt/apps/cellranger-arc/2.0.2:$PATH
+
+3. run site check
+   cellranger-arc sitecheck > sitecheck.txt
+
+4. run testrun
+   cellranger-arc testrun --id=tiny
+
+   Stdout ends with:
+        ...
+        - ATAC smoothed transposition site track:        /dfs6/pub/npw/cellranger-arc/tiny/outs/atac_cut_sites.bigwig
+        - ATAC peak annotations based on proximal genes: /dfs6/pub/npw/cellranger-arc/tiny/outs/atac_peak_annotation.tsv
+
+        Waiting 6 seconds for UI to do final refresh.
+        Pipestance completed successfully!
+        2022-11-30 12:51:00 Shutting down.
+
+
+   Can upload verification results to 10X with (did not do):
+   cellranger-arc upload your@email.edu sitecheck.txt
+   cellranger-arc upload your@email.edu tiny/tiny.mri.tgz
