@@ -1,0 +1,38 @@
+
+=========================
+Download 2022-12-05
+=========================
+
+Installation instructions from https://developer.nvidia.com/nvidia-hpc-sdk-229-downloads
+
+1 wget https://developer.download.nvidia.com/hpc-sdk/22.9/nvhpc_2022_229_Linux_x86_64_cuda_multi.tar.gz
+
+2 md5sum from  https://developer.download.nvidia.com/hpc-sdk/22.9/md5sum.txt
+  3e7797e46091610f5e6dc4ff2e99ebda  nvhpc_2022_229_Linux_x86_64_cuda_multi.tar.gz
+
+3 tar xpzf nvhpc_2022_229_Linux_x86_64_cuda_multi.tar.gz
+
+4 install (interactive)
+
+cd nvhpc_2022_229_Linux_x86_64_cuda_multi
+vim install_components/install
+    set cuda version on line 24
+    comment out line 63
+    This allows to set desired vwrsion of cuda which otherwise
+    is set to lowest availalbe in the distro (10.2)
+
+./install
+   this is an interactive script, 
+   which asks for install type (choose single system)
+   and for install directory.
+   The stdout ends with 
+       Installation complete.
+       HPC SDK successfully installed into /data/opt/apps/nvhpc/22.9
+
+5 Based on /data/opt/apps/nvhpc/22.9/modulefiles/ created by the install process
+  add missing link (found missing path in auto-created modulefile)
+
+  cd /data/opt/apps/nvhpc/22.9/Linux_x86_64/22.9/cuda
+  ln -s 11.7/extras extras
+
+  and create proper module in nfsapps-admix

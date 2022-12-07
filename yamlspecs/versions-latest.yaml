@@ -20,6 +20,7 @@ vasp:
 stata:
   version: "17"
 turbomole: "7.6"
+cudasdk: "22.9"
 # moved to buildtools-admix
 #oneAPI:
 #  version: "2022.2"
