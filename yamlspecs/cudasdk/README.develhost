@@ -1,0 +1,29 @@
+In order to install NVIDIA HPC SDK (nvhpc) distro on devel host have to do it on mass.oit.uci.edu
+which has an older OS (centos7) compare to the host where install will be used (rocky8)
+
+There is one file that is created on this install that is no present on the same install on HPC3.
+In order to use install on devel machines have to edit this file  and update with
+current info (gcc version) from rocky 8 host.
+
+Save original file as localrc.orig and edit localrc. 
+
+diff /data/opt/apps/nvhpc/22.9/Linux_x86_64/22.9/compilers/bin/localrc  /data/opt/apps/nvhpc/22.9/Linux_x86_64/22.9/compilers/bin/localrc.orig 
+
+3,4c3,4
+< set GCCDIR=/usr/lib/gcc/x86_64-redhat-linux/8;
+< set G77DIR=/usr/lib/gcc/x86_64-redhat-linux/8/;
+---
+> set GCCDIR=/usr/lib/gcc/x86_64-redhat-linux/4.8.5;
+> set G77DIR=/usr/lib/gcc/x86_64-redhat-linux/4.8.5/;
+7,8c7,8
+< set GCCINC= /usr/lib/gcc/x86_64-redhat-linux/8/include /usr/local/include /usr/include;
+< set GPPDIR= /usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8 /usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/x86_64-redhat-linux /usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/backward /usr/lib/gcc/x86_64-redhat-linux/8/include /usr/local/include /usr/include;
+---
+> set GCCINC= /usr/lib/gcc/x86_64-redhat-linux/4.8.5/include /usr/local/include /usr/include;
+> set GPPDIR= /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5 /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/x86_64-redhat-linux /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/backward /usr/lib/gcc/x86_64-redhat-linux/4.8.5/include /usr/local/include /usr/include;
+17c17
+< set GCCVERSION=80500;
+---
+> set GCCVERSION=40805;
+
+
