@@ -36,3 +36,11 @@ vim install_components/install
   ln -s 11.7/extras extras
 
   and create proper module in nfsapps-admix
+
+6  Compiling VASP found that localrc file need to be present
+
+   as regular user on compute node
+   pushd /data/opt/apps/nvhpc/22.9/Linux_x86_64/22.9/compilers/bin/
+   ./makelocalrc -x . -d /tmp
+
+   Copy resulting /tmp/localrc and /tmp/localrc-lock to /data/opt/apps/nvhpc/22.9/Linux_x86_64/22.9/compilers/bin/
