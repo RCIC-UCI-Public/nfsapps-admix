@@ -2,6 +2,7 @@
 !include common.yaml
 ---
 - package: cudasdk module 
+  release: 2
   category: COMPILERS
   name: cudasdk 
   version: "{{versions.cudasdk}}"
@@ -49,3 +50,6 @@
       - F77        {{nvcompdir}}/bin/nvfortran
       - CPP cpp
       - OPAL_PREFIX {{nvcommdir}}/mpi
+    provides:
+      - "{{name}}/{{version}}"
+      - "{{name}}_{{version}}"
