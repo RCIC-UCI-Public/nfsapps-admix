@@ -17,7 +17,7 @@
     atomic scale materials modelling, e.g. electronic structure
     calculations and quantum-mechanical molecular dynamics, from
     first principles. See https://www.vasp.at. Access to this
-    software is restricted to licensed users in vasp5 group.
+    software is restricted to licensed users in {{versions.vasp.group}} group.
     If  environment variable VASP_POT is set it specifies the
     installation directory of pseudo-potentials, otherwise there
     are no pseudo-potentials installd for this VASP version.
