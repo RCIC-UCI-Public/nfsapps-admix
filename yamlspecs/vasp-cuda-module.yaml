@@ -1,0 +1,21 @@
+# This is the vasp module compiled with modern gcc
+!include vasp-module.yaml
+---
+- cuda: "{{versions.vasp_gpu.cuda}}"
+  cuda_version: "{{versions.vasp_gpu.cuda_version}}"
+  baserpm: "{{name}}_{{version}}_{{cuda}}_{{cuda_version}}"
+  module:
+    path: "{{mod_defaults.path}}/{{version}}"
+    logname: "{{name}}/{{version}}/{{cuda}}.{{cuda_version}}"
+    name: "{{cuda}}.{{cuda_version}}"
+    prereq:
+      - "{{cuda}}/{{cuda_version}}"
+      - "{{compiler}}/{{compiler_version}}"
+      - hdf5/{{versions.hdf5}}/{{cuda}}.{{cuda_version}}
+    setenv: 
+      - "{{versions.vasp_gpu.addenv}}"
+    prepend_path:
+      - PATH {{root}}/cuda/bin
+
+#  logname: "{{name}}/{{version}}/{{compiler}}.{{compiler_version}}-{{cuda}}.{{cuda_version}}"
+#  name: "{{compiler}}.{{compiler_version}}-{{cuda}}.{{cuda_version}}"

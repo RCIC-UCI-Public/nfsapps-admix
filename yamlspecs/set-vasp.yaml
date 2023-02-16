@@ -1,0 +1,6 @@
+!include packages.yaml
+---
+versions: versions-vasp.yaml
+build:
+  - vasp-gcc-module
+  - vasp-cuda-module

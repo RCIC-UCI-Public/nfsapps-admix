@@ -1,0 +1,15 @@
+# This is the vasp module compiled with modern gcc
+!include vasp-module.yaml
+---
+- baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  module:
+    path: "{{mod_defaults.path}}/{{version}}"
+    logname: "{{name}}/{{version}}/{{compiler}}.{{compiler_version}}"
+    name: "{{compiler}}.{{compiler_version}}"
+    prereq:
+      - scalapack/{{versions.scalapack}} 
+      - lapack/{{versions.lapack}} 
+      - OpenBLAS/{{versions.OpenBLAS}} 
+      - fftw/{{versions.fftw}}/{{compiler}}.{{compiler_version}}-{{mpi}}.{{mpi_version}} 
+      - hdf5/{{versions.hdf5}}/{{compiler}}.{{compiler_version}}
+      - "{{compiler}}/{{compiler_version}}"

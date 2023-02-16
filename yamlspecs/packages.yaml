@@ -19,6 +19,7 @@ sets:
   - latest
   - extra
   - cellranger
+  - vasp
 # unused
 # - intel-oneapi-module
 # - chimera-module

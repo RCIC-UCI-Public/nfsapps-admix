@@ -1,0 +1,27 @@
+Prerequisite modules by version/OS/type
+
+vasp 5.4.4     centos 7                  centos 8
+===========================================================
+prereq	    openmpi/1.10.7/gcc.4.8.5   openmpi/4.1.1/gcc.system"
+prereq	    fftw/3.3.8/gcc.4.8.5       fftw/3.3.8/gcc.system"
+
+vasp 6.1.2   
+===========================================================
+prereq      openmpi/4.0.3/gcc.6.5.0    openmpi/4.0.3/gcc.6.5.0 
+prereq	    fftw/3.3.8/gcc.4.8.5       fftw/3.3.8/gcc.system
+
+vasp 6.3.2 (cpu)
+===========================================================
+prereq      -----                      scalapack/2.1.0
+prereq      -----                      lapack/3.9.0
+prereq      -----                      OpenBLAS/0.3.19
+prereq      -----                      fftw/3.3.10/gcc.11.2.0-openmpi.4.1.2
+prereq      -----                      hdf5/1.13.1/gcc.11.2.0
+prereq      -----                      gcc/11.2.0
+
+vasp 6.3.2 (gpu)
+===========================================================
+prereq      -----                      cudasdk/22.9
+prereq      -----                      gcc/11.2.0
+prereq      -----                      hdf5/1.13.1/cudasdk.22.9
+
