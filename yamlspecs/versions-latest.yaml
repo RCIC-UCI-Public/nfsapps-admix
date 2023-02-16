@@ -17,6 +17,7 @@ vasp:
   release: "2"
   addreqs:
   addenv:
+  group: vasp6
 stata:
   version: "17"
 turbomole: "7.6"
