@@ -3,6 +3,8 @@
 ---
 - cuda: "{{versions.vasp_gpu.cuda}}"
   cuda_version: "{{versions.vasp_gpu.cuda_version}}"
+  compiler: "{{versions.vasp_gpu.compiler_name}}"
+  compiler_version: "{{versions.vasp_gpu.compiler_version}}"
   baserpm: "{{name}}_{{version}}_{{cuda}}_{{cuda_version}}"
   module:
     path: "{{mod_defaults.path}}/{{version}}"
