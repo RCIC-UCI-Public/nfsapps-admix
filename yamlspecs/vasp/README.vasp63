@@ -1,0 +1,115 @@
+Distro is provided by the PI Elizabeth Lee who has 6 user license
+
+Per general instructions on https://www.vasp.at/wiki/index.php/Installing_VASP.6.X.X
+See description of include templates in https://www.vasp.at/wiki/index.php/Makefile.include#Customize
+
+======================================
+Install 2022-12-13  GPU version
+======================================
+
+1. untar 
+tar xzvf vasp.6.3.2_patched.tgz
+
+2. prepare makefile.include
+cp arch/makefile.include.nvhpc_ompi_mkl_omp_acc makefile.include
+
+Edit makefile.include and set the following
+
+FC          = mpif90 -acc -gpu=cc60,cc70,cc80,cuda11.7 -mp
+FCL         = mpif90 -acc -gpu=cc60,cc70,cc80,cuda11.7 -mp -c++libs
+OFLAG_IN   = -fast -Mwarperf
+SOURCE_IN  := nonlr.o
+CPP_OPTIONS+= -DVASP_HDF5
+HDF5_ROOT  ?= $(HDF5_HOME)
+LLIBS      += -L$(HDF5_ROOT)/lib -lhdf5_fortran
+INCS       += -I$(HDF5_ROOT)/include
+
+Edited file is saved as makefile.include.vasp63.gpu  in nfsapps-admix repo
+
+3. load modules and compile
+
+module load cudasdk/22.9 
+module load intel/2022.2 
+module load hdf5/1.13.1/cudasdk.22.9 
+
+make veryclean
+nohup make -j 4 all >& out &
+
+error about localrc in cudasdk
+   nvfortran -Mpreprocess -Mfree -Mextend -E preclib.F > preclib.f90
+   nvfortran-Error-Please run makelocalrc to complete your installation
+   nvfortran-Error-nvfortran-Error-Please run makelocalrc to complete your installationPlease run makelocalrc to complete your installation
+FIX via
+   pushd /data/opt/apps/nvhpc/22.9/Linux_x86_64/22.9/compilers/bin/
+   makelocalrc -x . -d /tmp
+   ls /tmp
+   more /tmp/localrc
+   mv /tmp/localrc .
+
+Rerun make:
+nohup make -j 4 all >& out &
+   this fails with error about not finding mod files. 
+   rerun make with one thread
+
+make veryclean
+nohup make DEPS=1  all &> out &
+
+4. install binaries in the final location
+mkdir -p /data/opt/apps/vasp/6.3.2/cuda/bin
+cp -p vasp_gam vasp_ncl vasp_std /data/opt/apps/vasp/6.3.2/cuda/bin
+chmod o-rx /data/opt/apps/vasp/6.3.2/
+chown -R root:vasp63 /data/opt/apps/vasp/6.3.2
+
+======================================
+Install 2022-12-21  CPU version
+======================================
+
+1. untar 
+tar xzvf vasp.6.3.2_patched.tgz
+
+2. prepare makefile.include
+cp arch/makefile.include.gnu_omp makefile.include
+
+Edit makefile.include and set the following:
+
+OPENBLAS_ROOT ?= $(OPENBLAS_HOME)
+SCALAPACK_ROOT ?= $(SCALAPACK_DIR)
+FFTW_ROOT  ?= $(FFTW_DIR)
+CPP_OPTIONS+= -DVASP_HDF5
+HDF5_ROOT  ?= $(HDF5_HOME)
+LLIBS      += -L$(HDF5_ROOT)/lib -lhdf5_fortran
+INCS       += -I$(HDF5_ROOT)/include
+CPP_OPTIONS+= -Dsysv
+FCL        += fftlib.o
+CXX_FFTLIB  = g++ -fopenmp -std=c++11 -DFFTLIB_THREADSAFE
+INCS_FFTLIB = -I./include -I$(FFTW_ROOT)/include
+LIBS       += fftlib
+LLIBS      += -ldl
+
+Edited file is saved as makefile.include.vasp63 in nfsapps-admix repo
+
+3. load modules (no cuda) and compile
+
+module load scalapack/2.1.0
+module load lapack/3.9.0
+module load OpenBLAS/0.3.19  
+module load fftw/3.3.10/gcc.11.2.0-openmpi.4.1.2  
+module load hdf5/1.13.1/gcc.11.2.0   
+module load openmpi/4.1.2/gcc.11.2.0 
+module load gcc/11.2.0 
+
+make veryclean
+nohup make DEPS=1 all &> out &
+
+cd testsuite
+nohup ./runtest ompi+omp.conf >& out &
+
+The compilation was done on developemnt machine admixdev-6
+Copy resulting binaries vasp_gam,vasp_ncl,vasp_std from bin/ to HPC3
+
+4. install binaries in the final location
+mkdir -p /data/opt/apps/vasp/6.3.2/bin
+cp -p vasp_gam vasp_ncl vasp_std /data/opt/apps/vasp/6.3.2/bin
+chmod o-rx /data/opt/apps/vasp/6.3.2/
+chown -R root:vasp63 /data/opt/apps/vasp/6.3.2
+
