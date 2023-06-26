@@ -10,6 +10,7 @@ build:
   - stata-module
   - turbomole-module
   - turbomole-smp-module
-  - cudasdk-module
+# this is moved to buildtools-admix
+# - cudasdk-module
 # this is mmoved to buildtools-admix
 # - intel-oneapi-module
