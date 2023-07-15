@@ -36,9 +36,9 @@ vasp:
   addreqs: ucx
   addenv: VASP_POT /data/opt/apps/vasp/potentials
 # NOTE: vasp compiles with these specific versions
-sas:
-  version: "94M7"
-  rel: "9.4"
+#sas:
+#  version: "94M7"
+#  rel: "9.4"
 # unused
 #chimera: "1.15"
 #cudasdk: "20.7"
