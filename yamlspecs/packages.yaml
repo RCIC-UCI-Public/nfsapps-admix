@@ -16,8 +16,8 @@ build:
 manifest:
   - "{{build}}"
 sets:
-  - latest
-  - extra
+  - group1
+  - group2
   - cellranger
   - vasp
 # unused

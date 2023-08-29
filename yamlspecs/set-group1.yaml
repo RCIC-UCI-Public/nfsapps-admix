@@ -1,6 +1,6 @@
 !include packages.yaml
 ---
-versions: versions-latest.yaml
+versions: versions-group1.yaml
 build:
   - ansys-module
   - cellranger-module
