@@ -3,6 +3,7 @@
 ---
 - package: ansys module 
   category: ENGINEERING
+  release: 2
   name: ansys 
   version: "{{versions.ansys.version}}"
   rel: "{{versions.ansys.rel}}"
@@ -21,6 +22,9 @@
       - ANSYS202_DIR {{root}}/{{rel}}/ansys
       - ANSYSLIC_DIR {{root}}/shared_files/licensing
       - ANSYSLMD_LICENSE_FILE 1055@128.200.217.34
+    requires:
+      - rcic-module-support
+      - libnsl
 
 # not sure if needed. can add later
 #      - PATH {{root}}/{{rel}}/icemcfd/linux64_amd/bin
