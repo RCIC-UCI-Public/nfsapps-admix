@@ -4,11 +4,11 @@
 - package: MATLAB module 
   category: LANGUAGES
   name: MATLAB 
-  release: "3"
+  release: "{{versions.matlab.rel}}"
   version: "{{versions.matlab.version}}"
   vendor_source: https://www.mathworks.com/academia/tah-portal/university-of-california-irvine-30980328.html 
   description: |
-      MATLAB (R)({{version}}).  combines a desktop environment tuned for iterative analysis 
+      MATLAB (R) version ({{version}}) combines a desktop environment tuned for iterative analysis
       and design processes with a programming language that expresses matrix and 
       array mathematics directly. It includes the Live Editor for creating scripts
       that combine code, output, and formatted text in an executable notebook. This is

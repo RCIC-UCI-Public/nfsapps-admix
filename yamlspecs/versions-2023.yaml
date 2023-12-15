@@ -1,0 +1,6 @@
+!include versions.yaml
+---
+matlab:
+  version: R2023a
+  arch: glnxa64
+  rel: 1

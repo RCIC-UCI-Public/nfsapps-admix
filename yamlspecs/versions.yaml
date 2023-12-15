@@ -3,6 +3,7 @@
 nfspath: /data/opt/apps
 matlab:
   version: R2020a
+  rel: 4
   arch: glnxa64
 stata:
   version: "16"

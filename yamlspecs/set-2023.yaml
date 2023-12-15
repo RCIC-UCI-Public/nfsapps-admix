@@ -1,0 +1,5 @@
+!include packages.yaml
+---
+versions: versions-2023.yaml
+build:
+  - matlab-module

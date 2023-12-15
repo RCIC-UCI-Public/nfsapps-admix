@@ -20,6 +20,7 @@ sets:
   - group2
   - cellranger
   - vasp
+  - "2023"
 # unused
 # - intel-oneapi-module
 # - chimera-module
