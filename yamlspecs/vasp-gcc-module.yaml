@@ -2,6 +2,10 @@
 !include vasp-module.yaml
 ---
 - baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  mpi_name: "{{versions.mpi.name}}"
+  mpi_version: "{{versions.mpi.version}}"
+  compiler_name: "{{versions.compiler.name}}"
+  compiler_version: "{{versions.compiler.version}}"
   module:
     path: "{{mod_defaults.path}}/{{version}}"
     logname: "{{name}}/{{version}}/{{compiler}}.{{compiler_version}}"

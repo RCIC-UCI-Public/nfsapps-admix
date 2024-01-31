@@ -5,19 +5,13 @@ scalapack: "2.1.0"
 lapack: "3.9.0"
 vasp: 
   version: "6.3.2"
-  release: "1"
+  release: 1
   addenv:
     - UCX_TLS rc,mm
     - UCX_NET_DEVICES mlx5_0:1
   group: vasp63
-  mpi_name: "{{versions.mpi.name}}"
-  mpi_version: "{{versions.mpi.version}}"
-  compiler_name: "{{versions.compiler.name}}"
-  compiler_version: "{{versions.compiler.version}}"
 vasp_gpu:
   addenv:
     - MKL_THREADING_LAYER INTEL
-  compiler_name: "{{versions.compiler_intel.name}}"
-  compiler_version: "{{versions.compiler_intel.version}}"
   cuda: cudasdk
   cuda_version: "22.9"
