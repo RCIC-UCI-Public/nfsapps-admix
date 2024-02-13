@@ -1,0 +1,68 @@
+=====================================
+Installation of FreeSurfer7 2023/02/28
+=====================================
+Version 7.3.2
+
+See download page https://surfer.nmr.mgh.harvard.edu/fswiki/rel7downloads
+
+1 download 
+  wget https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.3.2/freesurfer-linux-centos8_x86_64-7.3.2.tar.gz
+
+2 install
+  mkdir -p /data/opt/apps/freesurfer/7.3.2
+  zcat freesurfer-linux-centos8_x86_64-7.3.2.tar.gz | (cd /data/opt/apps/freesurfer/7.3.2; tar xf - --strip-components=1)
+  chown -R root:root /data/opt/apps/freesurfer/7.3.2
+
+3 Add license file, otherwise freesurfer errors out
+  cp /data/opt/apps/freesurfer/7.1.1/license.txt /data/opt/apps/freesurfer/7.3.2/license.txt
+
+4 The directory lib/qt/ has only two top level subdirs but otherwise is empty 
+  wget https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.3.2/freesurfer-CentOS8-7.3.2-1.x86_64.rpm
+  rpm2cpio ../freesurfer-CentOS8-7.3.2-1.x86_64.rpm | cpio -idmv
+  check respective contents of lib/qt/ and recursively copy to /data/opt/apps/freesurfer/7.1.1/lib/qt
+
+=====================================
+Installation of MCR 
+=====================================
+
+The /data/opt/apps/freesurfer/7.3.2/bin/fs_install_mcr
+is still asking to use much older matlab version 2019b
+and per github entries for  fs_install_mcr this is related to MacOS
+See https://github.com/freesurfer/freesurfer branch 7.3.3
+
+try first 
+cd /data/opt/apps/freesurfer/7.3.2
+ln -s /data/opt/apps/MATLAB/R2021b MCRv84
+
+Results in error when running freeview
+
+====   ATTENTION below text needs editing
+Matlab runtime versions are availaleb at https://www.mathworks.com/products/compiler/matlab-runtime.html
+Pick 2022a, so it is earlier release thatn freesurfer distro
+
+wget https://ssd.mathworks.com/supportfiles/downloads/R2022a/Release/6/deployment_files/installer/complete/glnxa64/MATLAB_Runtime_R2022a_Update_6_glnxa64.zip
+
+### create temp install
+mkdir temp_install_R2022a
+cd temp_install_R2022a
+unzip ../MATLAB_Runtime_R2022a_Update_6_glnxa64.zip
+mkdir install-target
+./install -mode silent -agreeToLicense yes -destinationFolder `pwd`/install-target
+
+Installation ends with success messages and:
+   On the target computer, append the following to your LD_LIBRARY_PATH environment variable:
+   /data/opt/sources/freesurfer/temp_install_R2014b/install-target/v84/runtime/glnxa64 
+   /data/opt/sources/freesurfer/temp_install_R2014b/install-target/v84/bin/glnxa64 
+   /data/opt/sources/freesurfer/temp_install_R2014b/install-target/v84/sys/os/glnxa64
+
+   Next, set the XAPPLRESDIR environment variable to the following value:
+   /data/opt/sources/freesurfer/temp_install_R2014b/install-target/v84/X11/app-defaults
+
+### mv created installation to freesurfer root
+mv install-target/v84  /data/opt/apps/freesurfer/7.1.1/MCRv84
+
+Update freesurfer module LD_LIBRARY_PATH variable with above setrtings.
+Ignore non-existing X11.
+
+cd /data/opt/apps/freesurfer/7.3.2
+ln -s /data/opt/apps/MATLAB/R2021b MCRv97
