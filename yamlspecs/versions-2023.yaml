@@ -3,3 +3,5 @@
 matlab:
   version: R2023b
   arch: glnxa64
+freesurfer: "7.3.2"
+freesurfer_mcr: "MCRv97"

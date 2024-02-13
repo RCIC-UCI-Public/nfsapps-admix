@@ -21,6 +21,7 @@ sets:
   - cellranger
   - vasp
   - "2023"
+  - "2024"
 # unused
 # - intel-oneapi-module
 # - chimera-module

@@ -16,17 +16,19 @@
     Human Connectome Project
   mcr: "{{versions.freesurfer_mcr}}"
   module:
+    glnxpath: &GlnxPath
+      - LD_LIBRARY_PATH {{root}}/{{mcr}}/runtime/glnxa64
+      - LD_LIBRARY_PATH {{root}}/{{mcr}}/bin/glnxa64
     basepath: &BasePath
       - PATH {{root}}/mni/bin
       - PATH {{root}}/tktools
       - PATH {{root}}/fsfast/bin
       - PATH {{root}}/bin
-      - LD_LIBRARY_PATH {{root}}/lib
-      - LD_LIBRARY_PATH {{root}}/{{mcr}}/runtime/glnxa64
-      - LD_LIBRARY_PATH {{root}}/{{mcr}}/bin/glnxa64
       - PERL5LIB {{root}}/mni/share/perl5
+      - LD_LIBRARY_PATH {{root}}/lib
     prepend_path:
       - *BasePath
+      - *GlnxPath
     baseenv: &BaseEnv 
       - FREESURFER_HOME {{root}}
       - FMRI_ANALYSIS_DIR {{root}}/fsfast

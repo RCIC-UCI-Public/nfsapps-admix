@@ -1,0 +1,14 @@
+# This is the freesurfer module updated with new env vars
+!include freesurfer-module.yaml
+---
+- release: 1
+  module:
+    prepend_path:
+      - *BasePath
+    setenv:  
+      - FIX_VERTEX_AREA ""
+      - FS_MCRROOT {{root}}/{{mcr}}
+      - MCRROOT {{root}}/{{mcr}}
+      - OS Linux
+      - FREESURFER {{root}}
+      - *BaseEnv
