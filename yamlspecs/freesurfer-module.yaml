@@ -19,13 +19,13 @@
     glnxpath: &GlnxPath
       - LD_LIBRARY_PATH {{root}}/{{mcr}}/runtime/glnxa64
       - LD_LIBRARY_PATH {{root}}/{{mcr}}/bin/glnxa64
+      - LD_LIBRARY_PATH {{root}}/lib
     basepath: &BasePath
       - PATH {{root}}/mni/bin
       - PATH {{root}}/tktools
       - PATH {{root}}/fsfast/bin
       - PATH {{root}}/bin
       - PERL5LIB {{root}}/mni/share/perl5
-      - LD_LIBRARY_PATH {{root}}/lib
     prepend_path:
       - *BasePath
       - *GlnxPath
