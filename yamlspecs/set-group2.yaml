@@ -4,4 +4,3 @@ versions: versions-group2.yaml
 build:
   - matlab-module
   - cellranger-module
-  - freesurfer-module

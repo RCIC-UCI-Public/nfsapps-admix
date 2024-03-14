@@ -3,4 +3,3 @@
 versions: versions-2023.yaml
 build:
   - matlab-module
-  - freesurfer7-module

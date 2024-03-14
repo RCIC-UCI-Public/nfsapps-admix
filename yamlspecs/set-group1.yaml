@@ -3,7 +3,6 @@
 versions: versions-group1.yaml
 build:
   - ansys-module
-  - cellranger-module
   - matlab-module
   - freesurfer-module
   - vasp-module

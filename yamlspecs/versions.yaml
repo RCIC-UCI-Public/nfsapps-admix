@@ -37,22 +37,3 @@ vasp:
   addreqs: ucx
   addenv: VASP_POT /data/opt/apps/vasp/potentials
 # NOTE: vasp compiles with these specific versions
-#sas:
-#  version: "94M7"
-#  rel: "9.4"
-# unused
-#chimera: "1.15"
-#cudasdk: "20.7"
-#oneAPI:
-#  shortversion: 2021.1_beta05
-#  longversion: b_2021.1.5.720
-#schrodinger: "2020.1"
-#spaceranger: "1.1.0"
-#comsol: "5.6.0"
-#abaqus: "2019"
-#Mathematica:
-#  version: "12.3"
-#cellranger: 
-#  shortversion: "3.0"
-#  longversion: "3.0.2"
-#  release: "2"

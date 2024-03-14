@@ -12,7 +12,6 @@ build:
   - fsl-module
   - vasp-module
   - gaussian-module
-# - sas-module
 manifest:
   - "{{build}}"
 sets:
@@ -22,14 +21,3 @@ sets:
   - vasp
   - "2023"
   - "2024"
-# unused
-# - intel-oneapi-module
-# - chimera-module
-# - cudasdk-module
-# - schrodinger-module
-# - turbomole-mpi-module
-# - spaceranger-module
-# - comsol-module
-# - abaqus-module
-# barely used. add new versio via cellranger 
-# - cellranger-module
