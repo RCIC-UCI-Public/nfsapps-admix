@@ -1,0 +1,59 @@
+This file provides useful links, a description of
+the template slurm submit scripts, and a statement
+about using scratch disks for TURBOMOLE calculations.
+
+# Links
+
+The license for TURBOMOLE 7.8.1 on HPC3 is found at:
+/data/opt/apps/turbomole/7.8.1/TURBOMOLE/LICENSE
+
+The manual for TURBOMOLE 7.8.1 is found at:
+https://www.turbomole.org/turbomole/turbomole-documentation/
+
+A template slurm script for SMP or SERIAL TURBOMOLE calculation is found at
+/data/opt/apps/turbomole/7.8.1/TURBOMOLE/turbomole7.8.1.slurm.template
+
+# Template Slurm Script turbomole7.8.1.slurm.template
+
+To prepare a customized slurm script, copy the template into
+a separate file, and edit the file to set queue variables and
+calls to relevant TURBOMOLE programs.  Please refer to the
+manual for program capabilities and input file requirements.
+
+The submit script is submitted with the `sbatch` command to the
+SLURM scheduler. The submit script automatically loads the right
+TURBOMOLE module, depending on the chosen number of tasks:
+(a) it selects the SMP version if a user requests more than 1 task
+(b) it selects serial version if the number of tasks is 1.
+
+In the submit script, the lines that start with `#SBATCH` define queue
+and job parameters. The TURBOMOLE specific commands must go inside the
+`slurm_startjob()` function, where indicated by the comment line.
+
+In the template script example, the main command is a geometry
+optimization calculation via TURBOMOLE’s jobex script assuming
+all input files are present in the submit directory.
+
+IMPORTANT: Do not call `Config_turbo_env` directly in any of the submit
+scripts on HPC3.  Its functionality is replaced by the loading the right
+version of TURBOMOLE module in the slurm script.
+
+This template slurm script is designed to exit with error code 1 if
+more than one node is requested.  MPI-enabled TURBOMOLE binaries are
+not designed to be used with these modules and script.
+
+
+# Scratch Disk Usage
+
+The TURBOMOLE manual makes reference to calculations becoming I/O bound
+with large file writes and reads. However, most written files are useful
+and it is encouraged to submit slurm jobs from the fast network disks
+that are accessible from the login node (eg. /dfs6/pub/<UCInetID>).
+
+The exceptions are scratch files on scratch disks which TURBOMOLE
+programs and scripts use and that can be set with on of the:
+  (1) the keyword `$scratch files` in the `control` file
+  (2) command line options for TURBOMOLE scripts
+  (3) exporting the environment variable $TURBOTMPDIR.
+Please contact HPC3 at hpc3.support@uci.edu before attempting to use
+these options. Do not use `/tmp` for that purpose.

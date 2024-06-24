@@ -3,3 +3,5 @@
 versions: versions-2024.yaml
 build:
   - freesurfer7-module
+  - turbomole-module
+  - turbomole-smp-module

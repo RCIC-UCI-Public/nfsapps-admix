@@ -82,3 +82,27 @@ turbomole7.6.slurm.template
 USAGE
 
 Copy LICENSE from 7.5 distro
+
+#############  Version 7.8.1
+
+===================================
+Install 2024-06-24
+===================================
+Binrary distro  turbolinux781TMG.bin is provided by Robin Grotjahn from P. Furche group
+This is a self-extracting file that extraccts in to TURBOMOLE/ in the current directory
+
+# as a regular user
+.turbolinux781TMG.bin
+
+# as a root
+mkdir -p  /data/opt/apps/turbomole/7.8.1
+cd /data/opt/apps/turbomole/7.8.1
+mv /pub/npw/downloads/TURBOMOLE/ . &
+
+# verify permisisons
+chown -R root:root TURBOMOLE/
+
+# add files in TURBOMOLE
+turbomole7.6.slurm.template
+USAGE   (copy of USAGE-7.8.1, Created from one for 7.6 minus mpi directives)
+LICENSE ( copy from 7.6 distro)
