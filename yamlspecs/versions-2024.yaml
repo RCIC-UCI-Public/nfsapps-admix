@@ -3,3 +3,9 @@
 freesurfer: "7.4.1"
 freesurfer_mcr: "MCRv97"
 turbomole: "7.8.1"
+cellranger:
+  shortversion: "8.0"
+  longversion: "8.0.1"
+  release: 1
+cellranger_atac:
+  version: "2.1.0"

@@ -114,3 +114,98 @@ Stdout ends with:
 Can upload verification results to 10X with:
 cellranger upload your@email.edu sitecheck.txt
 cellranger upload your@email.edu tiny/tiny.mri.tgz
+
+################# cellranger 7.0.1
+-------------------------------------------
+Download 2022-10-17
+-------------------------------------------
+1. download latest cellranger from https://support.10xgenomics.com/single-cell-gene-expression/software/downloads/latest
+   need to provide name,email, university.
+2. once logged in with info above  download via a specific curl command (time sesnsitive)
+3. check md5sum and compare to listed on the web page 
+   md5sum cellranger-7.0.1.tar.gz 
+   98ffff631adb7298d38194073626817f  cellranger-7.0.1.tar.gz
+4. The latest references (References - 2020-A July 7, 2020)
+   are already downloaded to references/ and installed in /dfs6/commondata/cellranger
+
+-------------------------------------------
+Install 2022-10-17
+-------------------------------------------
+cd /data/opt/apps/cellranger/
+tar xzvf /data/opt/sources/cellranger/cellranger-7.0.1.tar.gz 
+mv cellranger-7.0.1/ 7.0.1
+
+Permissions afet tar are open to hte world, fix:
+
+chmod go-w 7.0.1/
+cd 7.0.1/
+chmod -R go-w bin builtwith.json external/ lib/ LICENSE  mro/ sou* 
+
+-------------------------------------------
+Run verification on a compute node as a regular user
+-------------------------------------------
+export PATH=/data/opt/apps/cellranger/7.0.1:$PATH
+1.  run site check 
+cellranger sitecheck > sitecheck.txt
+2. run testrun
+cellranger testrun --id=tiny
+
+Stdout ends with:
+    Waiting 6 seconds for UI to do final refresh.
+    Pipestance completed successfully!
+
+    2022-10-17 10:45:34 Shutting down.
+    Saving pipestance info to "tiny/tiny.mri.tgz"
+
+##### cellranger 8.0.1
+---------------------------
+Download 2024-09-16
+---------------------------
+
+1. On the page  https://www.10xgenomics.com/support/software/cell-ranger/downloads
+   choose software to download and provide name, affiliation, email to access download page.
+2. download via a specific curl command (time sesnsitive)
+3. check md5sum and compare to listed on the web page 
+   md5sum cellranger-8.0.1.tar.gz
+   1d08d8005b026fc1ca3c867bc67b2dbd  cellranger-8.0.1.tar.gz
+
+---------------------------
+Install 2024-09-17
+---------------------------
+
+cd /data/opt/apps/cellranger
+tar xzvf /data/opt/sources/cellranger/cellranger-8.0.1.tar.gz 
+mv cellranger-8.0.1/ 8.0.1
+chmod -R go-w 8.0.1/
+
+##### cellranger-atac 2.1.0
+---------------------------
+Download 2024-09-17
+---------------------------
+
+1. On the page https://support.10xgenomics.com/single-cell-atac/software/downloads/latest
+   choose softwre, provide name, email, institution to access download page
+2 from the download page use provide curl command and link to download, check md5sum
+  md5sum cellranger-atac-2.1.0.tar.gz 
+  3f44ba66ae789c2ab03f9c380a6718ca  cellranger-atac-2.1.0.tar.gz
+
+---------------------------
+Install 2024-09-17
+---------------------------
+mkdir -p /data/opt/apps/cellranger-atac
+cd /data/opt/apps/cellranger-atac
+tar xzvf /data/opt/sources/cellranger/cellranger-atac-2.1.0.tar.gz
+mv cellranger-atac-2.1.0/ 2.1.0
+chmod -R go-w 2.1.0/
+
+---------------------------
+Verify
+---------------------------
+Test as  a regular user:
+export PATH=//data/opt/apps/cellranger-atac/2.1.0/bin:$PATH
+$ cellranger-atac testrun --id=tiny
+
+Test taks about a minut, shoudl end with :
+  ...
+  Waiting 6 seconds for UI to do final refresh.
+  Pipestance completed successfully!

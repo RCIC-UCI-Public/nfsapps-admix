@@ -5,3 +5,5 @@ build:
   - freesurfer7-module
   - turbomole-module
   - turbomole-smp-module
+  - cellranger-module
+  - cellranger-atac-module

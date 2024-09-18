@@ -1,0 +1,16 @@
+# This is the cellranger-atac module
+!include common.yaml
+---
+- package: cellranger-atac module 
+  category: GENOMICS
+  name: cellranger-atac
+  version: "{{versions.cellranger_atac.version}}"
+  vendor_source: https://support.10xgenomics.com/single-cell-multiome-atac-gex/software/downloads/latest
+  description: |
+    Cell Ranger ATAC {{version}} is a set of analysis pipelines that process
+    Chromium Single Cell ATAC data. Cell Ranger ATAC includes four pipelines
+    relevant to Single Cell ATAC experiments.  See documentation for details
+    https://support.10xgenomics.com/single-cell-atac/software/pipelines/latest/what-is-cell-ranger-atac
+  module:
+    prepend_path:
+      - PATH {{root}}
