@@ -20,10 +20,11 @@ cd 6.0.4/
 tar xzvf /hpc3tools/opt/sources/fsl/6.0.4/VTK-7.1.1.tar.gz 
 
 # reserve a compute node for install and execute run-install.sh
-cd /data/opt/sources/fsl/6.0.4
+cd /data/opt/apps/fsl/6.0.4
 nohup ./run-install.sh &> out &
 # log file is generated in install dir, bring it over
 mv /data/opt/apps/fsl/6.0.4/build.log  .
+chown -R root:root /data/opt/apps/fsl/6.0.4
 
 -------------------------------------------
 NOTES on patch
