@@ -101,10 +101,16 @@ module load gcc/11.2.0
 make veryclean
 nohup make DEPS=1 all &> out &
 
-cd testsuite
-nohup ./runtest ompi+omp.conf >& out &
+4. Verification of the built binaries 
 
-The compilation was done on developemnt machine admixdev-6
+   (1) on the same test suit as previsou versions 
+       cd CeO2job/
+       nohup mpirun --allow-run-as-root -np 16 -x OMP_NUM_THREADS=1 ../vasp.6.3.2/bin/vasp_std &> out-vasp63 &
+
+   (2) cd testsuite
+       nohup ./runtest ompi+omp.conf >& out &
+
+The compilation was done on devel machine admixdev-6
 Copy resulting binaries vasp_gam,vasp_ncl,vasp_std from bin/ to HPC3
 
 4. install binaries in the final location
