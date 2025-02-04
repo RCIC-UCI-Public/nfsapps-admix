@@ -1,6 +1,6 @@
 !include packages.yaml
 ---
-versions: versions-group1.yaml
+versions: versions-2020.yaml
 build:
   - ansys-module
   - matlab-module
@@ -9,7 +9,3 @@ build:
   - stata-module
   - turbomole-module
   - turbomole-smp-module
-# this is moved to buildtools-admix
-# - cudasdk-module
-# this is mmoved to buildtools-admix
-# - intel-oneapi-module

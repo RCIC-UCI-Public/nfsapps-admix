@@ -3,10 +3,6 @@
 ansys: 
   version: "2020R2"
   rel: "v202"
-cellranger: 
-  shortversion: "3.1"
-  longversion: "3.1.0"
-  release: "2"
 matlab:
   version: R2020b
   arch: glnxa64
@@ -21,9 +17,3 @@ vasp:
 stata:
   version: "17"
 turbomole: "7.6"
-cudasdk: "22.9"
-# moved to buildtools-admix
-#oneAPI:
-#  version: "2022.2"
-#  toolversion: "2022.1.0"
-#  hpcversion: "2021.6.0"

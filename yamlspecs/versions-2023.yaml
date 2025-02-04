@@ -1,5 +1,20 @@
 !include versions.yaml
+!include updates8.yaml
 ---
 matlab:
   version: R2023b
   arch: glnxa64
+scalapack: "2.1.0"
+lapack: "3.9.0"
+vasp: 
+  version: "6.3.2"
+  release: 1
+  addenv:
+    - UCX_TLS rc,mm
+    - UCX_NET_DEVICES mlx5_0:1
+  group: vasp63
+vasp_gpu:
+  addenv:
+    - MKL_THREADING_LAYER INTEL
+  cuda: cudasdk
+  cuda_version: "22.9"

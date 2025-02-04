@@ -2,4 +2,6 @@
 ---
 versions: versions-2023.yaml
 build:
+  - vasp-gcc-module
+  - vasp-cuda-module
   - matlab-module
