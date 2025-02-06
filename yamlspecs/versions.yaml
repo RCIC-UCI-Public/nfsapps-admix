@@ -1,5 +1,6 @@
 !include site.yaml
 ---
+admix: nfsapps-admix
 nfspath: /data/opt/apps
 matlab:
   version: R2020a
