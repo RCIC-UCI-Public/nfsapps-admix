@@ -1,20 +1,11 @@
+---
 system:
 bootstrap:
 build:
-  - matlab-module
-  - stata-module
-  - marc-module
-  - mentat-module
-  - ansys-module
-  - freesurfer-module
-  - turbomole-module
-  - turbomole-smp-module
-  - fsl-module
-  - vasp-module
-  - gaussian-module
 manifest:
   - "{{build}}"
 sets:
+  - base
   - "2020"
   - "2021"
   - "2022"

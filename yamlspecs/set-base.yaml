@@ -1,0 +1,15 @@
+!include packages.yaml
+---
+versions: versions.yaml
+build:
+  - matlab-module
+  - stata-module
+  - marc-module
+  - mentat-module
+  - ansys-module
+  - freesurfer-module
+  - turbomole-module
+  - turbomole-smp-module
+  - fsl-module
+  - vasp-module
+  - gaussian-module
