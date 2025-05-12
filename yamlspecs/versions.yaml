@@ -34,7 +34,8 @@ vasp:
   mpi_version: "4.0.3"
   compiler_name: "gcc"
   compiler_version: "6.5.0"
-  fftw_compiler_version: "system"
+  fftw_compiler_version: "8.4.0"
   addreqs: ucx
   addenv: VASP_POT /data/opt/apps/vasp/potentials
 # NOTE: vasp compiles with these specific versions
+fftw: "3.3.8"
