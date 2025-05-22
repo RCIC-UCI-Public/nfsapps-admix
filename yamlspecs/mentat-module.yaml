@@ -8,9 +8,10 @@
   mentatArch: "{{versions.mentat.arch}}"
   vendor_source: Source provided by Aboozar Mapar
   description: |
-      MSC {{version}} is the GUI for Marc, a nonlinear finite elements analysis software used to simulate
-      behavior of complex materials and interaction under large deformations and strains.
-      It is licensed to Aboozar Mapar
+    Mentat is the GUI for Marc software. It is a nonlinear finite elements
+    analysis software used to simulate behavior of complex materials and
+    interaction under large deformations and strains. It is licensed to
+    Aboozar Mapar (Chemical Engineering & Materials Science department).
   root: "{{versions.nfspath}}/{{name}}/{{name}}{{version}}"
   module:
     setenv:

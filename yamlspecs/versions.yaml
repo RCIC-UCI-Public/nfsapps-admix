@@ -9,13 +9,13 @@ matlab:
 stata:
   version: "16"
   arch: "linux64"
-marc: 
+marc:
   version: "2020"
   arch: "linux64i8"
-mentat: 
+mentat:
   version: "2020"
   arch: "linux64"
-ansys: 
+ansys:
   version: "2019R2"
   rel: "v194"
 freesurfer: "6.0.1"
@@ -26,7 +26,7 @@ gaussian:
   ver: "16"
   rel: "A.03_avx2"
   view: "6.0.16"
-vasp: 
+vasp:
   version: "5.4.4"
   release: "2"
   group: vasp5

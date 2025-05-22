@@ -1,20 +1,23 @@
 # This is the turbomole module
 !include common.yaml
 ---
-- package: turbomole module 
+- package: turbomole module
   category: CHEMISTRY
-  basename: turbomole 
-  name: turbomole 
+  basename: turbomole
+  name: turbomole
   version: "{{versions.turbomole}}"
   release: "3"
   vendor_source: https://www.turbomole.org
   type_info: "SERIAL"
   description: |
-    TURBOMOLE {{version}} is a collaborative, multi-national software development project
-    aiming to provide highly efficient and stable computational tools for  quantum
+    TURBOMOLE is quantum chemical simulations software.
+    TURBOMOLE is a collaborative, multi-national software development project
+    that aims to provide highly efficient and stable computational tools for  quantum
     chemical simulations of molecules, clusters, periodic systems, and solutions.
     Access is given to all HPC3 users through the group of Filipp Furche.
     Provides {{type_info}} version of TURBOMOLE.
+  shortdescription: |
+    TURBOMOLE is set of computational tools for quantum chemical simulations.
   root: "{{versions.nfspath}}/{{basename}}/{{version}}/TURBOMOLE"
   para_ext:
   lib_ext:
@@ -24,8 +27,8 @@
       - PATH {{root}}/scripts
       - PATH {{root}}/bin/{{sysname}}
       - LD_LIBRARY_PATH {{root}}/libso{{lib_ext}}
-    base_setenv: 
+    base_setenv:
       - TURBODIR {{root}}
       - TURBOMOLE_SYSNAME {{sysname}}
-    setenv: 
+    setenv:
       - "{{module.base_setenv}}"

@@ -14,7 +14,7 @@
       - "{{cuda}}/{{cuda_version}}"
       - "{{compiler}}/{{compiler_version}}"
       - hdf5/{{versions.hdf5}}/{{cuda}}.{{cuda_version}}
-    setenv: 
+    setenv:
       - "{{versions.vasp_gpu.addenv}}"
     prepend_path:
       - PATH {{root}}/cuda/bin

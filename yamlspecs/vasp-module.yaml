@@ -1,9 +1,9 @@
 # This is the vasp module
 !include common.yaml
 ---
-- package: vasp module 
+- package: vasp module
   category: ENGINEERING
-  name: vasp 
+  name: vasp
   release: "{{versions.vasp.release}}"
   versions: !include versions.yaml
   version: "{{versions.vasp.version}}"
@@ -13,7 +13,7 @@
   compiler_version: "{{versions.vasp.compiler_version}}"
   vendor_source: "distro provided by Amirhossein Saeidi (saeidis) Engeeneering Dept"
   description: |
-    The Vienna Ab initio Simulation Package (VASP) {{version}} is for
+    The Vienna Ab initio Simulation Package (VASP). Is used for
     atomic scale materials modelling, e.g. electronic structure
     calculations and quantum-mechanical molecular dynamics, from
     first principles. See https://www.vasp.at. Access to this
@@ -21,8 +21,11 @@
     If  environment variable VASP_POT is set it specifies the
     installation directory of pseudo-potentials, otherwise there
     are no pseudo-potentials installd for this VASP version.
+  shortdescription: |
+    The Vienna Ab initio Simulation Package (VASP) is for
+    quantum-mechanical molecular dynamics problems.
   module:
-    setenv: 
+    setenv:
       - "{{versions.vasp.addenv}}"
     prereq:
       - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"

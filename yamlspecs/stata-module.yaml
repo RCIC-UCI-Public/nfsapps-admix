@@ -1,15 +1,16 @@
 # This is the Stata module
 !include common.yaml
 ---
-- package: Stata module 
+- package: Stata module
   category: LANGUAGES
   name: stata
   version: "{{versions.stata.version}}"
   vendor_source: https://download.stata.com/download/
   release: "2"
   description: |
-      Stata {{version}} is a general-purpose statistical software package.
-      It is licensed to Prof. Andrew Penner.
+    Stata is a general-purpose statistical software package.
+    It is licensed to Prof. Andrew Penner. The acess is restricted
+    to the users in stat<ver> groups.
   module:
     prepend_path:
       - PATH {{root}}

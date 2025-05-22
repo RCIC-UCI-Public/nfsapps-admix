@@ -11,9 +11,9 @@
     logname: "{{name}}/{{version}}/{{compiler}}.{{compiler_version}}"
     name: "{{compiler}}.{{compiler_version}}"
     prereq:
-      - scalapack/{{versions.scalapack}} 
-      - lapack/{{versions.lapack}} 
-      - OpenBLAS/{{versions.OpenBLAS}} 
+      - scalapack/{{versions.scalapack}}
+      - lapack/{{versions.lapack}}
+      - OpenBLAS/{{versions.OpenBLAS}}
       - fftw/{{versions.fftw}}/{{compiler}}.{{compiler_version}}-{{mpi}}.{{mpi_version}} 
       - hdf5/{{versions.hdf5}}/{{compiler}}.{{compiler_version}}
       - "{{compiler}}/{{compiler_version}}"

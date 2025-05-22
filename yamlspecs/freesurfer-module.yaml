@@ -1,19 +1,18 @@
-# This is the freesurfer module 
+# This is the freesurfer module
 !include common.yaml
 ---
-- package: freesurfer module 
+- package: freesurfer module
   category: IMAGING
-  name: freesurfer 
+  name: freesurfer
   version: "{{versions.freesurfer}}"
   release: 4
   vendor_source: https://surfer.nmr.mgh.harvard.edu/pub/dist/{{name}}/{{version}}/{{name}}-linux-centos7_x86_64-{{version}}.{{extension}}
   description: |
-    FreeSurfer is a software package for the analysis and visualization of structural 
-    and functional neuroimaging data from cross-sectional or longitudinal studies. 
-    It is developed by the Laboratory for Computational Neuroimaging at the 
-    Athinoula A. Martinos Center for Biomedical Imaging. 
-    FreeSurfer is the structural MRI analysis software of choice for the 
-    Human Connectome Project
+    FreeSurfer is the structural MRI analysis software.
+    it is used for the analysis and visualization of structural
+    and functional neuroimaging data from cross-sectional or longitudinal studies.
+    It is developed by the Laboratory for Computational Neuroimaging at the
+    Athinoula A. Martinos Center for Biomedical Imaging.
   mcr: "{{versions.freesurfer_mcr}}"
   module:
     glnxpath: &GlnxPath
@@ -29,7 +28,7 @@
     prepend_path:
       - *BasePath
       - *GlnxPath
-    baseenv: &BaseEnv 
+    baseenv: &BaseEnv
       - FREESURFER_HOME {{root}}
       - FMRI_ANALYSIS_DIR {{root}}/fsfast
       - FSFAST_HOME {{root}}/fsfast
@@ -40,6 +39,6 @@
       - MINC_LIB_DIR {{root}}/mni/lib
       - MNI_PERL5LIB {{root}}/mni/share/perl5
       - SUBJECTS_DIR {{root}}/subjects
-    setenv:  
+    setenv:
       - *BaseEnv
       - FREESURFER {{root}}

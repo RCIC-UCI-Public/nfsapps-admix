@@ -1,10 +1,10 @@
 # This is the ansys module
 !include common.yaml
 ---
-- package: ansys module 
+- package: ansys module
   category: ENGINEERING
   release: 2
-  name: ansys 
+  name: ansys
   version: "{{versions.ansys.version}}"
   rel: "{{versions.ansys.rel}}"
   vendor_source: "Install from ISOs provided by Engeeneering Dept"
@@ -17,7 +17,7 @@
       - PATH {{root}}/shared_files/licensing/lic_admin
       - PATH {{root}}/{{rel}}/fluent/bin
       - PATH {{root}}/{{rel}}/ansys/bin
-    setenv: 
+    setenv:
       - ANSYS_HOME   {{root}}
       - ANSYS202_DIR {{root}}/{{rel}}/ansys
       - ANSYSLIC_DIR {{root}}/shared_files/licensing

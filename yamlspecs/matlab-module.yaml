@@ -1,21 +1,19 @@
 # This is the MATLAB module
 !include common.yaml
 ---
-- package: MATLAB module 
+- package: MATLAB module
   category: LANGUAGES
-  name: MATLAB 
+  name: MATLAB
   release: "{{versions.matlab.rel}}"
   version: "{{versions.matlab.version}}"
-  vendor_source: https://www.mathworks.com/academia/tah-portal/university-of-california-irvine-30980328.html 
+  vendor_source: https://www.mathworks.com/academia/tah-portal/university-of-california-irvine-30980328.html
   description: |
-      MATLAB (R) version ({{version}}) combines a desktop environment tuned for iterative analysis
-      and design processes with a programming language that expresses matrix and 
-      array mathematics directly. It includes the Live Editor for creating scripts
-      that combine code, output, and formatted text in an executable notebook. This is
-      licensed software. 
+    MATLAB (R) is a programming and numeric computing platform.
+    It is used to analyze data, develop algorithms, and create models.
+    This is licensed software (campus-wide license).
   module:
     prepend_path:
       - PATH {{root}}/bin
-      - MANPATH {{root}}/man 
-    setenv: 
+      - MANPATH {{root}}/man
+    setenv:
       - MATLAB {{root}}

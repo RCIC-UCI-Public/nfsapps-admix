@@ -1,21 +1,22 @@
 # This is the gaussian module
 !include common.yaml
 ---
-- package: gaussian module 
+- package: gaussian module
   category: ENGINEERING
-  name: gaussian 
+  name: gaussian
   version: "{{versions.gaussian.ver}}"
   gaussrel: "{{versions.gaussian.rel}}"
   gaussview: "{{versions.gaussian.view}}"
   vendor_source: "distro provided by Nathan Crawford, Engeeneering Dept"
   description: |
+    Gaussian is a general purpose computational chemistry software.
     Gaussian {{version}} Revision A.03 software access is restrictred to
     the users in 'gaussian' group. The license has been bought by the
     school of physical sciences. The license manager in the school of
     physical sciences is Dr. Nathan Crawford. The license handler in
     the school of engineering is Dr. Mohammad Javad Abdolhosseini Qomi.
     For authorization please email one of them (based on your department
-    affiliation) and ask to be added to the group. 
+    affiliation) and ask to be added to the group.
   root: "{{versions.nfspath}}/{{name}}/{{version}}/{{gaussrel}}"
   rootgv: "{{versions.nfspath}}/{{name}}/{{version}}/{{gaussview}}"
   module:
@@ -25,9 +26,9 @@
       - LD_LIBRARY_PATH {{root}}/g16
       - LD_LIBRARY_PATH {{root}}/g16/bsd
       - LD_LIBRARY_PATH {{rootgv}}/lib
-    setenv: 
+    setenv:
       - g16root {{root}}
-      - GAUSS_SCRDIR /tmp 
+      - GAUSS_SCRDIR /tmp
       - GAUSS_EXEDIR "{{root}}/g16/bsd:{{root}}/g16"
       - GAUSS_BSDDIR "{{root}}/g16/bsd"
       - G16BASIS "{{root}}/g16/basis"

@@ -4,7 +4,7 @@
 !include rcic-module.yaml
 ---
 - versions: !include versions.yaml
-  vendor_source: 
+  vendor_source:
   root: "{{versions.nfspath}}/{{name}}/{{version}}"
   module:
     prepend_path:

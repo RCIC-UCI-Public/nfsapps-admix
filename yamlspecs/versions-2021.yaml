@@ -3,7 +3,7 @@
 matlab:
   version: R2021b
   arch: glnxa64
-cellranger: 
+cellranger:
   shortversion: "6.1"
   longversion: "6.1.2"
   release: "1"

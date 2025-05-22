@@ -9,11 +9,11 @@
   marcArch: "{{versions.marc.arch}}"
   vendor_source: Source provided by Aboozar Mapar
   description: |
-      MSC {{version}} is a nonlinear finite elements analysis software used to simulate
+      Marc (MSC) is a nonlinear finite elements analysis software. It is used to simulate
       behavior of complex materials and interaction under large deformations and strains.
       It can also simulate multi-physics scenarios across structural, thermal, piezoelectric,
       electrostatic, magnetostatic, and electromagnetic behaviors. 
-      It is licensed to Aboozar Mapar
+      It is licensed to Aboozar Mapar (Chemical Engineering & Materials Science department).
   root: "{{versions.nfspath}}/{{name}}/{{name}}{{version}}"
   module:
     setenv:
