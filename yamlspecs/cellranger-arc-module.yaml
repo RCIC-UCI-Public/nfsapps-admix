@@ -1,7 +1,7 @@
 # This is the cellranger-arc module
 !include common.yaml
 ---
-- package: cellranger-arc module 
+- package: cellranger-arc module
   category: GENOMICS
   name: cellranger-arc
   version: "{{versions.cellranger_arc.version}}"
@@ -9,16 +9,13 @@
   mouse: refdata-{{name}}-{{versions.cellranger_arc.mouse}}
   vendor_source: https://support.10xgenomics.com/single-cell-multiome-atac-gex/software/downloads/latest
   description: |
-    Cell Ranger ARC {{version}} is a set of analysis pipelines that process Chromium
-    Single Cell Multiome ATAC + Gene Expression sequencing data to generate a variety
-    of analyses pertaining to gene expression (GEX), chromatin accessibility, and 
-    their linkage.  See documentation  for detail on available pipelines
+    Cell Ranger ARC {{version}} is a set of analysis pipelines.
+    For details on available pipelines see
     https://support.10xgenomics.com/single-cell-multiome-atac-gex/software/pipelines/latest/what-is-cell-ranger-arc
     Reference Human reference (GRCh38) and mouse Mouse reference (mm10) datasets
-    are available in /dfs6/commondata/cellranger-arc and are specified by 
-    the REFDATA_HUMAN and REFDATA_MOUSE variables (set by module)
+    are specified by the REFDATA_HUMAN and REFDATA_MOUSE variables (set by module).
   module:
     prepend_path:
       - PATH {{root}}
-      - REFDATA_HUMAN /dfs6/commondata/cellranger-arc/{{human}}
-      - REFDATA_MOUSE /dfs6/commondata/cellranger-arc/{{mouse}}
+      - REFDATA_HUMAN /dfs8/commondata/cellranger-arc/{{human}}
+      - REFDATA_MOUSE /dfs8/commondata/cellranger-arc/{{mouse}}
