@@ -11,5 +11,5 @@ build:
   - turbomole-module
   - turbomole-smp-module
   - fsl-module
-  - vasp-module
+# - vasp-module
   - gaussian-module

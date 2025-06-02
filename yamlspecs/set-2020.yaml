@@ -5,7 +5,7 @@ build:
   - ansys-module
   - matlab-module
   - freesurfer-module
-  - vasp-module
+# - vasp-module
   - stata-module
   - turbomole-module
   - turbomole-smp-module

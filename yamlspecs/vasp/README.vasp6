@@ -110,3 +110,7 @@ cp -p bin/vasp_* /data/opt/apps/vasp/rocky8/6.1.2/bin
 chmod o-rx /data/opt/apps/vasp/rocky8/6.1.2/
 chown -R root:vasp6 /data/opt/apps/vasp/rocky8/6.1.2
 
+--------------------------
+Changes for Rocky Linux 9
+--------------------------
+See protected-admix.
