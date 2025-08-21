@@ -1,0 +1,21 @@
+======================================
+Installation of FreeSurfer8 2025/09.20
+======================================
+Version 8.1.0
+
+See download page https://surfer.nmr.mgh.harvard.edu/fswiki/rel7downloads
+
+1 download RPM for Rocky 8 (no 9 available)
+  wget https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/8.1.0/freesurfer-Rocky8-8.1.0-1.x86_64.rpm 
+
+2 install
+  mkdir from-rpm
+  cd from-rpm
+  rpm2cpio ../freesurfer-Rocky8-8.1.0-1.x86_64.rpm | cpio -idmv
+  mv from-rpm/usr/local/freesurfer/8.1.0-1/ /data/opt/apps/freesurfer/8.1.0
+  cd ..
+  rm -rf from-rpm
+
+3 Add MCR
+  cd  /data/opt/apps/freesurfer/8.1.0
+  ln -s /data/opt/apps/MATLAB/R2023b MCRv97

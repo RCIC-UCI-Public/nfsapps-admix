@@ -1,0 +1,4 @@
+!include versions.yaml
+---
+freesurfer: "8.1.0"
+freesurfer_mcr: "MCRv97"
