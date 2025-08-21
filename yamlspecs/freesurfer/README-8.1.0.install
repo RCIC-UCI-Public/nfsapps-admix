@@ -16,6 +16,9 @@ See download page https://surfer.nmr.mgh.harvard.edu/fswiki/rel7downloads
   cd ..
   rm -rf from-rpm
 
-3 Add MCR
+3 Add license file, otherwise freesurfer errors out
+  cp /data/opt/apps/freesurfer/7.4.1/license.txt /data/opt/apps/freesurfer/8.1.0/license.txt
+
+4 Add MCR
   cd  /data/opt/apps/freesurfer/8.1.0
   ln -s /data/opt/apps/MATLAB/R2023b MCRv97
