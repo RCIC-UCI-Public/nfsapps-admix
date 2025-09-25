@@ -3,3 +3,4 @@
 versions: versions-2025.yaml
 build:
   - matlab-module
+  - freesurfer8-module

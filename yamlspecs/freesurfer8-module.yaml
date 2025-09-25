@@ -1,0 +1,4 @@
+# This is the freesurfer module updated with new env vars
+!include freesurfer7-module.yaml
+---
+- release: 1
