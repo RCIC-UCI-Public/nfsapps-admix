@@ -7,3 +7,4 @@ build:
   - turbomole-smp-module
   - cellranger-module
   - cellranger-atac-module
+  - matlab-module

@@ -1,0 +1,6 @@
+!include versions.yaml
+---
+matlab:
+  version: R2025b
+  arch: glnxa64
+
