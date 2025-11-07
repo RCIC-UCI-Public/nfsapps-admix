@@ -9,3 +9,7 @@ cellranger:
   release: 1
 cellranger_atac:
   version: "2.1.0"
+matlab:
+  version: R2024b
+  arch: glnxa64
+
