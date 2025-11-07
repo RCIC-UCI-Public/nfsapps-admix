@@ -1,0 +1,22 @@
+# This is the Marc module
+!include common.yaml
+---
+- package: Gurobi Optimizer module 
+  category: TOOLS
+  name: gurobi
+  version: "{{versions.gurobi.version}}"
+  vendor_source: Source distro provide by the user
+  description: |
+      This is a commercial software that solves complex mathematical problems using
+      mathematical optimization. This software is available only to licensed users.
+      In addition to laoding this module users need to set environment variable to the
+      location of the (obtained by the user) license file. The command is 
+      export GRB_LICENSE_FILE=/path/to/your/license.file
+
+  root: "{{versions.nfspath}}/{{name}}/{{versions.gurobi.distro}}/linux64"
+  module:
+    setenv:
+      - GUROBI_HOME "{{root}}"
+    prepend_path:
+      - PATH {{root}}/bin
+      - LD_LIBRARY_PATH {{root}}/lib

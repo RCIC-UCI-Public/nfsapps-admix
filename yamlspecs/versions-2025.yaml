@@ -2,3 +2,6 @@
 ---
 freesurfer: "8.1.0"
 freesurfer_mcr: "MCRv97"
+gurobi:
+  version: "12.0.3"
+  distro: gurobi1203

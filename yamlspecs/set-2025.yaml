@@ -3,3 +3,4 @@
 versions: versions-2025.yaml
 build:
   - freesurfer8-module
+  - gurobi

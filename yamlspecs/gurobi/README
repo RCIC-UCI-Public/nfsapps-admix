@@ -1,0 +1,22 @@
+# Request to install Gurobi #12348 by Ana Kenney
+
+-----------------------
+2025-11-05 Download
+-----------------------
+
+User obtained distro for Linux, copy from provided location
+
+mkdir /data/opt/sources/gurobi
+cd /data/opt/sources/gurobi/
+cp /data/homezvol2/akenney1/GUROBI/gurobi12.0.3_linux64.tar.gz .
+
+-----------------------
+2025-11-05 Install
+-----------------------
+
+cd /data/opt/sources/gurobi/
+tar xzvf gurobi12.0.3_linux64.tar.gz 
+chown -R root:root gurobi1203/
+
+mkdir /data/opt/apps/gurobi
+mv gurobi1203/ /data/opt/apps/gurobi/
