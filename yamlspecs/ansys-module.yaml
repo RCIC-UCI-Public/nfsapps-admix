@@ -3,7 +3,7 @@
 ---
 - package: ansys module
   category: ENGINEERING
-  release: 2
+  release: 3
   name: ansys
   version: "{{versions.ansys.version}}"
   rel: "{{versions.ansys.rel}}"
@@ -17,6 +17,7 @@
       - PATH {{root}}/shared_files/licensing/lic_admin
       - PATH {{root}}/{{rel}}/fluent/bin
       - PATH {{root}}/{{rel}}/ansys/bin
+      - PATH {{root}}/{{rel}}/Framework/bin/Linux64
     setenv:
       - ANSYS_HOME   {{root}}
       - ANSYS202_DIR {{root}}/{{rel}}/ansys
