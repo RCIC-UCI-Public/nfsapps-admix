@@ -1,0 +1,25 @@
+!include common.yaml
+---
+- package: fluent module
+  category: ENGINEERING
+  release: 1
+  name: fluent
+  version: "{{versions.fluent.version}}"
+  rel: "{{versions.fluent.rel}}"
+  vendor_source: "Install from tar.gz provided by Engeeneering Dept"
+  description: |
+    Ansys Fluent is the fluid simulation software
+    from the ANSYS suite Release {{version}} revision {{rel}}.
+    For help with ANSYS, please see http://www.ansys.com and
+    http://laptops.eng.uci.edu/
+  module:
+    prepend_path:
+      - PATH {{root}}/{{rel}}/fluent/bin
+      - PATH {{root}}/{{rel}}/Framework/bin/Linux64
+    setenv:
+      - ANSYS_HOME   {{root}}
+      - ANSYSLIC_DIR {{root}}/shared_files/licensing
+      - ANSYSLMD_LICENSE_FILE 1055@128.200.217.34
+    requires:
+      - rcic-module-support
+      - libnsl

@@ -1,0 +1,5 @@
+!include versions.yaml
+---
+fluent:
+  version: "2025R2"
+  rel: "v252"

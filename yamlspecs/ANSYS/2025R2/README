@@ -1,0 +1,25 @@
+===== 2026-04-30
+
+Source file and pdf doc are from Lisa Preble lpreble@uci.edu
+put in /data/opt/sources/ANSYS/2025R2
+
+1 untar the source
+  cd /data/opt/sources/ANSYS/2025R2
+  mkdir untarred
+  cd untarred
+  gunzip -c ../ FLUIDS_2025R2_LINX64.tgz | tar xvf -
+
+2 run intall command
+  mkdir -p /data/opt/apps/fluent/2025R2/
+  ./INSTALL -silent -install_dir "/data/opt/apps/fluent/2025R2" -fluent -licserverinfo 2325:1055:128.200.217.34
+  
+3 Move installation relicts to one place
+  cd /data/opt/sources/ANSYS/2025R2
+  mv /data/opt/apps/fluent/2025R2/install.log .
+  mv /root/.ansys root-dot-ansys
+  rm -rf untarred/
+
+Note, license info for the server is provided by Lisa
+Install command does installtion of only the fluent app (the tar file provides all ansys apps)
+
+This file is copied to nfsapps-admix repo in yamlspecs/ANSYS/2025R2
