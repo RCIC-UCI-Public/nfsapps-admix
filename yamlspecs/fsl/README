@@ -40,3 +40,10 @@ Links
 ------------------------------------------
 compile from source https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation/SourceCode
 download https://fsl.fmrib.ox.ac.uk/fsldownloads_registration/download/fsl=10,o_s=None,d_type=source/
+
+===  Download of 6.0.7.22 ===
+in /data/opt/sources/fsl/6.0.7.22:
+curl -Ls https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/getfsl.sh -O getfsl.sh
+chmod +x ./getfsl.sh 
+./getfsl.sh /data/opt/apps/fsl/6.0.7.22
+

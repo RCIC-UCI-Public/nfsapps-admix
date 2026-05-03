@@ -3,3 +3,4 @@
 versions: versions-2026.yaml
 build:
   - fluent-module
+  - fsl-module

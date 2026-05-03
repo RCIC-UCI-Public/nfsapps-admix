@@ -3,3 +3,5 @@
 fluent:
   version: "2025R2"
   rel: "v252"
+fsl: "6.0.7.22"
+
