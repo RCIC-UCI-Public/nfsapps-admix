@@ -11,11 +11,13 @@
 8208            cellranger_6.1.2-module-6.1.2-1.x86_64.rpm
 8208            cellranger_7.0.1-module-7.0.1-1.x86_64.rpm
 8209            cellranger_8.0.1-module-8.0.1-1.x86_64.rpm
+7859            fluent_2025R2-module-2025R2-1.x86_64.rpm
 8194            freesurfer_6.0.1-module-6.0.1-4.x86_64.rpm
 8191            freesurfer_7.2.0-module-7.2.0-4.x86_64.rpm
 8195            freesurfer_7.4.1-module-7.4.1-1.x86_64.rpm
 8192            freesurfer_8.1.0-module-8.1.0-1.x86_64.rpm
 7814            fsl_6.0.4-module-6.0.4-1.x86_64.rpm
+7859            fsl_6.0.7.22-module-6.0.7.22-1.x86_64.rpm
 8466            gaussian_16-module-16-1.x86_64.rpm
 8065            gurobi_12.0.3-module-12.0.3-1.x86_64.rpm
 8168            marc_2020-module-2020-2.x86_64.rpm
