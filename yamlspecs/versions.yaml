@@ -27,16 +27,3 @@ gaussian:
   ver: "16"
   rel: "A.03_avx2"
   view: "6.0.16"
-vasp:
-  version: "5.4.4"
-  release: "2"
-  group: vasp5
-  mpi_name: openmpi
-  mpi_version: "4.0.3"
-  compiler_name: "gcc"
-  compiler_version: "6.5.0"
-  fftw_compiler_version: "8.4.0"
-  addreqs: ucx
-  addenv: VASP_POT /data/opt/apps/vasp/potentials
-# NOTE: vasp compiles with these specific versions
-fftw: "3.3.8"
