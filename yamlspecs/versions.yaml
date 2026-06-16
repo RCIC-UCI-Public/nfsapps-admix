@@ -22,6 +22,7 @@ freesurfer: "6.0.1"
 freesurfer_mcr: "MCRv80"
 turbomole: "7.5"
 fsl: "6.0.4"
+fsl_openblas: "0.3.26"
 gaussian:
   ver: "16"
   rel: "A.03_avx2"

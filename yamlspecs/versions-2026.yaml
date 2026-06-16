@@ -4,4 +4,4 @@ fluent:
   version: "2025R2"
   rel: "v252"
 fsl: "6.0.7.22"
-
+fsl_openblas: "0.3.26"

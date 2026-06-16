@@ -20,7 +20,7 @@
       - FSLTCLSH {{root}}/bin/fsltclsh
       - FSLWISH  {{root}}/bin/fslwish
     prereq:
-      - OpenBLAS/{{versions.OpenBLAS}}
+      - OpenBLAS/{{versions.fsl_openblas}}
     requires:
       - rcic-module-support
       - "{{module.prereq}}"
