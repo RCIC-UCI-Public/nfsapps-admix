@@ -5,3 +5,4 @@ fluent:
   rel: "v252"
 fsl: "6.0.7.22"
 fsl_openblas: "0.3.26"
+freesurfer: "8.2.0"
